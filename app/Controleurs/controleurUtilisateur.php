@@ -5,11 +5,11 @@ require_once 'Vues/vue.php';
 
 class ControleurUtilisateur {
 
-  public function affichageProfil(){
+  public function affichageProfil($id){
     $utilisateur = new Utilisateurs();
-    $informationsUtilisateur = $utilisateur->afficherUtilisateur(1)->fetch();
+    $informationsUtilisateur = $utilisateur->afficherUtilisateur($id)->fetch();
     $vue = new Vue('Utilisateur');
-    $vue->generer(array('infos' => $informationsUtilisateur));
+    $vue->generer(array('infos' => $informationsUtilisateur, 'id' => $id));
 
   }
 

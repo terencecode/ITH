@@ -16,7 +16,7 @@
 
     public function routerRequete(){
       $routeur = new routeur();
-      //error_reporting(0);
+      error_reporting(0);
       switch($_GET['page']){
 
         case '':
@@ -28,7 +28,8 @@
           break;
 
         case 'profil';
-          $this->controleurUtilisateur->affichageProfil();
+          $id = $_GET['id'];
+          $this->controleurUtilisateur->affichageProfil($id);
           break;
 
       }

@@ -1,4 +1,4 @@
 <?php $this->titre = "titre"; ?>
-<?php $this->css;?>
+<?php $this->css ?>
 
-ACCUEIL <br /> <br />
+ACCUEIL
