@@ -69,6 +69,7 @@ class routeur{
       case 'editer':
         $this->controleurMaMaison->affichageEditerMaMaison();
         break;
+        
     }
 
   }
