@@ -1,15 +1,12 @@
 <?php
 
-  require_once 'Modeles/utilisateurs.php';
-  require_once 'Vues/vue.php';
+require_once 'Modeles/utilisateurs.php';
+require_once 'Vues/vue.php';
 
-  class ControleurAccueil{
+class ControleurAccueil{
 
-    public function affichageAccueil(){
-      $vue = new Vue('Accueil');
-      $vue->generer();
-    }
-
+  public function affichageAccueil(){
+    $vue = new Vue('Accueil');
+    $vue->generer();
   }
-
-?>
+}

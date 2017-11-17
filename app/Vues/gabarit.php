@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="../public/css/style.css">
     <?= $css ?>
 
-      <title>
-        <?= $titre ?>
-      </title>
+    <title>
+      <?= $titre ?>
+    </title>
 
   </head>
+
 
   <body>
 
