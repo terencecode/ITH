@@ -2,8 +2,10 @@
 
 class Vue {
 
+
   private $fichier;
   private $titre;
+
 
   public function __construct($action) {
 
@@ -18,6 +20,7 @@ class Vue {
     $contenu = $this->genererFichier($this->fichier, $donnees);
     $vue = $this->genererFichier('Vues/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'css' => $this->css));
     echo $vue;
+
   }
 
 

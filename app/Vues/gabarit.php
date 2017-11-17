@@ -17,14 +17,9 @@
 
   <body>
 
-    <header>
-      COUCOU
-    </header>
-
-
     <?= $contenu ?>
 
-
   </body>
+
 
 </html>

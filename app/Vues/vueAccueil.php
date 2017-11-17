@@ -1,4 +1,2 @@
-<?php $this->titre = "titre"; ?>
-<?php $this->css ?>
-
-ACCUEIL
+<!-- Titre de la page -->
+<?php $this->titre = "Accueil"; ?>
