@@ -9,4 +9,10 @@ class ControleurAccueil{
     $vue = new Vue('Accueil');
     $vue->generer();
   }
+
+  public function affichage404(){
+      $vue = new Vue('404');
+      $vue->generer();
+  }
+  
 }

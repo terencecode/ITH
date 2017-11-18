@@ -69,7 +69,10 @@ class routeur{
       case 'editer':
         $this->controleurMaMaison->affichageEditerMaMaison();
         break;
-        
+
+      default :
+        $this->controleurAccueil->affichage404();
+
     }
 
   }
