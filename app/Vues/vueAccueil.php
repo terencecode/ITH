@@ -1,5 +1,6 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Accueil"; ?>
+<<<<<<< HEAD
             
 <ul>                
     <li>Accueil</li>
@@ -19,3 +20,6 @@
             <TD>Ligne 2, colonne 1</TD>
         </TR>
     </TABLE>
+=======
+blabla
+>>>>>>> 2d55a56734585a17ea2a48c2c70d99d22e8f4975
