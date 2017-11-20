@@ -14,5 +14,5 @@ class ControleurAccueil{
       $vue = new Vue('404');
       $vue->generer();
   }
-  
+
 }
