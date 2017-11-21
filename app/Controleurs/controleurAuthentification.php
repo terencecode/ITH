@@ -8,11 +8,11 @@ class ControleurAuthentification{
     if(isset($_POST['valider'])){
 
       if (empty($_POST['mail'])) {
-        $messageMail = 'Veuillez saisir le Mail \n';
+        $messageMail = "Veuillez saisir le Mail";
       }
 
       if (empty($_POST['passe'])) {
-        $messagePasse = 'Veuillez saisir le Mot de Passe \n';
+        $messagePasse = "Veuillez saisir le Mot de Passe";
       }
 
       $mail = $_POST['mail'];
