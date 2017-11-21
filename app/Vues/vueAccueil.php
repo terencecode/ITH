@@ -1,3 +1,2 @@
 <!-- Titre de la page -->
-<?php $this->titre = "Accueil"; ?>
-blabla
+<?php $this->titre = "Accueil";

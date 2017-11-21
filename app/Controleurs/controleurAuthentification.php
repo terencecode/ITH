@@ -4,15 +4,18 @@ require_once 'Vues/vue.php';
 
 class ControleurAuthentification{
 
+  private $erreur;
+  private $messagePassesDifferents;
+
   public function affichageConnexion(){
     if(isset($_POST['valider'])){
 
       if (empty($_POST['mail'])) {
-        $erreur[] = "Veuillez saisir le Mail";
+        $this->erreur[] = "Veuillez saisir le Mail";
       }
 
       if (empty($_POST['passe'])) {
-        $erreur[] = "Veuillez saisir le Mot de Passe";
+        $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
       $mail = $_POST['mail'];
@@ -20,34 +23,35 @@ class ControleurAuthentification{
 
     }
     $vue = new Vue('Connexion');
-    $vue->generer(array('erreur' => $erreur));
+    $vue->generer(array('erreur' => $this->erreur));
   }
 
   public function affichageEnregistrement(){
+
     if (isset($_POST['valider'])) {
 
       if (empty($_POST['nom'])) {
-        $erreur[] = "Veuillez saisir le Nom";
+        $this->erreur[] = "Veuillez saisir le Nom";
       }
 
       if (empty($_POST['prenom'])) {
-        $erreur[] = "Veuillez saisir le Prenom";
+        $this->erreur[] = "Veuillez saisir le Prenom";
       }
 
       if (empty($_POST['mail'])) {
-        $erreur[] = "Veuillez saisir le Mail";
+        $this->erreur[] = "Veuillez saisir le Mail";
       }
 
       if (empty($_POST['passe'])) {
-        $erreur[] = "Veuillez saisir le Mot de Passe";
+        $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
       if (empty($_POST['passe2'])) {
-        $erreur[] = "Veuillez confirmer le Mot de Passe";
+        $this->erreur[] = "Veuillez confirmer le Mot de Passe";
       }
 
       if (empty($_POST['code'])) {
-        $erreur[] = "Veuillez saisir le Code d'Inscription";
+        $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
 
       $nom = $_POST['nom'];
@@ -58,12 +62,12 @@ class ControleurAuthentification{
       $code = $_POST['code'];
 
       if ($passe != $passe2) {
-        $messagePassesDifferents = "Les deux mots de passe sont différents";
+        $this->messagePassesDifferents = "Les deux mots de passe sont différents";
       }
 
     }
     $vue = new Vue('Enregistrement');
-    $vue->generer(array('erreur' => $erreur, 'messagePassesDifferents' => $messagePassesDifferents));
+    $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
   }
 
 }

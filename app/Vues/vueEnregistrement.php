@@ -2,9 +2,11 @@
 <?php $this->titre = "Enregistrement"; ?>
 
 <?php echo $messagePassesDifferents ?>
-<?php foreach ($erreur as $key => $text) {
-  echo $text;
-  echo "<br>";
+<?php if (!empty($erreur)) {
+  foreach ($erreur as $key => $text) {
+    echo $text;
+    echo "<br>";
+  }
 } ?>
 
 <form action="" class="enregistrement" method="post">
@@ -15,7 +17,7 @@
   Adresse Mail:<br>
   <input type="text" name="mail"><br>
   Mot de Passe:<br>
-  <input type="text" name="passe"><br>
+  <input type="password" name="passe"><br>
   Répéter le mot de passe:<br>
   <input type="text" name="passe2"><br>
   Code d'inscription:<br>
