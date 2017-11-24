@@ -8,26 +8,30 @@ class ControleurAuthentification{
   private $messagePassesDifferents;
 
   public function affichageConnexion(){
+
+    $_SESSION['mail'];
+    $_SESSION['passe'];
+
     if(isset($_POST['valider'])){
 
+      //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
       if (empty($_POST['mail'])) {
         $this->erreur[] = "Veuillez saisir le Mail";
       }
-
       if (empty($_POST['passe'])) {
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
-      $mail = $_POST['mail'];
-      $passe = $_POST['passe'];
-
     }
+
     $vue = new Vue('Connexion');
     $vue->generer(array('erreur' => $this->erreur));
+
   }
 
   public function affichageEnregistrement(){
 
+    //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
     if (isset($_POST['valider'])) {
 
       if (empty($_POST['nom'])) {
