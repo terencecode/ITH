@@ -9,9 +9,6 @@ class ControleurAuthentification{
 
   public function affichageConnexion(){
 
-    $_SESSION['mail'];
-    $_SESSION['passe'];
-
     if(isset($_POST['valider'])){
 
       //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs

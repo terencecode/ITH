@@ -1,6 +1,7 @@
 <!-- Titre de la page -->
-<?php $this->titre = "Connexion"; ?>
-<?php if (!empty($erreur)) {
+<?php
+$this->titre = "Connexion";
+if (!empty($erreur)) {
   foreach ($erreur as $key => $text) {
     echo $text;
     echo "<br>";
@@ -8,7 +9,8 @@
 }
 ?>
 
-<form class="connexion" action="" method="post">
+
+<form class="connexion" action="profil" method="post">
   Adresse Mail:<br>
   <input type="text" name="mail"><br>
   Mot de passe:<br>

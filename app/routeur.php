@@ -52,8 +52,11 @@ class routeur{
         break;
 
       case 'profil';
-        $id = $_GET['id'];
-        $this->controleurUtilisateur->affichageMonCompte($id);
+        if(isset($_SESSION['id'])) {
+          $this->controleurUtilisateur->affichageMonCompte();
+        } else {
+          $this->controleurAuthentification->affichageConnexion();
+        }
         break;
 
       case 'statistiques':
