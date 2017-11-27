@@ -18,7 +18,6 @@
 
 
   <body>
-
   <ul>
       <li><a href="#"><img id="logo" src="../public/images/logo.png"></a></li>
       <li><a class="header-link" href="#home">Accueil</a></li>
