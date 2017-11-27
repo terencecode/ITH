@@ -9,8 +9,14 @@ class ControleurUtilisateur {
 
     $utilisateur = new Utilisateurs();
     $informationsUtilisateur = $utilisateur->afficherUtilisateur($id)->fetch();
-    $vue = new Vue('Utilisateur');
-    $vue->generer(array('infos' => $informationsUtilisateur, 'id' => $id ));
+
+    if ($id == $_SESSION['id']) {
+      $vue = new Vue('Utilisateur');
+      $vue->generer(array('infos' => $informationsUtilisateur, 'id' => $id ));
+    } else {
+      $vue = new Vue('404');
+      $vue->generer();
+    }
 
   }
 

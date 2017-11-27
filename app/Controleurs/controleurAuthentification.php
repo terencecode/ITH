@@ -19,10 +19,10 @@ class ControleurAuthentification{
       if (empty($_POST['passe'])) {
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
-
-      //une fois qu'on a vérifié les identifiants
+      //une fois qu'on a vérifié les identifiants et trouvé l'id de l'utilisateur
       $_SESSION['mail'] = $_POST['mail'];
       $_SESSION['passe'] = $_POST['passe'];
+      $_SESSION['id'] = 1;
     }
 
     $vue = new Vue('Connexion');
@@ -77,6 +77,7 @@ class ControleurAuthentification{
 
   public function affichageDeconnexion()
   {
+    //Vide les variables de session lors de la deconnexion
     session_destroy();
     header("Location: http://localhost:8888/APP/ITH/app/index.php?page=accueil"); //devra etre remplacé en prod
   }

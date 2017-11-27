@@ -52,6 +52,7 @@ class routeur{
         break;
 
       case 'profil';
+          //vérifie si l'id est entré dans l'url
           if (!empty($_GET['id'])) {
             $id = $_GET['id'];
             $this->controleurUtilisateur->affichageMonCompte($id);

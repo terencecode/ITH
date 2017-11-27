@@ -9,4 +9,5 @@
 <br>
 bonjour, ton mail est <?php echo $_SESSION['mail'] ?>, ton mot de passe est <?php echo $_SESSION['passe'] ?> !
 
+<!-- test deconnexion -->
 <a href="index.php?page=deconnexion">deconnexion</a>

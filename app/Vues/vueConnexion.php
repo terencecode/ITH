@@ -14,8 +14,12 @@ if (!empty($erreur)) {
 <?php else: ?>
   la variable session est set
 <?php endif; ?>
+<br>
 
 <a href="index.php?page=editer">Editer ma Maison</a>
+<br>
+<a href="index.php?page=profil">Profil</a>
+<br>
 
 <form class="connexion" action="" method="post">
   Adresse Mail:<br>
