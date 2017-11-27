@@ -5,12 +5,12 @@ require_once 'Vues/vue.php';
 
 class ControleurUtilisateur {
 
-  public function affichageMonCompte(){
+  public function affichageMonCompte($id){
 
     $utilisateur = new Utilisateurs();
-    $informationsUtilisateur = $utilisateur->afficherUtilisateur($_SESSION['id'])->fetch();
+    $informationsUtilisateur = $utilisateur->afficherUtilisateur($id)->fetch();
     $vue = new Vue('Utilisateur');
-    $vue->generer(array('infos' => $informationsUtilisateur, 'id' => $_SESSION['id']));
+    $vue->generer(array('infos' => $informationsUtilisateur, 'id' => $id ));
 
   }
 

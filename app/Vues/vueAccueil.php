@@ -1,10 +1,15 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Accueil"; ?>
 
+<?php if (empty($_SESSION['mail'])): ?>
+  la varialble session est vide
+<?php else: ?>
+  la variable session est set
+<?php endif; ?>
 
 <ul>
     <li>Accueil</li>
-    <li>Connexion</li>
+    <li><a href="index.php?page=connexion">Connexion</a></li>
     <li>S'enregistrer</li>
     <li>A Propos</li>
 </ul>

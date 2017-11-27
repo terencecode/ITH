@@ -9,8 +9,15 @@ if (!empty($erreur)) {
 }
 ?>
 
+<?php if (empty($_SESSION['mail'])): ?>
+  la varialble session est vide
+<?php else: ?>
+  la variable session est set
+<?php endif; ?>
 
-<form class="connexion" action="profil" method="post">
+<a href="index.php?page=editer">Editer ma Maison</a>
+
+<form class="connexion" action="" method="post">
   Adresse Mail:<br>
   <input type="text" name="mail"><br>
   Mot de passe:<br>

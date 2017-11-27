@@ -52,7 +52,12 @@ class routeur{
         break;
 
       case 'profil';
-          $this->controleurUtilisateur->affichageMonCompte();
+          if (!empty($_GET['id'])) {
+            $id = $_GET['id'];
+            $this->controleurUtilisateur->affichageMonCompte($id);
+          } else {
+            $this->controleurAccueil->affichage404();
+          }
         break;
 
       case 'statistiques':
@@ -65,6 +70,10 @@ class routeur{
 
       case 'editer':
         $this->controleurMaMaison->affichageEditerMaMaison();
+        break;
+
+      case 'deconnexion':
+        $this->controleurAuthentification->affichageDeconnexion();
         break;
 
       default :

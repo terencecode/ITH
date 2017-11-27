@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Vues/vue.php';
+require_once 'Controleurs/controleurAccueil.php';
 
 class ControleurAuthentification{
 
@@ -19,13 +20,10 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
+      //une fois qu'on a vérifié les identifiants
+      $_SESSION['mail'] = $_POST['mail'];
+      $_SESSION['passe'] = $_POST['passe'];
     }
-
-    //une fois qu'on a vérifié les identifiants
-    $_SESSION['id'] = 1;
-
-    /* Dans une page accessible seulement à un utilisateur connecté: vérifier dans le controlleur que la variable est set
-     et qu'elle correspond à l'id de l'url */
 
     $vue = new Vue('Connexion');
     $vue->generer(array('erreur' => $this->erreur));
@@ -75,6 +73,12 @@ class ControleurAuthentification{
     }
     $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
+  }
+
+  public function affichageDeconnexion()
+  {
+    session_destroy();
+    header("Location: http://localhost:8888/APP/ITH/app/index.php?page=accueil"); //devra etre remplacé en prod
   }
 
 }
