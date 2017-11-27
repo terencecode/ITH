@@ -16,7 +16,7 @@
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
             <h1>Créer un compte</h1>
-            <form action="">
+            <form action="" method="post">
                 <label type="prenom">Prénom:</label>
                 <input type="text" name="prenom" id="prenom"></br>
                 <label for="nom">Nom:</label>
@@ -30,7 +30,7 @@
                 <!-- Penser à tester si le mdp est identique-->
                 <input type="password" name="passe2" id="mdp2"></br>
                 <label for="code">Code d'inscription:</label>
-                <input type="text" name="valider" id="code"></br>
+                <input type="text" name="code" id="code"></br>
 
                 <input id="submit-button" type="submit" value="valider">
             </form>

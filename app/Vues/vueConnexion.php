@@ -16,13 +16,8 @@ if (!empty($erreur)) {
 <?php endif; ?>
 <br>
 
-<?php if (!empty($_SESSION['id'])) {
-  $id = $_SESSION['id'];
-  $action = "index.php?page=profil&id=".$id;
-} ?>
 
-
-<form class="connexion" action="<?php echo $action ?>" method="post">
+<form class="connexion" action="" method="post">
   Adresse Mail:<br>
   <input type="text" name="mail"><br>
   Mot de passe:<br>
