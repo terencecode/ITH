@@ -9,9 +9,9 @@ class ControleurAuthentification{
 
   public function affichageConnexion(){
 
+    //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
     if(isset($_POST['valider'])){
 
-      //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
       if (empty($_POST['mail'])) {
         $this->erreur[] = "Veuillez saisir le Mail";
       }
@@ -20,6 +20,12 @@ class ControleurAuthentification{
       }
 
     }
+
+    //une fois qu'on a vérifié les identifiants
+    $_SESSION['id'] = 1;
+
+    /* Dans une page accessible seulement à un utilisateur connecté: vérifier dans le controlleur que la variable est set
+     et qu'elle correspond à l'id de l'url */
 
     $vue = new Vue('Connexion');
     $vue->generer(array('erreur' => $this->erreur));

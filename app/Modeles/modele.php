@@ -20,7 +20,7 @@ abstract class Modele {
 
       $this->bdd = new PDO("mysql:host=localhost; dbname=utilisateurs; charset=utf8", 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    return $this->bdd;
     }
+    return $this->bdd;
   }
 }
