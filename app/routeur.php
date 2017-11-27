@@ -25,61 +25,66 @@ class routeur{
   }
 
   public function routerRequete(){
-    switch($_GET['page']){
+    if(isset($_GET['page'])) {
 
-      case '':
-        $this->controleurAccueil->affichageAccueil();
-        break;
+      switch($_GET['page']) {
 
-      case 'accueil':
-        $this->controleurAccueil->affichageAccueil();
-        break;
+        case '':
+          $this->controleurAccueil->affichageAccueil();
+          break;
 
-      case 'apropos':
-        $this->controleurAide->affichageApropos();
-        break;
+        case 'accueil':
+          $this->controleurAccueil->affichageAccueil();
+          break;
 
-      case 'aide':
-        $this->controleurAide->affichageAide();
-        break;
+        case 'apropos':
+          $this->controleurAide->affichageApropos();
+          break;
 
-      case 'connexion':
-        $this->controleurAuthentification->affichageConnexion();
-        break;
+        case 'aide':
+          $this->controleurAide->affichageAide();
+          break;
 
-      case 'enregistrement':
-        $this->controleurAuthentification->affichageEnregistrement();
-        break;
+        case 'connexion':
+          $this->controleurAuthentification->affichageConnexion();
+          break;
 
-      case 'profil';
-          //vérifie si l'id est entré dans l'url
-          if (!empty($_GET['id'])) {
-            $id = $_GET['id'];
-            $this->controleurUtilisateur->affichageMonCompte($id);
-          } else {
-            $this->controleurAccueil->affichage404();
-          }
-        break;
+        case 'enregistrement':
+          $this->controleurAuthentification->affichageEnregistrement();
+          break;
 
-      case 'statistiques':
-        $this->controleurMaMaison->affichageStatistiques();
-        break;
+        case 'profil';
+            //vérifie si l'id est entré dans l'url
+            if (!empty($_GET['id'])) {
+              $id = $_GET['id'];
+              $this->controleurUtilisateur->affichageMonCompte($id);
+            } else {
+              $this->controleurAccueil->affichage404();
+            }
+          break;
 
-      case 'tableaudebord':
-        $this->controleurMaMaison->affichageTableauDeBord();
-        break;
+        case 'statistiques':
+          $this->controleurMaMaison->affichageStatistiques();
+          break;
 
-      case 'editer':
-        $this->controleurMaMaison->affichageEditerMaMaison();
-        break;
+        case 'tableaudebord':
+          $this->controleurMaMaison->affichageTableauDeBord();
+          break;
 
-      case 'deconnexion':
-        $this->controleurAuthentification->affichageDeconnexion();
-        break;
+        case 'editer':
+          $this->controleurMaMaison->affichageEditerMaMaison();
+          break;
 
-      default :
-        $this->controleurAccueil->affichage404();
+        case 'deconnexion':
+          $this->controleurAuthentification->affichageDeconnexion();
+          break;
 
+        default :
+          $this->controleurAccueil->affichage404();
+      }
+
+    } else {
+      $this->controleurAccueil->affichage404();
     }
 
   }
