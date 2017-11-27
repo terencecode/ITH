@@ -18,15 +18,15 @@
 
 
   <body>
-  <div id="header" class="row">
-      <div class="col-md-1 col-lg-1"><a href="#"><img id="logo" src="../public/images/logo.png"></a></div>
-      <div class="col-md-2 col-lg-1 header-link"><a href="#">Accueil</a></div>
-      <div class="col-md-2 col-lg-1 header-link"><a href="#">Connexion</a></div>
-      <div class="col-md-2 col-lg-1 header-link"><a href="#">S'enregistrer</a></div>
-      <div class="col-md-2 col-lg-6"></div>
-      <div class="col-md-2 col-lg-1 header-link"><a href="#">A Propos</a></div>
-      <div class="col-md-1 col-lg-1"><a href="#"><img id="help" src="../public/images/help.png"></a></div>
-  </div>
+
+  <ul>
+      <li><a href="#"><img id="logo" src="../public/images/logo.png"></a></li>
+      <li><a class="header-link" href="#home">Accueil</a></li>
+      <li><a class="header-link" href="#news">Connexion</a></li>
+      <li><a class="header-link" href="#contact">Enregistrer</a></li>
+      <li class="right"><a class="right" href="#"><img id="help" src="../public/images/help.png"></a></li>
+      <li class="right"><a class="header-link" href="#about">A Propos</a></li>
+  </ul>
     <?= $contenu ?>
 
   </body>

@@ -3,40 +3,43 @@
   padding: 0;
 }
 
-#header {
-  background-color: #53917E;
-  width: 100%;
-  position: relative;
-  height: 10vh;
-  font-size: 0.8em;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #53917E;
+    font-size: 1em;
+}
+
+li {
+    float: left;
+    height: 5em;
+}
+
+li .header-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 2em 1.5em;
+    text-decoration: none;
+}
+
+li .header-link:hover {
+    background-color: #98C9A3;
 }
 
 #logo {
-  height: 2.8em;
-  cursor: pointer;
+    height: 3em;
+    margin: 1em 1em 1em 1em;
 }
 
 #help {
-  height: 2.8em;
-}
-
-#header div
-{
-  display: flex;
-  height: 100%;
-}
-
-#header div a {
-  text-decoration: none;
-  color: white;
-  margin: auto;
-}
-
-.header-link {
-    cursor: pointer;
+    height: 2em;
+    margin: 1.5em 1em 1.5em 1em;
 }
 
 
-.header-link:hover {
-  background-color: #98C9A3;
+.right {
+    float: right;
 }

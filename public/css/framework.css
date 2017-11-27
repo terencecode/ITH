@@ -59,7 +59,7 @@
     .col-md-12 {width: 100%;}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
     [class*="col-lg-"] {
         padding: 15px;
     }
