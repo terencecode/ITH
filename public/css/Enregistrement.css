@@ -1,0 +1,61 @@
+body {
+  background-color: #EDEEC9;
+  font-family: 'Roboto';
+}
+
+#form-container {
+    font-size: 13px;
+    margin: 30px 10px 0px 10px;
+    padding-bottom: 0;
+}
+
+form {
+    margin-top: 50px;
+}
+
+.space {
+  height: 2em;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 13px;
+}
+
+#submit-button {
+  cursor: pointer;
+}
+
+input:focus {
+  box-shadow: 0 0 5px rgba(152, 201, 163, 1);
+  border: 1px solid rgba(152, 201, 163, 1);
+}
+
+input::placeholder {
+    font-size: 11px;
+}
+
+input:focus::placeholder {
+    color: rgba(152, 201, 163, 1);
+}
+
+#body #background-image {
+    background: url("../images/pexels-photo-440313.jpeg") no-repeat;
+    background-size: cover;
+    padding: 0;
+    box-shadow: 3px 0px 15px #888888;
+}
+#body .row {
+    height: 90vh;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(160, 160, 160, 1);
+}

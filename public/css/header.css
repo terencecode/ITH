@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  background-color: #53917E;
+  width: 100%;
+  position: relative;
+  height: 10vh;
+  font-size: 0.8em;
+}
+
+#logo {
+  height: 2.8em;
+  cursor: pointer;
+}
+
+#help {
+  height: 2.8em;
+}
+
+#header div
+{
+  display: flex;
+  height: 100%;
+}
+
+#header div a {
+  text-decoration: none;
+  color: white;
+  margin: auto;
+}
+
+.header-link {
+    cursor: pointer;
+}
+
+
+.header-link:hover {
+  background-color: #98C9A3;
+}
