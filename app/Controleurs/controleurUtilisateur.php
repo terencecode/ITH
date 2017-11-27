@@ -10,7 +10,7 @@ class ControleurUtilisateur {
     $utilisateur = new Utilisateurs();
     $informationsUtilisateur = $utilisateur->afficherUtilisateur($id)->fetch();
 
-    if ($id == $_SESSION['id']) {
+    if (!empty($_SESSION['id']) && $id == $_SESSION['id']) {
       $vue = new Vue('Utilisateur');
       $vue->generer(array('infos' => $informationsUtilisateur, 'id' => $id ));
     } else {
