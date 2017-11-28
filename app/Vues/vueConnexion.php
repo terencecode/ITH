@@ -13,6 +13,7 @@ if (!empty($erreur)) {
   la varialble session est vide
 <?php else: ?>
   la variable session est set
+  <a href="index.php?page=deconnexion">deconnexion</a>
 <?php endif; ?>
 <br>
 
