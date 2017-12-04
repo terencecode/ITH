@@ -5,7 +5,7 @@ require_once 'Vues/vue.php';
 class ControleurMaMaison{
 
   public function affichageStatistiques(){
-    if (!empty($_SESSION['mail']) && !empty($_SESSION['passe'])) {
+    if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
       $vue = new Vue('Statistiques');
       $vue->generer();
     } else {
@@ -15,7 +15,7 @@ class ControleurMaMaison{
   }
 
   public function affichageTableauDeBord(){
-    if (!empty($_SESSION['mail']) && !empty($_SESSION['passe'])) {
+    if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
       $vue = new Vue('TableauDeBord');
       $vue->generer();
     } else {
@@ -25,7 +25,7 @@ class ControleurMaMaison{
   }
 
   public function affichageEditerMaMaison(){
-    if (!empty($_SESSION['mail']) && !empty($_SESSION['passe'])) {
+    if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
       $vue = new Vue('EditerMaMaison');
       $vue->generer();
     } else {

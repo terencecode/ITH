@@ -1,5 +1,5 @@
 <ul>
-    <?php if (!empty($_SESSION['mail'])): ?>
+    <?php if (!empty($_SESSION['email'])): ?>
         <li><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
         <li><a class="header-link" href="accueil">Accueil</a></li>
         <li><a class="header-link" href="utilisateur">Mon Compte</a></li>

@@ -13,7 +13,7 @@ if (!empty($erreur)) {
 
 <form class="connexion" action="" method="post">
   Adresse Mail:<br>
-  <input type="text" name="mail"><br>
+  <input type="text" name="email"><br>
   Mot de passe:<br>
   <input type="password" name="passe"><br>
   <input type="submit" name="valider">

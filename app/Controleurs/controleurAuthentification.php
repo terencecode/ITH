@@ -14,7 +14,7 @@ class ControleurAuthentification{
     //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
     if(isset($_POST['valider'])){
 
-      if (empty($_POST['mail'])) {
+      if (empty($_POST['email'])) {
         $this->erreur[] = "Veuillez saisir le Mail";
       }
       if (empty($_POST['passe'])) {
@@ -22,7 +22,7 @@ class ControleurAuthentification{
       }
 
       //une fois qu'on a vérifié les identifiants et trouvé l'id de l'utilisateur
-      $_SESSION['mail'] = $_POST['mail'];
+      $_SESSION['email'] = $_POST['email'];
       $_SESSION['passe'] = $_POST['passe'];
 
       }
@@ -45,7 +45,7 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Prenom";
       }
 
-      if (empty($_POST['mail'])) {
+      if (empty($_POST['email'])) {
         $this->erreur[] = "Veuillez saisir le Mail";
       }
 
@@ -68,7 +68,7 @@ class ControleurAuthentification{
       $valeurs = [];
       $valeurs[] = $_POST['prenom'];
       $valeurs[] = $_POST['nom'];
-      $valeurs[] = $_POST['mail'];
+      $valeurs[] = $_POST['email'];
       $valeurs[] = $_POST['passe'];
       $valeurs[] = $_POST['passe2'];
       $valeurs[] = $_POST['code'];
@@ -77,7 +77,7 @@ class ControleurAuthentification{
       $utilisateur->recupererUtilisateur($valeurs);
 
     }
-    $vue = new Vue('Enregistrement');
+    $vue = new Vue('Enregistrement');git
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
   }
 
@@ -85,7 +85,8 @@ class ControleurAuthentification{
   {
     //Vide les variables de session lors de la deconnexion
     session_destroy();
-    header("Location: http://localhost:8888/app/index.php?page=accueil"); //devra etre remplacé en prod
+    header("Location: http://localhost:8888/accueil");
+
   }
 
 }

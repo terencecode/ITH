@@ -20,8 +20,8 @@
                 <input type="text" name="prenom" id="prenom"></br>
                 <label for="nom">Nom:</label>
                 <input type="text" name="nom" id="nom"></br>
-                <label for="mail">Adresse mail:</label>
-                <input type="text" name="mail" id="mail"></br>
+                <label for="email">Adresse mail:</label>
+                <input type="text" name="email" id="email"></br>
                 <label for="mdp">Mot de passe:</label>
                 <input type="password" name="passe" id="mdp"
                        placeholder="10 caractères minimum"></br>
