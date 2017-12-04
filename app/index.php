@@ -1,6 +1,43 @@
 <?php
 
-require 'routeur.php';
+require_once 'Controleurs/controleurUtilisateur.php';
+require_once 'Controleurs/controleurAccueil.php';
+require_once 'Controleurs/controleurAide.php';
+require_once 'Controleurs/controleurAuthentification.php';
+require_once 'Controleurs/controleurMaMaison.php';
+
+require 'Routeur.php';
 session_start();
-$routeur = new routeur();
-$routeur->routerRequete();
+$router = new Routeur($_GET['currentPageUrl']);
+$router->get('/', function(){ $controleur = new ControleurAccueil();
+    $controleur->affichageAccueil(); });
+$router->get('/accueil', function(){ $controleur = new ControleurAccueil();
+    $controleur->affichageAccueil(); });
+$router->get('/apropos', function(){ $controleur = new ControleurAide();
+    $controleur->affichageApropos(); });
+$router->get('/aide', function(){ $controleur = new ControleurAide();
+    $controleur->affichageAide(); });
+$router->get('/connexion', function(){ $controleur = new ControleurAuthentification;
+    $controleur->affichageConnexion(); });
+$router->post('/connexion', function(){ $controleur = new ControleurAuthentification;
+    $controleur->affichageConnexion(); });
+$router->get('/enregistrement', function(){ $controleur = new ControleurAuthentification;
+    $controleur->affichageEnregistrement(); });
+$router->post('/enregistrement', function(){ $controleur = new ControleurAuthentification;
+    $controleur->affichageEnregistrement(); });
+$router->get('/profil', function(){ if(isset($_SESSION['email'])) {
+    $controleur = new ControleurUtilisateur;
+    $controleur->affichageMonCompte($_SESSION['email']);
+}});
+$router->get('/statistiques', function(){ $controleur = new ControleurMaMaison;
+    $controleur->affichageStatistiques(); });
+$router->get('/tableau-de-bord', function(){ $controleur = new ControleurMaMaison;
+    $controleur->affichageTableauDeBord(); });
+$router->get('/editer', function(){ $controleur = new ControleurMaMaison;
+    $controleur->affichageEditerMaMaison(); });
+$router->get('/deconnexion', function(){ $controleur = new ControleurAuthentification;
+    $controleur->affichageDeconnexion(); });
+
+$router->get('/posts/:id', function($id){ echo "Voila l'article $id"; });
+
+$router->run();
