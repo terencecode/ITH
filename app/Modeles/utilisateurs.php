@@ -11,4 +11,9 @@ class Utilisateurs extends Modele {
   return $resultatRequete;
   }
 
+  public function recupererUtilisateur($valeurs)
+  {
+    die(var_dump($valeurs));
+  }
+
 }

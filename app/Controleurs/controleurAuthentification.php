@@ -2,6 +2,7 @@
 
 require_once 'Vues/vue.php';
 require_once 'Controleurs/controleurAccueil.php';
+require_once 'Modeles/utilisateurs.php';
 
 class ControleurAuthentification{
 
@@ -59,16 +60,20 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
 
-      $nom = $_POST['nom'];
-      $prenom = $_POST['prenom'];
-      $mail = $_POST['mail'];
-      $passe = $_POST['passe'];
-      $passe2 = $_POST['passe2'];
-      $code = $_POST['code'];
-
       if ($passe != $passe2) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
       }
+
+      $valeurs = [];
+      $valeurs[] = $_POST['prenom'];
+      $valeurs[] = $_POST['nom'];
+      $valeurs[] = $_POST['mail'];
+      $valeurs[] = $_POST['passe'];
+      $valeurs[] = $_POST['passe2'];
+      $valeurs[] = $_POST['code'];
+
+      $utilisateur = new Utilisateurs();
+      $utilisateur->recupererUtilisateur($valeurs);
 
     }
     $vue = new Vue('Enregistrement');
@@ -79,7 +84,7 @@ class ControleurAuthentification{
   {
     //Vide les variables de session lors de la deconnexion
     session_destroy();
-    header("Location: http://localhost:8888/APP/ITH/app/index.php?page=accueil"); //devra etre remplacé en prod
+    header("Location: http://localhost:8888/app/index.php?page=accueil"); //devra etre remplacé en prod
   }
 
 }

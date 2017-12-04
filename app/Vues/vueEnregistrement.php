@@ -1,14 +1,6 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Enregistrement"; ?>
 
-<?php echo $messagePassesDifferents ?>
-<?php if (!empty($erreur)) {
-  foreach ($erreur as $key => $text) {
-    echo $text;
-    echo "<br>";
-  }
-} ?>
-
 <div id="body">
     <div class="row">
 
@@ -16,6 +8,13 @@
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
             <h1>Créer un compte</h1>
+            <?php echo $messagePassesDifferents ?>
+            <?php if (!empty($erreur)) {
+              foreach ($erreur as $key => $text) {
+                echo $text;
+                echo "<br>";
+              }
+            } ?>
             <form action="" method="post">
                 <label type="prenom">Prénom:</label>
                 <input type="text" name="prenom" id="prenom"></br>
@@ -27,12 +26,10 @@
                 <input type="password" name="passe" id="mdp"
                        placeholder="10 caractères minimum"></br>
                 <label for="mdp2">Répeter mot de passe:</label>
-                <!-- Penser à tester si le mdp est identique-->
                 <input type="password" name="passe2" id="mdp2"></br>
                 <label for="code">Code d'inscription:</label>
                 <input type="text" name="code" id="code"></br>
-
-                <input id="submit-button" type="submit" value="valider">
+                <input id="submit-button" name="valider" type="submit" value="valider">
             </form>
         </div>
 
