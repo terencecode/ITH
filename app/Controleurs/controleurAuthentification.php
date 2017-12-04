@@ -20,11 +20,12 @@ class ControleurAuthentification{
       if (empty($_POST['passe'])) {
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
+
       //une fois qu'on a vérifié les identifiants et trouvé l'id de l'utilisateur
       $_SESSION['mail'] = $_POST['mail'];
       $_SESSION['passe'] = $_POST['passe'];
-      $_SESSION['id'] = 1;
-    }
+
+      }
 
     $vue = new Vue('Connexion');
     $vue->generer(array('erreur' => $this->erreur));

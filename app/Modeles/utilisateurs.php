@@ -13,7 +13,7 @@ class Utilisateurs extends Modele {
 
   public function recupererUtilisateur($valeurs)
   {
-
+      $sql = 'INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u, clef_u) VALUES'
   }
 
 }
