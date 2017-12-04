@@ -1,5 +1,6 @@
 <?php
 require_once 'Route.php';
+require_once 'Vues/vue.php';
 
 class Routeur{
 
@@ -29,7 +30,8 @@ class Routeur{
                 return $route->call();
             }
         }
-        throw new Exception('No matching routes');
+        $vue = new Vue("404");
+        $vue->generer();
     }
 
 }
