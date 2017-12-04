@@ -5,12 +5,13 @@ class Vue {
 
   private $fichier;
   private $titre;
+  private $css;
 
 
   public function __construct($action) {
 
     $this->fichier = "Vues/vue".$action.".php";
-    $this->css = "<link rel='stylesheet' href='../public/css/".$action.".css'>";
+    $this->css = "<link rel='stylesheet' href='public/css/".$action.".css'>";
 
   }
 

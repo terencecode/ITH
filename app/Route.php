@@ -14,7 +14,7 @@ class Route
     private $urlParams = [];
 
     public function __construct($path, $callback){
-        $this->path = trim($path, '/');  // On retire les / inutils
+        $this->path = trim($path, '/');  // On retire les / inutiles
         $this->callback = $callback;
     }
 

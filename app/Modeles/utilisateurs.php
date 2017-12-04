@@ -4,10 +4,10 @@ require_once "Modeles/modele.php";
 
 class Utilisateurs extends Modele {
 
-  public function afficherUtilisateur($id){
+  public function afficherUtilisateur($email){
 
-  $sql = 'SELECT nom, prenom, gestionnaire FROM utilisateur WHERE id_utilisateur = :id';
-  $resultatRequete = $this->executerRequete($sql, array('id' => $id));
+  $sql = 'SELECT nom, prenom, gestionnaire FROM utilisateur WHERE email_u = :email';
+  $resultatRequete = $this->executerRequete($sql, array('email' => $email));
   return $resultatRequete;
   }
 
