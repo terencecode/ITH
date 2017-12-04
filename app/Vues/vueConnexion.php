@@ -10,8 +10,6 @@ if (!empty($erreur)) {
 ?>
 
 
-<br>
-
 
 <form class="connexion" action="" method="post">
   Adresse Mail:<br>
