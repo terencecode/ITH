@@ -5,26 +5,36 @@ require_once 'Controleurs/controleurAccueil.php';
 require_once 'Controleurs/controleurAide.php';
 require_once 'Controleurs/controleurAuthentification.php';
 require_once 'Controleurs/controleurMaMaison.php';
+require_once 'Route.php';
 
-class routeur{
+class Routeur{
 
-  private $controleurAccueil;
-  private $controleurUtilisateur;
-  private $controleurAide;
-  private $controleurAuthentification;
-  private $controleurMaMaison;
+    private $currentPageUrl;
+    private $routes = [];
 
-  public function __construct(){
+    public function __construct($currentPageUrl){
+        $this->currentPageUrl = $currentPageUrl;
+    }
 
-    $this->controleurAccueil = new ControleurAccueil();
-    $this->controleurUtilisateur = new ControleurUtilisateur();
-    $this->controleurAide = new ControleurAide();
-    $this->controleurAuthentification = new ControleurAuthentification();
-    $this->controleurMaMaison = new ControleurMaMaison();
+    public function get($path, $callback){
+        $route = new Route($path, $callback);
+        $this->routes["GET"][] = $route;
+        return $route; // On retourne la route pour "enchainer" les méthodes
+    }
 
-  }
+    public function run(){
+        if(!isset($this->routes[$_SERVER['REQUEST_METHOD']])){
+            throw new Exception('REQUEST_METHOD does not exist');
+        }
+        foreach($this->routes[$_SERVER['REQUEST_METHOD']] as $route){
+            if($route->match($this->currentPageUrl)){
+                return $route->call();
+            }
+        }
+        throw new Exception('No matching routes');
+    }
 
-  public function routerRequete(){
+  /*public function routerRequete(){
     if(isset($_GET['page'])) {
 
       switch($_GET['page']) {
@@ -87,6 +97,6 @@ class routeur{
       $this->controleurAccueil->affichage404();
     }
 
-  }
+  }*/
 
 }
