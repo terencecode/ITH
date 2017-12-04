@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 01 déc. 2017 à 14:40
+-- Généré le :  lun. 04 déc. 2017 à 13:49
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `gardien` (
 DROP TABLE IF EXISTS `gerant`;
 CREATE TABLE IF NOT EXISTS `gerant` (
   `id_gerant` int(11) NOT NULL AUTO_INCREMENT,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   `id_habitation` int(11) NOT NULL,
   `email_u` varchar(150) NOT NULL,
   PRIMARY KEY (`id_gerant`),
