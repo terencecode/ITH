@@ -5,6 +5,7 @@ class Vue {
 
   private $fichier;
   private $titre;
+  private $css;
 
 
   public function __construct($action) {
