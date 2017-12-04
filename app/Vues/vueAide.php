@@ -1,11 +1,5 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Aide"; ?>
-<ul>                
-    <li>Accueil</li>
-    <li>Connexion</li>
-    <li>S'enregistrer</li>
-    <li>A Propos</li>
-</ul>
 
 
 <h1>F.A.Q : </h1>
@@ -24,4 +18,6 @@
 <input type="submit" name="Envoyer">
 </form>
 
-<?php echo $_POST['Question']; ?>
+<?php if (!empty($_POST['Question'])) {
+    echo $_POST['Question'];
+} ?>
