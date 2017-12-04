@@ -18,4 +18,6 @@
 <input type="submit" name="Envoyer">
 </form>
 
-<?php echo $_POST['Question']; ?>
+<?php if (!empty($_POST['Question'])) {
+    echo $_POST['Question'];
+} ?>
