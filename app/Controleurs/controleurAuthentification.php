@@ -9,7 +9,8 @@ class ControleurAuthentification{
   private $erreur;
   private $messagePassesDifferents;
 
-  public function affichageConnexion(){
+
+    public function affichageConnexion(){
 
     //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
     if(isset($_POST['valider'])){
@@ -18,12 +19,27 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Mail";
       }
       if (empty($_POST['passe'])) {
-        $this->erreur[] = "Veuillez saisir le Mot de Passe";
+          $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
-      //une fois qu'on a vérifié les identifiants et trouvé l'id de l'utilisateur
-      $_SESSION['email'] = $_POST['email'];
-      $_SESSION['passe'] = $_POST['passe'];
+      $email = $_POST['email'];
+      $passe = $_POST['passe'];
+
+      $utilisateur = new Utilisateurs();
+      $data = $utilisateur->afficherUtilisateur($email);
+
+      if ($data != false) {
+          if ($data[1] == $passe) {
+              $_SESSION['email'] = $_POST['email'];
+              $_SESSION['passe'] = $_POST['passe'];
+          }
+      }
+
+      if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
+          header("Location: http://localhost:8888/accueil");
+      } else {
+          $this->erreur[] = "Mail où Mot de passe incorrect";
+      }
 
       }
 
@@ -66,9 +82,9 @@ class ControleurAuthentification{
       }*/
 
       $valeurs = [];
+      $valeurs[] = $_POST['email'];
       $valeurs[] = $_POST['prenom'];
       $valeurs[] = $_POST['nom'];
-      $valeurs[] = $_POST['email'];
       $valeurs[] = $_POST['passe'];
       $valeurs[] = $_POST['passe2'];
       $valeurs[] = $_POST['code'];
@@ -77,7 +93,7 @@ class ControleurAuthentification{
       $utilisateur->recupererUtilisateur($valeurs);
 
     }
-    $vue = new Vue('Enregistrement');git
+    $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
   }
 
