@@ -76,6 +76,7 @@ class ControleurAuthentification{
       if (empty($_POST['code'])) {
         $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
+      
 
       if ($_POST['passe'] != $_POST['passe2']) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
