@@ -1,45 +1,107 @@
 * {
   margin: 0;
   padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
-ul {
-    list-style-type: none;
+.topNav {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #53917E;
-    font-size: 1em;
+    overflow: hidden;
+    list-style-type: none;
 }
 
-li {
+.topNav li {
     float: left;
     height: 5em;
 }
 
-li .header-link {
-    display: block;
-    color: white;
-    text-align: center;
+.topNav .header-link {
     padding: 2em 1.5em;
-    text-decoration: none;
 }
 
-li .header-link:hover {
+.topNav a {
+    text-decoration: none;
+    display: block;
+}
+
+.topNav .header-link a {
+    color: white;
+    text-align: center;
+    font-size: 1em;
+}
+
+.header-link:hover {
     background-color: #98C9A3;
 }
 
-#logo {
+.topNav #logo {
     height: 3.5em;
     margin: 0.75em 1em 0.75em 1em;
 }
 
-#help {
-    height: 1.8em;
-    margin: 1.6em 1em 1.6em 1em;
+.topNav #collapsible-icon {
+    display: none;
 }
 
-
-.right {
+.topNav .right {
     float: right;
+}
+
+#collapsible-icon:hover {
+    background-color: darkslategrey;
+}
+
+@media screen and (max-width: 767px) {
+        .topNav li:not(:first-child) {
+            display: none;
+        }
+
+        .topNav #collapsible-icon {
+            display: block;
+        }
+
+        .topNav #collapsible-icon a {
+            height: 5em;
+        }
+
+        .topNav #menu-button {
+            height: 1.3em;
+            margin: 1.85em 2em 1.85em 2em;
+        }
+}
+
+@media screen and (max-width: 767px) {
+
+    .responsive.topNav li:first-child {
+        background-color: #98C9A3;
+    }
+
+    .topNav.responsive {position: relative;}
+
+    .topNav.responsive #collapsible-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+        .topNav.responsive .header-link {
+            float: none;
+            display: block;
+        }
+
+        .topNav.responsive .header-link a {
+            text-align: left;
+        }
+
+        .topNav.responsive #logocontainer {
+            display: block;
+            float: none;
+        }
+
+        .topNav.responsive .header-link {
+        height: auto;
+    }
+
 }
