@@ -8,7 +8,9 @@
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
             <h1>Créer un compte</h1>
-            <?php echo $messagePassesDifferents ?>
+            <?php if (!empty($messagePassesDifferents)){
+              echo $messagePassesDifferents;
+              } ?>
             <?php if (!empty($erreur)) {
               foreach ($erreur as $key => $text) {
                 echo $text;
