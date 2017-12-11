@@ -77,7 +77,7 @@ class ControleurAuthentification{
       $utilisateur->recupererUtilisateur($valeurs);
 
     }
-    $vue = new Vue('Enregistrement');git
+    $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
   }
 

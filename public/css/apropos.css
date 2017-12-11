@@ -1,0 +1,12 @@
+table{
+    text-align: center;
+}
+
+#nom{
+    font-size: 20px;
+}
+#mail{
+    color: blue;
+    padding-bottom: 15%;
+
+}
