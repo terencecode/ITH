@@ -19,7 +19,7 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Mail";
       }
       if (empty($_POST['passe'])) {
-          $this->erreur[] = "Veuillez saisir le Mot de Passe";
+        $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
       $email = $_POST['email'];
@@ -37,11 +37,11 @@ class ControleurAuthentification{
 
       if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
           header("Location: http://localhost:8888/accueil");
-      } else {
+        } else {
           $this->erreur[] = "Mail où Mot de passe incorrect";
       }
 
-      }
+    }
 
     $vue = new Vue('Connexion');
     $vue->generer(array('erreur' => $this->erreur));
@@ -77,9 +77,9 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
 
-      /*if ($passe != $passe2) {
+      if ($_POST['passe'] != $_POST['passe2']) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
-      }*/
+      }
 
       $valeurs = [];
       $valeurs[] = $_POST['email'];
@@ -89,12 +89,27 @@ class ControleurAuthentification{
       $valeurs[] = $_POST['passe2'];
       $valeurs[] = $_POST['code'];
 
-      $utilisateur = new Utilisateurs();
-      $utilisateur->recupererUtilisateur($valeurs);
+
+      try {
+
+        $utilisateur = new Utilisateurs();
+        $utilisateur->recupererUtilisateur($valeurs);
+
+      } catch (Exception $e) {
+
+        $this->erreur[] = "Vous êtes déjà enregistré, veuillez vous connecter";
+
+        $vue = new Vue('Enregistrement');
+        $vue->generer(array('erreur' => $this->erreur));
+
+      }
+
 
     }
+
     $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
+
   }
 
   public function affichageDeconnexion()
