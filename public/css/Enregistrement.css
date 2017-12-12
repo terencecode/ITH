@@ -19,13 +19,7 @@ form {
 
 input {
   width: 100%;
-  padding: 10px 12px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 13px;
+
 }
 
 #submit-button {

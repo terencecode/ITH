@@ -8,7 +8,6 @@
         <div id="maison-image" class="col-xs-hide col-sm-4 col-md-7 col-lg-9"></div>
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
-            <h2>Modal Example</h2>
 
             <!-- Trigger/Open The Modal -->
             <button class="button" type="button" id="button_piece">Ajouter une pièce</button>
@@ -32,19 +31,19 @@
                         <input type="text" name="hauteur"
                                placeholder="hauteur"></br>
                         <label for="type_de_piece"><p>Type de pièce :</p></label>
-                        <select>
+                        <select class="choix">
                             <option value="chambre">Chambre</option>
                             <option value="cuisine">Cuisine</option>
                             <option value="bureau">Bureau</option>
                             <option value="salon">Salon</option>
                             <option value="autre">Autre</option>
-                        </select>
+                        </select></br>
                         <label for="emplacement"><p>Emplacement :</p></label>
                         <input type="text" name="emplacement"></br>
-                        <label><p>Description :</p></label></br>
-                        <textarea name="Question" rows="4" cols="40"></textarea>
+                        <label><p>Description :</p></label>
+                        <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
                         <input id="submit-button" name="valider" type="submit" value="Valider">
-                        <input id="submit-button" name="valider" type="submit" value="Annuler">
+                        <input id="cancel-button" name="valider" type="submit" value="Annuler">
                     </form>
 
 
@@ -62,12 +61,20 @@
                     <span class="close">&times;</span>
                     <h1>Ajouter un capteur :</h1>
                     <form action="#" method="post">
-                        <label for="type_capteur">Type de capteur :</label>
+                        <label for="type_capteur"><p>Type de capteur :</p></label>
                         <input type="text" name="type_capteur"></br>
-                        <label for="piece_capteur">Pièce du capteur :</label>
-                        <input type="text" name="piece_capteur"></br>
-                        <label>Description :</label></br>
-                        <textarea name="Question" rows="4" cols="40"></textarea>
+                        <label for="piece_capteur"><p>Pièce du capteur :</p></label>
+                        <select>
+                            <option value="chambre">Chambre</option>
+                            <option value="cuisine">Cuisine</option>
+                            <option value="bureau">Bureau</option>
+                            <option value="salon">Salon</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                        <label><p>Description :</p></label>
+                        <textarea class="commentaire" name="Desctiption" rows="4" cols="40"></textarea>
+                        <input id="submit-button" name="valider" type="submit" value="Valider">
+                        <input id="cancel-button" name="valider" type="submit" value="Annuler">
                     </form>
 
                 </div>
