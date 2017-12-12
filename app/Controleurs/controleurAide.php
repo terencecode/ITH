@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Vues/vue.php';
+require_once 'Vues/vue.php';
 
 class ControleurAide{
 
