@@ -10,7 +10,6 @@ class ControleurAide{
   }
 
   public function affichageAide(){
-    if(isset($_POST["valider"]))
     $vue = new Vue('Aide');
     $vue->generer();
 
