@@ -69,11 +69,15 @@ select{
 
 }
 
-#border #maison-image{
+#body #background-image {
+    margin: 0.5%;
     background: url("../images/plan_maison.png") no-repeat;
-    background-size: cover;
+    background-size: 100%;
     padding: 0;
-    box-shadow: 3px 0px 15px #888888;
+}
+
+#body .row {
+    height: 90vh;
 }
 
 #submit-button{
@@ -123,4 +127,8 @@ input:focus::placeholder {
 input:focus {
     box-shadow: 0 0 5px rgba(152, 201, 163, 1);
     border: 1px solid rgba(152, 201, 163, 1);
+}
+
+.button{
+    width: 200px;
 }

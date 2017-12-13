@@ -5,9 +5,9 @@
     <div class="row">
 
 
-        <div id="maison-image" class="col-xs-hide col-sm-4 col-md-7 col-lg-9"></div>
+        <div id="background-image" class="col-xs-5 col-sm-4 col-md-4 col-lg-4"></div>
 
-        <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
+        <div id="form-container" class="col-xs-7 col-sm-8 col-md-8 col-lg-8">
 
             <!-- Trigger/Open The Modal -->
             <button class="button" type="button" id="button_piece">Ajouter une pièce</button>
