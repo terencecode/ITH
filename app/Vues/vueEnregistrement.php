@@ -31,7 +31,7 @@
                 <input type="password" name="passe2" id="mdp2"></br>
                 <label for="code">Code d'inscription:</label>
                 <input type="text" name="code" id="code"></br>
-                <input id="submit-button" name="valider" type="submit" value="valider">
+                <input class="submit-button" name="valider" type="submit" value="Valider">
             </form>
         </div>
 

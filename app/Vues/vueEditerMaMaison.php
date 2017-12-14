@@ -42,8 +42,8 @@
                         <input type="text" name="emplacement"></br>
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
-                        <input id="submit-button" name="valider" type="submit" value="Valider">
-                        <input id="cancel-button" name="valider" type="submit" value="Annuler">
+                        <input class="submit-button" name="valider" type="submit" value="Valider">
+                        <input class="cancel-button" name="valider" type="submit" value="Annuler">
                     </form>
 
 
@@ -73,8 +73,8 @@
                         </select>
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Desctiption" rows="4" cols="40"></textarea>
-                        <input id="submit-button" name="valider" type="submit" value="Valider">
-                        <input id="cancel-button" name="valider" type="submit" value="Annuler">
+                        <input class="submit-button" name="valider" type="submit" value="Valider">
+                        <input class="cancel-button" name="valider" type="submit" value="Annuler">
                     </form>
 
                 </div>

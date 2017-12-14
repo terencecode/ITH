@@ -1,7 +1,9 @@
+/* C'est dans Theme.css
 body {
   background-color: #EDEEC9;
   font-family: 'Roboto';
 }
+*/
 
 #form-container {
     font-size: 13px;
@@ -19,13 +21,25 @@ form {
 
 input {
   width: 100%;
-
 }
+
+/* C'est dans Theme.css
+input{
+    padding: 10px 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 13px;
+}
+*/
 
 #submit-button {
   cursor: pointer;
 }
 
+/* C'est dans Theme.css
 input:focus {
   box-shadow: 0 0 5px rgba(152, 201, 163, 1);
   border: 1px solid rgba(152, 201, 163, 1);
@@ -38,6 +52,7 @@ input::placeholder {
 input:focus::placeholder {
     color: rgba(152, 201, 163, 1);
 }
+*/
 
 #body #background-image {
     background: url("../images/pexels-photo-440313.jpeg") no-repeat;
@@ -45,6 +60,7 @@ input:focus::placeholder {
     padding: 0;
     box-shadow: 3px 0px 15px #888888;
 }
+
 #body .row {
     height: 90vh;
 }
