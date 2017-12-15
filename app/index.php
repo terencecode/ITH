@@ -38,6 +38,4 @@ $router->get('/editer', function(){ $controleur = new ControleurMaMaison;
 $router->get('/deconnexion', function(){ $controleur = new ControleurAuthentification;
     $controleur->affichageDeconnexion(); });
 
-$router->get('/posts/:id', function($id){ echo "Voila l'article $id"; });
-
 $router->run();

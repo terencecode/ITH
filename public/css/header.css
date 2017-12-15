@@ -8,8 +8,10 @@
     margin: 0;
     padding: 0;
     background-color: #53917E;
-    overflow: hidden;
     list-style-type: none;
+    overflow: visible;
+    /*font-size: 1em;
+    height: 5.15em;*/
 }
 
 .topNav li {
@@ -74,11 +76,17 @@
 
 @media screen and (max-width: 767px) {
 
+    .topNav {
+        overflow: hidden;
+    }
+
     .responsive.topNav li:first-child {
         background-color: #98C9A3;
     }
 
-    .topNav.responsive {position: relative;}
+    .topNav.responsive {
+        position: relative;
+    }
 
     .topNav.responsive #collapsible-icon {
         position: absolute;
@@ -86,22 +94,73 @@
         top: 0;
     }
 
-        .topNav.responsive .header-link {
-            float: none;
-            display: block;
-        }
-
-        .topNav.responsive .header-link a {
-            text-align: left;
-        }
-
-        .topNav.responsive #logocontainer {
-            display: block;
-            float: none;
-        }
-
-        .topNav.responsive .header-link {
-        height: auto;
+    .topNav.responsive .header-link {
+        float: none;
+        display: block;
     }
 
+    .topNav.responsive .header-link a {
+        text-align: left;
+    }
+
+    .topNav.responsive #logocontainer {
+        display: block;
+        float: none;
+    }
+
+    .topNav.responsive .header-link {
+        height: auto;
+    }
+}
+
+.dropbtn {
+    background-color: #53917E;
+    color: white;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    width: 148px;
+    height: 5.15em;
+    font-size: 1em;
+
+}
+
+.dropbtn:hover {
+    background-color: #98C9A3;
+}
+.dropbtn:focus{
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    width: auto;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #98C9A3;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    text-align: center;
+
+}
+
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    background-color: #53917E;
+    border-top: solid black 1px;
+}
+
+.dropdown a:hover {
+    background-color: #98C9A3;
+}
+
+.show {
+    display: block;
 }

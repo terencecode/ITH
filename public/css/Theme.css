@@ -3,3 +3,52 @@ body {
     font-family: 'Roboto';
 }
 
+input {
+    padding: 10px 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 13px;
+}
+input:focus {
+    box-shadow: 0 0 5px rgba(152, 201, 163, 1);
+    border: 1px solid rgba(152, 201, 163, 1);
+}
+
+input::placeholder {
+    font-size: 11px;
+}
+
+input:focus::placeholder {
+    color: rgba(152, 201, 163, 1);
+}
+
+.submit-button {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 10px;
+    width: 143px;
+    cursor: pointer;
+}
+
+.cancel-button{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 10px;
+    width: 143px;
+    cursor: pointer;
+}
