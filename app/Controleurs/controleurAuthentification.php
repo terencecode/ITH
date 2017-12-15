@@ -37,7 +37,7 @@ class ControleurAuthentification{
       }
 
       if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
-          header("Location: http://localhost:8888/accueil");
+          header("Location: /accueil");
         } else {
           $this->erreur[] = "Mail où Mot de passe incorrect";
       }
@@ -77,7 +77,7 @@ class ControleurAuthentification{
       if (empty($_POST['code'])) {
         $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
-      
+
 
       if ($_POST['passe'] != $_POST['passe2']) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
@@ -118,7 +118,7 @@ class ControleurAuthentification{
   {
     //Vide les variables de session lors de la deconnexion
     session_destroy();
-    header("Location: http://localhost:8888/accueil");
+    header("Location: /accueil");
 
   }
 
