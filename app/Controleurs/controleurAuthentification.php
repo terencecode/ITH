@@ -37,7 +37,7 @@ class ControleurAuthentification{
       }
 
       if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
-          header("Location: ith/accueil");
+          header("Location: http://localhost:8080/ITH/accueil");
         } else {
           $this->erreur[] = "Mail où Mot de passe incorrect";
       }
@@ -118,7 +118,7 @@ class ControleurAuthentification{
   {
     //Vide les variables de session lors de la deconnexion
     session_destroy();
-    header("Location: ith/accueil");
+    header("Location: http://localhost:8080/ITH/accueil");
 
   }
 
