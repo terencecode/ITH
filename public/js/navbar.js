@@ -6,3 +6,12 @@ function showNav() {
         navbar.className = "topNav";
     }
 }
+
+function showDropdown() {
+    if ($(".dropdown").hasClass("dropped")) {
+        $(".dropdown").removeClass("dropped");
+    }
+    else {
+        $(".dropdown").addClass("dropped");
+    }
+}
