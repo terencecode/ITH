@@ -1,16 +1,16 @@
 <script src="public/js/navbar.js"></script>
 <ul id="navigation" class="topNav">
-    <?php if (empty($_SESSION['email'])): ?>
+    <?php if (!empty($_SESSION['email'])): ?>
         <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
         <li class="header-link"><a href="accueil">Accueil</a></li>
-        <li class="header-link"><a href="utilisateur">Mon Compte</a></li>
+        <li class="header-link"><a href="profil">Mon Compte</a></li>
         <li id="dropdown-container">
             <ul class="dropdown">
                 <li class="header-link-dropdown"><a href="javascript:void(0);" onclick="showDropdown()">Mon habitation</a></li>
                 <div class="dropdown-content">
                     <a class="header-link-dropdown" href="editer">Éditer ma maison</a>
                     <a class="header-link-dropdown" href="statistiques">Statistiques</a>
-                    <a class="header-link-dropdown" href="tableaudebord">Tableau de bord</a>
+                    <a class="header-link-dropdown" href="tableau-de-bord">Tableau de bord</a>
                 </div>
             </ul>
         </li>
