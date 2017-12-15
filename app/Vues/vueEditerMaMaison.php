@@ -60,19 +60,25 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h1>Ajouter un capteur :</h1>
-                    <form action="#" method="post">
-                        <label for="type_capteur"><p>Type de capteur :</p></label>
+                    <form action="" method="post">
+                        <label for="type_capteur" id="Type"><p>Type de capteur :</p></label>
                         <input type="text" name="type_capteur"></br>
-                        <label for="piece_capteur"><p>Pièce du capteur :</p></label>
+                        <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
+                        <input type="text" name="fonction_capteur"></br>
+                        <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
                         <select>
                             <option value="chambre">Chambre</option>
                             <option value="cuisine">Cuisine</option>
                             <option value="bureau">Bureau</option>
                             <option value="salon">Salon</option>
-                            <option value="autre">Autre</option>
+                        </select>
+                        <label for="etat_capteur" id="Etat"><p>Etat du capteur :</p></label>
+                        <select>
+                            <option value="ON">ON</option>
+                            <option value="OFF">OFF</option>
                         </select>
                         <label><p>Description :</p></label>
-                        <textarea class="commentaire" name="Desctiption" rows="4" cols="40"></textarea>
+                        <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
                         <input class="submit-button" name="valider" type="submit" value="Valider">
                         <input class="cancel-button" name="valider" type="submit" value="Annuler">
                     </form>
