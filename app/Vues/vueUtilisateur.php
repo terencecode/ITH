@@ -6,13 +6,15 @@
 
         <div id="background-image" class="col-xs-4 col-sm-3 col-md-3 col-lg-3"></div>
 
+
+
         <div id="form-container" class="col-xs-8 col-sm-9 col-md-9 col-lg-9">
                 <label for="nom">Nom:</label></br>
-                <input type="text" name="nom" id="nom" placeholder="<?php $_SELECT   ?>"></br>
+                <input type="text" name="nom" id="nom" value="<?php echo $donnees[2]; ?>"></br>
                 <label type="prenom">Prénom:</label></br>
-                <input type="text" name="prenom" id="prenom" placeholder="BDD"></br>
+                <input type="text" name="prenom" id="prenom" value="<?php echo $donnees[1]; ?>"></br>
                 <label for="email">Adresse mail:</label></br>
-                <input type="text" name="email" id="email" placeholder="BDD"></br>
+                <input type="text" name="email" id="email" value="<?php echo $donnees[0]; ?>"></br>
                 <label for="telephone">Numéro de téléphone:</label></br>
                 <input type="text" name="telephone" id="telephone" placeholder="BDD"></br>
         </div>
@@ -22,7 +24,7 @@
 
             <label for="mdp">Mot de passe:</label></br>
             <input type="password" name="passe" id="mdp"
-                   placeholder="le prendre dans la BDD"></br>
+                   placeholder="BDD"></br>
             <label for="mdp2">Répeter mot de passe:</label></br>
             <input type="password" name="passe2" id="mdp2"></br>
             <label for="code">Code d'inscription:</label></br>

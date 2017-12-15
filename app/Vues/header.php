@@ -9,7 +9,7 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a class="header-link" href="editer">Éditer ma maison</a>
                     <a class="header-link" href="statistiques">Statistiques</a>
-                    <a class="header-link" href="tableaudebord">Tableau de bord</a>
+                    <a class="header-link" href="tableau-de-bord">Tableau de bord</a>
                 </div>
             </div>
         </li>
