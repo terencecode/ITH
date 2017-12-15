@@ -21,4 +21,11 @@ class Utilisateurs extends Modele {
       return $resultatrequete;
   }
 
+  public function afficherCompte($email){
+      $sql = "SELECT * FROM utilisateur WHERE email_u = :email";
+      $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+
+      return $resultatRequete;
+  }
+
 }
