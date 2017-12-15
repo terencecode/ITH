@@ -8,7 +8,7 @@
 
         <div id="form-container" class="col-xs-8 col-sm-9 col-md-9 col-lg-9">
                 <label for="nom">Nom:</label></br>
-                <input type="text" name="nom" id="nom" placeholder="BDD"></br>
+                <input type="text" name="nom" id="nom" placeholder="<?php $_SELECT   ?>"></br>
                 <label type="prenom">Prénom:</label></br>
                 <input type="text" name="prenom" id="prenom" placeholder="BDD"></br>
                 <label for="email">Adresse mail:</label></br>
