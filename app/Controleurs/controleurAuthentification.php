@@ -22,6 +22,7 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
+
       $email = $_POST['email'];
       $passe = $_POST['passe'];
 
@@ -30,8 +31,8 @@ class ControleurAuthentification{
 
       if ($data != false) {
           if ($data[1] == $passe) {
-              $_SESSION['email'] = $_POST['email'];
-              $_SESSION['passe'] = $_POST['passe'];
+              $_SESSION['email'] = $email;
+              $_SESSION['passe'] = $passe;
           }
       }
 
