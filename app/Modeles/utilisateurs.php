@@ -7,7 +7,7 @@ class Utilisateurs extends Modele {
 
     public function afficherUtilisateur($email){
 
-      $sql = "SELECT * FROM utilisateur WHERE email_u = :email";
+      $sql = "SELECT email_u, mdp_u FROM utilisateur WHERE email_u = :email";
       $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
 
       return $resultatRequete;

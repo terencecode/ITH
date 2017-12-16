@@ -97,6 +97,10 @@ class ControleurAuthentification{
         $utilisateur = new Utilisateurs();
         $utilisateur->recupererUtilisateur($valeurs);
 
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['passe'] = $_POST['prenom'];
+        header("Location: http://localhost:8080/ITH/accueil");
+
       } catch (Exception $e) {
 
         $this->erreur[] = "Vous êtes déjà enregistré, veuillez vous connecter";
