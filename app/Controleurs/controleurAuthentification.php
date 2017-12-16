@@ -112,7 +112,6 @@ class ControleurAuthentification{
 
 
     }
-
     $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
 
