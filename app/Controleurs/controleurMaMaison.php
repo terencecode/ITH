@@ -24,6 +24,7 @@ class ControleurMaMaison{
     }
   }
 
+  //Mettre toutes les fonctions relatives à la page éditer ma maison
   public function affichageEditerMaMaison(){
     if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
       $vue = new Vue('EditerMaMaison');
