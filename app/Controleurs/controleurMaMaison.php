@@ -4,6 +4,69 @@ require_once 'Vues/vue.php';
 
 class ControleurMaMaison{
 
+    public function affichagePiece(){
+
+        //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
+        //Sera remplacé par du js
+        if (isset($_POST['valider']))
+        {
+
+            if (empty($_POST['id_piece']))
+            {
+                $this->erreur[] = "Veuillez saisir le numéro de la piece";
+            }
+
+            if (empty($_POST['type_piece']))
+            {
+                $this->erreur[] = "Veuillez saisir le nom de la piece";
+            }
+
+            if (empty($_POST['long_piece']))
+            {
+                $this->erreur[] = "Veuillez saisir la longueur de la piece";
+            }
+
+            if (empty($_POST['largeur_piece']))
+            {
+                $this->erreur[] = "Veuillez saisir la largeur de la piece";
+            }
+
+            if (empty($_POST['largeur_piece']))
+            {
+                $this->erreur[] = "Veuillez saisir la hauteur de la piece";
+            }
+
+            //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
+            $valeurs = [];
+            $valeurs[] = $_POST['id_piece'];
+            $valeurs[] = $_POST['type_piece'];
+            $valeurs[] = $_POST['long_piece'];
+            $valeurs[] = $_POST['largeur_piece'];
+            $valeurs[] = $_POST['hauteur_piece'];
+
+            //On essaye de rentrer l'utilisateur dans la bdd
+            //On créé les variables de session
+            //Si l'utilisateur existe déjà: retourne une erreur
+            try
+            {
+
+                $capteur = new Piece();
+                $capteur->enregistrerPiece($valeurs);
+
+            } catch (Exception $e) {
+
+                $this->erreur[] = "Vous avez déjà enregistré cette piece, veuillez en saisir une nouvelle";
+
+                $vue = new Vue('TableauDeBord');
+                $vue->generer(array('erreur' => $this->erreur));
+            }
+        }
+        //On genère la vue Enregistrement
+        $vue = new Vue('TableauDeBord');
+        $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
+    }
+
+
     public function affichageCapteurs(){
 
         //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
@@ -35,7 +98,7 @@ class ControleurMaMaison{
             try {
 
                 $capteur = new Capteurs();
-                $capteur->enregistrerCapteurs($valeurs);
+                $capteur->enregistrerCapteur($valeurs);
 
             } catch (Exception $e) {
 
@@ -50,7 +113,7 @@ class ControleurMaMaison{
         }
 
         //On genère la vue Enregistrement
-        $vue = new Vue('Enregistrement');
+        $vue = new Vue('TableauDeBord');
         $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
 
     }

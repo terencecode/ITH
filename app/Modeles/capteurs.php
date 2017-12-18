@@ -6,6 +6,12 @@ require_once "Modeles/modele.php";
 class Capteurs extends Modele
 {
 
+    public function afficherPiece($id_piece)
+    {
+
+        $sql = "SELECT id_piece FROM capteur WHERE id_piece=:id_piece";
+        $resultatRequete = $this->executerRequete($sql, array('piece' => $id_piece))->fetch();
+    }
 
     public function afficherCapteur($id_ca)
     {
@@ -15,13 +21,6 @@ class Capteurs extends Modele
 
         return $resultatRequete;
 
-    }
-
-    public function afficherPiece($id_piece)
-    {
-
-        $sql = "SELECT id_piece FROM capteur WHERE id_piece=:id_piece";
-        $resultatRequete = $this->executerRequete($sql, array('piece' => $id_piece))->fetch();
     }
 
     public function afficherEtat($on_off)
@@ -34,7 +33,7 @@ class Capteurs extends Modele
 
     public function enregistrerCapteur($valeurs)
     {
-        $sql = "INSERT INTO capteur (id_capteur, power_state, id_piece) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]')";
+        $sql = "INSERT INTO capteur (id_ca, power_state) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]')";
         $resultatrequete = $this->executerRequete($sql);
         return $resultatrequete;
     }
