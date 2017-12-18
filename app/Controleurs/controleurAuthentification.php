@@ -13,6 +13,7 @@ class ControleurAuthentification{
     public function affichageConnexion(){
 
     //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
+    //Sera remplacé par du js
     if(isset($_POST['valider'])){
 
       if (empty($_POST['email'])) {
@@ -26,8 +27,9 @@ class ControleurAuthentification{
       $email = $_POST['email'];
       $passe = $_POST['passe'];
 
+
       $utilisateur = new Utilisateurs();
-      $data = $utilisateur->afficherUtilisateur($email);
+      $data = $utilisateur->chercherUtilisateur($email);
 
       if ($data != false) {
           if ($data[1] == $passe) {
@@ -52,6 +54,7 @@ class ControleurAuthentification{
   public function affichageEnregistrement(){
 
     //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
+    //Sera remplacé par du js
     if (isset($_POST['valider'])) {
 
       if (empty($_POST['nom'])) {
@@ -78,11 +81,13 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
 
-
+      //verification mots de passes identiques
       if ($_POST['passe'] != $_POST['passe2']) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
       }
 
+
+      //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
       $valeurs = [];
       $valeurs[] = $_POST['email'];
       $valeurs[] = $_POST['prenom'];
@@ -91,11 +96,13 @@ class ControleurAuthentification{
       $valeurs[] = $_POST['passe2'];
       $valeurs[] = $_POST['code'];
 
-
+      //On essaye de rentrer l'utilisateur dans la bdd
+      //On créé les variables de session
+      //Si l'utilisateur existe déjà: retourne une erreur
       try {
 
         $utilisateur = new Utilisateurs();
-        $utilisateur->recupererUtilisateur($valeurs);
+        $utilisateur->enregistrerUtilisateur($valeurs);
 
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['passe'] = $_POST['prenom'];
@@ -112,6 +119,8 @@ class ControleurAuthentification{
 
 
     }
+
+    //On genère la vue Enregistrement
     $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
 
