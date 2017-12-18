@@ -1,0 +1,37 @@
+#form-container {
+    font-size: 13px;
+    margin: 30px 10px 0px 10px;
+    padding-bottom: 0;
+}
+
+form {
+    margin-top: 50px;
+}
+
+.space {
+    height: 2em;
+}
+
+input {
+    width: 100%;
+}
+
+#submit-button {
+    cursor: pointer;
+}
+
+#body #background-image {
+    background: url("../images/509731276.jpg") no-repeat;
+    background-size: cover;
+    padding: 0;
+    box-shadow: 3px 0px 15px #888888;
+}
+
+#body .row {
+    height: 90vh;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(160, 160, 160, 1);
+}

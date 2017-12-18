@@ -7,8 +7,12 @@ class ControleurUtilisateur {
 
   public function affichageMonCompte($email){
 
+      $utilisateur = new Utilisateurs();
+
+      $donnees = $utilisateur->afficherCompte($email);
+
       $vue = new Vue('Utilisateur');
-      $vue->generer();
+      $vue->generer($donnees);
 
   }
 

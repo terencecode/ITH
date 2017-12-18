@@ -1,1 +1,52 @@
 
+#body #background-image {
+    margin: 0.5%;
+    background: url("../images/Capteur_infrarouge.png") no-repeat;
+    background-size:auto;
+}
+
+.p1{
+    background-color: black;
+}
+.p2{
+    background-color: #98C9A3;
+}
+.p3{
+    background-color: black;
+}
+
+.pub{
+
+    color: white;
+    height: auto;
+}
+
+p{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.link-button{
+    background-color: white;
+
+    text-align: center;
+    text-align-all: center;
+    height: 50px;
+    border-radius: 5px;
+
+}
+.link-button:link, .link-button:visited {
+    background-color: white;
+    color: blue;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.link-button:active {
+    background-color: grey;
+}
+/*
+https://www.generationrobots.com/fr/400833-capteur-de-distance-infrarouge.html
+ */

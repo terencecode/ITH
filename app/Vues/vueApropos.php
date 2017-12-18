@@ -4,40 +4,31 @@
 <div id="body">
     <div class="row">
 
-
-        <div class="col-xs-hide col-sm-4 col-md-7 col-lg-9"></div>
-
-        <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
+        <div id="form-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!--Tableau nom/mail-->
             <table>
                 <tr>
-                    <td id="mail">MATHEISEN Henry</td>
+                    <td><h1>Notre équipe :</h1></td>
                 </tr>
                 <tr>
-                    <td id="mail">henry.matheisen@isep.fr</td>
+                    <td class="equipe">LAMBERT Cyprien</br>
+                        <p class="mail">cyprien.lambert@isep.fr</p></td>
                 </tr>
                 <tr>
-                    <td>LAMBERT Cyprien</td>
+                    <td class="equipe">LATHIERE Alexandre</br>
+                        <p class="mail">alexandre.lathiere@isep.fr</p></td>
                 </tr>
                 <tr>
-                    <td id="mail">cyprien.lambert@isep.fr</td>
+                    <td class="equipe">LOURTET Jules</br>
+                        <p class="mail">jules.lourtet@isep.fr</p></td>
                 </tr>
                 <tr>
-                    <td>Lathiere Alexandre</td>
+                    <td class="equipe">MATHEISEN Henry</br>
+                    <p class="mail" >henry.matheisen@isep.fr</p></td>
                 </tr>
                 <tr>
-                    <td id="mail">alexandre.lathiere@isep.fr</td>
-                </tr>
-                <tr>
-                    <td>LOURTET Jules</td>
-                </tr>
-                <tr>
-                    <td id="mail">jules.lourtet@isep.fr</td>
-                </tr>
-                <tr>
-                    <td>TROJANOWSKI William</td>
-                </tr>
-                <tr>
-                    <td id="mail">william.trojanowski@isep.fr</td>
+                    <td class="equipe">TROJANOWSKI William</br>
+                    <p class="mail">william.trojanowski@isep.fr</p></td>
                 </tr>
             </table>
         </div>

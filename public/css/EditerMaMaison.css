@@ -25,17 +25,25 @@
 
 /* The Close Button */
 .close {
-    color: #000000;
+    text-align: center;
+    width: 30px;
+    height: 30px;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    border-radius: 4px;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
     text-decoration: none;
     cursor: pointer;
+    text-align: center;
+    color: white;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
 }
 
 p{
@@ -69,37 +77,15 @@ select{
 
 }
 
-#border #maison-image{
+#body #background-image {
+    margin: 0.5%;
     background: url("../images/plan_maison.png") no-repeat;
-    background-size: cover;
+    background-size: 100%;
     padding: 0;
-    box-shadow: 3px 0px 15px #888888;
 }
 
-#submit-button{
-    background-color: green;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    cursor: pointer;
- }
-
-#cancel-button{
-    background-color: red;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    cursor: pointer;
+#body .row {
+    height: 90vh;
 }
 
 .commentaire{
@@ -123,4 +109,8 @@ input:focus::placeholder {
 input:focus {
     box-shadow: 0 0 5px rgba(152, 201, 163, 1);
     border: 1px solid rgba(152, 201, 163, 1);
+}
+
+.button{
+    width: 200px;
 }
