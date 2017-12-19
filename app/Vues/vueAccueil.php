@@ -77,8 +77,3 @@
       </div>
   </div>
 <?php endif; ?>
-
-<script type="text/javascript">
-  var test = JSON.parse('<?= $json ?>');
-  console.log(test);
-</script>
