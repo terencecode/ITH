@@ -25,8 +25,11 @@ class ControleurAccueil{
 
     } else {
 
+      $arrayName = array(1,2,3,4,5);
+      $json = json_encode($arrayName);
+
       $vue = new Vue('Accueil');
-      $vue->generer();
+      $vue->generer(array('json' => $json));
 
     }
 
