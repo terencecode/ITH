@@ -29,14 +29,30 @@ class ControleurAuthentification{
 
 
       $utilisateur = new Utilisateurs();
-      $data = $utilisateur->chercherUtilisateur($email);
 
-      if ($data != false) {
-          if ($data[1] == $passe) {
+      $estUtilisateur = $utilisateur->chercherUtilisateur($email);
+      $estGardien = $utilisateur->chercherGardien($email);
+      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($email);
+      $estAdmin = $utilisateur->chercherAdmin($email);
+
+
+      if ($estUtilisateur != false) {
+          if ($estUtilisateur[1] == $passe) {
               $_SESSION['email'] = $email;
               $_SESSION['passe'] = $passe;
           }
+          if ($estGardien != false) {
+            $_SESSION['id'] = 1;
+          }
+          if ($estEmployeMunicipal != false) {
+            $_SESSION['id'] = 2;
+          }
+          if ($estAdmin != false) {
+            $_SESSION['id'] = 3;
+          }
       }
+
+      die(var_dump($_SESSION['id']));
 
       if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
           header("Location: http://localhost:8080/ITH/accueil");
