@@ -64,16 +64,16 @@
                         <label for="type_capteur" id="Type"><p>Type de capteur :</p></label>
                         <input type="text" name="type_capteur"></br>
                         <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
-                        <input type="text" name="fonction_capteur"></br>
+                        <input type="text" name="capteur"></br>
                         <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
-                        <select>
+                        <select name="id_piece">
                             <option value="chambre">Chambre</option>
                             <option value="cuisine">Cuisine</option>
                             <option value="bureau">Bureau</option>
                             <option value="salon">Salon</option>
                         </select>
                         <label for="etat_capteur" id="Etat"><p>Etat du capteur :</p></label>
-                        <select>
+                        <select name="on_off">
                             <option value="ON">ON</option>
                             <option value="OFF">OFF</option>
                         </select>
