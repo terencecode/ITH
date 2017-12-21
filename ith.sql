@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 04 déc. 2017 à 13:49
+-- Généré le :  jeu. 21 déc. 2017 à 00:11
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS `co2` (
 
 DROP TABLE IF EXISTS `employe_municipal`;
 CREATE TABLE IF NOT EXISTS `employe_municipal` (
-  `email_u` varchar(150) NOT NULL,
+  `id_u` int(11) NOT NULL,
   `id_ville` int(11) NOT NULL,
-  PRIMARY KEY (`email_u`),
+  PRIMARY KEY (`id_u`) USING BTREE,
   KEY `EMPLOYE_MUNICIPAL_VILLE_FK` (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `fumee` (
 
 DROP TABLE IF EXISTS `gardien`;
 CREATE TABLE IF NOT EXISTS `gardien` (
-  `email_u` varchar(150) NOT NULL,
-  PRIMARY KEY (`email_u`)
+  `id_u` int(11) NOT NULL,
+  PRIMARY KEY (`id_u`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -122,10 +122,10 @@ CREATE TABLE IF NOT EXISTS `gerant` (
   `id_gerant` int(11) NOT NULL AUTO_INCREMENT,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `id_habitation` int(11) NOT NULL,
-  `email_u` varchar(150) NOT NULL,
+  `id_u` int(11) NOT NULL,
   PRIMARY KEY (`id_gerant`),
   KEY `GERANT_HABITATION_FK` (`id_habitation`),
-  KEY `GERANT_UTILISATEUR_FK` (`email_u`)
+  KEY `GERANT_UTILISATEUR_FK` (`id_u`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -169,10 +169,10 @@ DROP TABLE IF EXISTS `immeuble`;
 CREATE TABLE IF NOT EXISTS `immeuble` (
   `id_immeuble` int(11) NOT NULL AUTO_INCREMENT,
   `id_quartier` int(11) NOT NULL,
-  `email_u` varchar(150) NOT NULL,
+  `id_u` int(11) NOT NULL,
   PRIMARY KEY (`id_immeuble`),
   KEY `IMMEUBLE_QUARTIER_FK` (`id_quartier`),
-  KEY `IMMEUBLE_GARDIEN_FK` (`email_u`)
+  KEY `IMMEUBLE_UTILISATEUR_FK` (`id_u`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='ensemble d''appartements';
 
 -- --------------------------------------------------------
@@ -276,12 +276,13 @@ CREATE TABLE IF NOT EXISTS `temperature` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `id_u` int(11) NOT NULL AUTO_INCREMENT,
   `email_u` varchar(150) NOT NULL,
   `prenom_u` varchar(100) NOT NULL,
   `nom_u` varchar(100) NOT NULL,
   `mdp_u` varchar(100) DEFAULT NULL,
   `clef_u` int(11) NOT NULL,
-  PRIMARY KEY (`email_u`)
+  PRIMARY KEY (`id_u`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -324,7 +325,7 @@ ALTER TABLE `co2`
 -- Contraintes pour la table `employe_municipal`
 --
 ALTER TABLE `employe_municipal`
-  ADD CONSTRAINT `EMPLOYE_MUNICIPAL_UTILISATEUR_FK` FOREIGN KEY (`email_u`) REFERENCES `utilisateur` (`email_u`) ON DELETE CASCADE,
+  ADD CONSTRAINT `EMPLOYE_MUNICIPAL_UTILISATEUR_FK` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`id_u`) ON DELETE CASCADE,
   ADD CONSTRAINT `EMPLOYE_MUNICIPAL_VILLE_FK` FOREIGN KEY (`id_ville`) REFERENCES `ville` (`id_ville`) ON DELETE CASCADE;
 
 --
@@ -337,14 +338,14 @@ ALTER TABLE `fumee`
 -- Contraintes pour la table `gardien`
 --
 ALTER TABLE `gardien`
-  ADD CONSTRAINT `GARDIEN_UTILISATEUR_FK` FOREIGN KEY (`email_u`) REFERENCES `utilisateur` (`email_u`) ON DELETE CASCADE;
+  ADD CONSTRAINT `GARDIEN_UTILISATEUR_FK` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`id_u`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `gerant`
 --
 ALTER TABLE `gerant`
   ADD CONSTRAINT `GERANT_HABITATION_FK` FOREIGN KEY (`id_habitation`) REFERENCES `habitation` (`id_habitation`) ON DELETE CASCADE,
-  ADD CONSTRAINT `GERANT_UTILISATEUR_FK` FOREIGN KEY (`email_u`) REFERENCES `utilisateur` (`email_u`) ON DELETE CASCADE;
+  ADD CONSTRAINT `GERANT_UTILISATEUR_FK` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`id_u`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `humidite`
@@ -356,8 +357,8 @@ ALTER TABLE `humidite`
 -- Contraintes pour la table `immeuble`
 --
 ALTER TABLE `immeuble`
-  ADD CONSTRAINT `IMMEUBLE_GARDIEN_FK` FOREIGN KEY (`email_u`) REFERENCES `gardien` (`email_u`) ON DELETE CASCADE,
-  ADD CONSTRAINT `IMMEUBLE_QUARTIER_FK` FOREIGN KEY (`id_quartier`) REFERENCES `quartier` (`id_quartier`) ON DELETE CASCADE;
+  ADD CONSTRAINT `IMMEUBLE_QUARTIER_FK` FOREIGN KEY (`id_quartier`) REFERENCES `quartier` (`id_quartier`) ON DELETE CASCADE,
+  ADD CONSTRAINT `IMMEUBLE_UTILISATEUR_FK` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`id_u`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `luminosite`
