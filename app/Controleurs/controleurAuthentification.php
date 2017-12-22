@@ -13,6 +13,7 @@ class ControleurAuthentification{
     public function affichageConnexion(){
 
     //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
+    //Sera remplacé par du js
     if(isset($_POST['valider'])){
 
       if (empty($_POST['email'])) {
@@ -26,17 +27,29 @@ class ControleurAuthentification{
       $email = $_POST['email'];
       $passe = $_POST['passe'];
 
-      $utilisateur = new Utilisateurs();
-      $data = $utilisateur->afficherUtilisateur($email);
 
-      if ($data != false) {
-          if ($data[1] == $passe) {
+      $utilisateur = new Utilisateurs();
+
+      $estUtilisateur = $utilisateur->chercherUtilisateur($email);
+      $estGardien = $utilisateur->chercherGardien($email);
+      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($email);
+
+
+      if ($estUtilisateur) {
+          if ($estUtilisateur[1] == $passe) {
               $_SESSION['email'] = $email;
               $_SESSION['passe'] = $passe;
+              $_SESSION['id'] = 0;
+          }
+          if ($estGardien) {
+            $_SESSION['id'] = 1;
+          }
+          if ($estEmployeMunicipal) {
+            $_SESSION['id'] = 2;
           }
       }
 
-      if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
+      if (isset($_SESSION['email']) && isset($_SESSION['passe']) && isset($_SESSION['id'])) {
           header("Location: http://localhost:8080/ITH/accueil");
         } else {
           $this->erreur[] = "Mail où Mot de passe incorrect";
@@ -52,6 +65,7 @@ class ControleurAuthentification{
   public function affichageEnregistrement(){
 
     //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
+    //Sera remplacé par du js
     if (isset($_POST['valider'])) {
 
       if (empty($_POST['nom'])) {
@@ -78,11 +92,13 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Code d'Inscription";
       }
 
-
+      //verification mots de passes identiques
       if ($_POST['passe'] != $_POST['passe2']) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
       }
 
+
+      //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
       $valeurs = [];
       $valeurs[] = $_POST['email'];
       $valeurs[] = $_POST['prenom'];
@@ -91,11 +107,13 @@ class ControleurAuthentification{
       $valeurs[] = $_POST['passe2'];
       $valeurs[] = $_POST['code'];
 
-
+      //On essaye de rentrer l'utilisateur dans la bdd
+      //On créé les variables de session
+      //Si l'utilisateur existe déjà: retourne une erreur
       try {
 
         $utilisateur = new Utilisateurs();
-        $utilisateur->recupererUtilisateur($valeurs);
+        $utilisateur->enregistrerUtilisateur($valeurs);
 
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['passe'] = $_POST['prenom'];
@@ -112,6 +130,8 @@ class ControleurAuthentification{
 
 
     }
+
+    //On genère la vue Enregistrement
     $vue = new Vue('Enregistrement');
     $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
 

@@ -1,6 +1,10 @@
 <script src="public/js/navbar.js"></script>
 <ul id="navigation" class="topNav">
+
     <?php if (!empty($_SESSION['email'])): ?>
+
+      <?php if ($_SESSION['id'] == 0): ?>
+
         <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
         <li class="header-link"><a href="accueil">Accueil</a></li>
         <li class="header-link"><a href="profil">Mon Compte</a></li>
@@ -21,7 +25,25 @@
         <li class="right header-link"><a href="apropos">A Propos</a></li>
         <li class="right header-link"><a href="deconnexion">Deconnexion</a></li>
         <li class="right" id="collapsible-icon"><a href="javascript:void(0);" onclick="showNav()"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>
+
+        <?php elseif ($_SESSION['id'] == 1): ?>
+
+          <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
+          <li class="header-link"><a href="accueil">Accueil</a></li>
+          <li class="header-link"><a href="statistiques">Statistiques</a></li>
+          <li class="right header-link"><a href="deconnexion">Deconnexion</a></li>
+
+        <?php elseif ($_SESSION['id'] == 2): ?>
+
+          <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
+          <li class="header-link"><a href="accueil">Accueil</a></li>
+          <li class="header-link"><a href="statistiques">Statistiques</a></li>
+          <li class="right header-link"><a href="deconnexion">Deconnexion</a></li>
+
+        <?php endif; ?>
+
     <?php else: ?>
+
         <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
         <li class="header-link"><a href="accueil">Accueil</a></li>
         <li class="header-link"><a href="connexion">Connexion</a></li>
@@ -29,5 +51,7 @@
         <li class="right header-link"><a href="aide">Aide</li>
         <li class="right header-link"><a href="apropos">A Propos</a></li>
         <li class="right" id="collapsible-icon"><a href="javascript:void(0);" onclick="showNav()"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>
+        
     <?php endif; ?>
+
 </ul>
