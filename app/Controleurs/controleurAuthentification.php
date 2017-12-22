@@ -29,16 +29,27 @@ class ControleurAuthentification{
 
 
       $utilisateur = new Utilisateurs();
-      $data = $utilisateur->chercherUtilisateur($email);
 
-      if ($data != false) {
-          if ($data[1] == $passe) {
+      $estUtilisateur = $utilisateur->chercherUtilisateur($email);
+      $estGardien = $utilisateur->chercherGardien($email);
+      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($email);
+
+
+      if ($estUtilisateur) {
+          if ($estUtilisateur[1] == $passe) {
               $_SESSION['email'] = $email;
               $_SESSION['passe'] = $passe;
+              $_SESSION['id'] = 0;
+          }
+          if ($estGardien) {
+            $_SESSION['id'] = 1;
+          }
+          if ($estEmployeMunicipal) {
+            $_SESSION['id'] = 2;
           }
       }
 
-      if (isset($_SESSION['email']) && isset($_SESSION['passe'])) {
+      if (isset($_SESSION['email']) && isset($_SESSION['passe']) && isset($_SESSION['id'])) {
           header("Location: http://localhost:8080/ITH/accueil");
         } else {
           $this->erreur[] = "Mail où Mot de passe incorrect";

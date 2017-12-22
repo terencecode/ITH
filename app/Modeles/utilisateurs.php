@@ -13,6 +13,12 @@ class Utilisateurs extends Modele {
 
   }
 
+  public function chercherUtilisateurs(){
+    $sql = "SELECT email_u, prenom_u, nom_u FROM utilisateur";
+    $resultatRequete = $this->executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
+    return $resultatRequete;
+  }
+
 
     public function enregistrerUtilisateur($valeurs){
 
@@ -39,9 +45,9 @@ class Utilisateurs extends Modele {
 
   }
 
-  public function chercherAdmin($email){
+  public function chercherEmployeMunicipal($email){
 
-    $sql = "SELECT email_u FROM admin WHERE email_u = :email";
+    $sql = "SELECT email_u FROM employe_municipal WHERE email_u = :email";
     $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
     return $resultatRequete;
 
