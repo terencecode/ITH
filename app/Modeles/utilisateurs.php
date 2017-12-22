@@ -4,11 +4,19 @@ require_once "Modeles/modele.php";
 
 class Utilisateurs extends Modele {
 
+  public function chercherId($email){
 
-    public function chercherUtilisateur($email){
+    $sql = "SELECT id_u FROM utilisateur WHERE email_u = :email";
+    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+    return $resultatRequete;
 
-      $sql = "SELECT email_u, mdp_u FROM utilisateur WHERE email_u = :email";
-      $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+  }
+
+
+    public function chercherUtilisateur($id_u){
+
+      $sql = "SELECT email_u, mdp_u FROM utilisateur WHERE id_u = :id_u";
+      $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
       return $resultatRequete;
 
   }
@@ -29,26 +37,26 @@ class Utilisateurs extends Modele {
   }
 
 
-  public function afficherCompte($email){
+  public function afficherCompte($id_u){
 
-      $sql = "SELECT * FROM utilisateur WHERE email_u = :email";
-      $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+      $sql = "SELECT * FROM utilisateur WHERE id_u = :id_u";
+      $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
       return $resultatRequete;
 
   }
 
-  public function chercherGardien($email){
+  public function chercherGardien($id_u){
 
-    $sql = "SELECT email_u FROM gardien WHERE email_u = :email";
-    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+    $sql = "SELECT id_u FROM gardien WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
 
   }
 
-  public function chercherEmployeMunicipal($email){
+  public function chercherEmployeMunicipal($id_u){
 
-    $sql = "SELECT email_u FROM employe_municipal WHERE email_u = :email";
-    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+    $sql = "SELECT id_u FROM employe_municipal WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
 
   }

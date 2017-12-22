@@ -23,22 +23,21 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
-
       $email = $_POST['email'];
       $passe = $_POST['passe'];
-
-
       $utilisateur = new Utilisateurs();
+      $id_u = $utilisateur->chercherId($email)[0];
 
-      $estUtilisateur = $utilisateur->chercherUtilisateur($email);
-      $estGardien = $utilisateur->chercherGardien($email);
-      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($email);
+      $estUtilisateur = $utilisateur->chercherUtilisateur($id_u);
+      $estGardien = $utilisateur->chercherGardien($id_u);
+      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
 
 
       if ($estUtilisateur) {
           if ($estUtilisateur[1] == $passe) {
               $_SESSION['email'] = $email;
               $_SESSION['passe'] = $passe;
+              $_SESSION['id_u'] = $id_u;
               $_SESSION['id'] = 0;
           }
           if ($estGardien) {
@@ -48,6 +47,8 @@ class ControleurAuthentification{
             $_SESSION['id'] = 2;
           }
       }
+
+      //die(var_dump($estGardien));
 
       if (isset($_SESSION['email']) && isset($_SESSION['passe']) && isset($_SESSION['id'])) {
           header("Location: http://localhost:8080/ITH/accueil");
