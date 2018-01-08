@@ -42,38 +42,35 @@
 
 <?php else: ?>
   <div id="body">
-      <div class="row pub p1">
-          <div id="form-container" class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-              <h1>Découvrez nos tout nouveaux produits</h1>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta earum maxime quos similique, veritatis. Aspernatur, autem beatae consequuntur culpa, debitis distinctio ea hic minus odio, praesentium quia recusandae tenetur?
-              </p>
-              <a class="link-button" href="https://www.generationrobots.com/fr/400833-capteur-de-distance-infrarouge.html">En savoir plus</a>
+      <div class="row">
+          <div class="col-lg-2"></div>
+          <div id="form-container" class="col-lg-2">
+              <h2>Qui sommes-nous ?</h2>
+                  Domisep est une entreprise spécialisée dans la télésurveillance d'immeubles, grâce à la pose de systèmes d'alarme sans fil adaptés aux besoins des particuliers et une centrale d'alarme opérationnelle 24h/24. Domisep gère un parc de plusieurs milliers d’habitations dans plus d’une dizaine de pays en Europe.
+                  </div>
+          <div class="col-lg-1"></div>
+          <div id="form-container" class="col-lg-2">
+              <h2>Ce que nous proposons</h2>
+              Domisep offrira à chacun de ses clients, la possibilité de se connecter en toute sécurité afin de :<br>
+              <ul class="pres">
+                  <li>
+                      Piloter son domicile : ouvertures et fermetures automatiques, mise en route et extinction d'équipements électroniques, etc.
+                  </li>
+                  <li>
+                      Protéger son domicile : détection d'intrusion, alarmes, détection de fuites, etc.
+                  </li>
+                  <li>
+                      Réduire ses factures de chauffage ou d'énergie : contrôle de température
+                  </li>
+              </ul>
           </div>
-          <div id="background-image" class="col-xs-hide col-sm-6 col-md-5 col-lg-4"></div>
-
-      </div>
-      <div class="row pub p2">
-          <div id="form-container" class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-              <h1>Découvrez nos tout nouveaux produits</h1>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta earum maxime quos similique, veritatis. Aspernatur, autem beatae consequuntur culpa, debitis distinctio ea hic minus odio, praesentium quia recusandae tenetur?
-              </p>
-              <a class="link-button" href="https://www.generationrobots.com/fr/400833-capteur-de-distance-infrarouge.html">En savoir plus</a>
+          <div class="col-lg-1"></div>
+          <div id="form-container" class="col-lg-2">
+              <h2>Pour qui ?</h2>
+              Dans le cadre de son expansion et de la diversification de ses activités, Domisep souhaite proposer une gestion complète des habitations connectées (immeubles et maisons) pour les particuliers. Domisep souhaite, pour ce faire, rassembler toutes les technologies de l'informatique, des télécommunications et de l'électronique et les mettre au service de ses clients, grâce à un traitement optimisé des signaux et des informations.
           </div>
-          <div id="background-image" class="col-xs-hide col-sm-6 col-md-5 col-lg-4"></div>
-
+          <div class="col-lg-2"></div>
       </div>
-      <div class="row pub p3">
-          <div id="form-container" class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-              <h1>Découvrez nos tout nouveaux produits</h1>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta earum maxime quos similique, veritatis. Aspernatur, autem beatae consequuntur culpa, debitis distinctio ea hic minus odio, praesentium quia recusandae tenetur?
-              </p>
-              <a class="link-button" href="https://www.generationrobots.com/fr/400833-capteur-de-distance-infrarouge.html">En savoir plus</a>
-          </div>
-          <div id="background-image" class="col-xs-hide col-sm-6 col-md-5 col-lg-4"></div>
 
-      </div>
   </div>
 <?php endif; ?>
