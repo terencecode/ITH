@@ -103,7 +103,7 @@ INSERT INTO `gardien` (`id_u`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gerant`
+-- Structure de la table `gernat`
 --
 
 CREATE TABLE `gerant` (
