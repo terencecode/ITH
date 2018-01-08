@@ -21,7 +21,7 @@
   </table>
 
 <?php elseif (isset($_SESSION['id']) && $_SESSION['id'] == 2): ?>
-  vous êtes employé municipal <br><br>
+    vous êtes admin <br><br>
 
     <table>
       <tr>
