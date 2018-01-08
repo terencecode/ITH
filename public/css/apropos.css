@@ -1,33 +1,35 @@
-table{
+.infos{
     text-align: center;
     width: 100%;
-    height: auto;
+    min-height: 86vh;
     cursor: default;
 }
 
 h1{
     padding-top: 15px;
+    padding-bottom: 5px;
     font-size: 60px;
 }
 
 
 .equipe{
-    padding-top: 30px;
-    font-size: 35px;
+    padding-top: 25px;
+    font-size: 30px;
 }
 
 .mail{
     color: blue;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
     color: gray;
     text-align: center;
+    padding: 0 !important;
 }
 
 #2{
