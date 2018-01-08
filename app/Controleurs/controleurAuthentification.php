@@ -23,28 +23,28 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez saisir le Mot de Passe";
       }
 
-
       $email = $_POST['email'];
       $passe = $_POST['passe'];
-
-
       $utilisateur = new Utilisateurs();
+      $id_u = $utilisateur->chercherId($email)[0];
 
-      $estUtilisateur = $utilisateur->chercherUtilisateur($email);
-      $estGardien = $utilisateur->chercherGardien($email);
-      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($email);
+      $estUtilisateur = $utilisateur->chercherUtilisateur($id_u);
+      $estGardien = $utilisateur->chercherGardien($id_u);
+      //$estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
+      $estAdmin = $utilisateur->chercherAdmin($id_u);
 
 
       if ($estUtilisateur) {
           if ($estUtilisateur[1] == $passe) {
               $_SESSION['email'] = $email;
               $_SESSION['passe'] = $passe;
+              $_SESSION['id_u'] = $id_u;
               $_SESSION['id'] = 0;
           }
           if ($estGardien) {
             $_SESSION['id'] = 1;
           }
-          if ($estEmployeMunicipal) {
+          if ($estAdmin) {
             $_SESSION['id'] = 2;
           }
       }
@@ -109,7 +109,7 @@ class ControleurAuthentification{
 
       //On essaye de rentrer l'utilisateur dans la bdd
       //On créé les variables de session
-      //Si l'utilisateur existe déjà: retourne une erreur
+      //Si l'utilisateur existe déjà => retourne une erreur
       try {
 
         $utilisateur = new Utilisateurs();
