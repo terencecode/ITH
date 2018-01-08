@@ -48,8 +48,6 @@ class ControleurAuthentification{
           }
       }
 
-      //die(var_dump($estGardien));
-
       if (isset($_SESSION['email']) && isset($_SESSION['passe']) && isset($_SESSION['id'])) {
           header("Location: http://localhost:8080/ITH/accueil");
         } else {
