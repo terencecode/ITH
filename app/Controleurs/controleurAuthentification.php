@@ -108,7 +108,7 @@ class ControleurAuthentification{
 
       //On essaye de rentrer l'utilisateur dans la bdd
       //On créé les variables de session
-      //Si l'utilisateur existe déjà: retourne une erreur
+      //Si l'utilisateur existe déjà => retourne une erreur
       try {
 
         $utilisateur = new Utilisateurs();
