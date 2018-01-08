@@ -1,22 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 21 déc. 2017 à 00:11
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Hôte : localhost:8889
+-- Généré le :  lun. 08 jan. 2018 à 11:26
+-- Version du serveur :  5.6.35
+-- Version de PHP :  7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `ith`
@@ -28,14 +20,11 @@ SET time_zone = "+00:00";
 -- Structure de la table `appartement`
 --
 
-DROP TABLE IF EXISTS `appartement`;
-CREATE TABLE IF NOT EXISTS `appartement` (
+CREATE TABLE `appartement` (
   `id_habitation` int(11) NOT NULL,
   `num_bat` tinyint(11) NOT NULL,
   `etage_appart` smallint(11) NOT NULL,
-  `id_immeuble` int(11) NOT NULL,
-  PRIMARY KEY (`id_habitation`),
-  KEY `APPARTEMENT_IMMEUBLE_FK` (`id_immeuble`)
+  `id_immeuble` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,15 +33,12 @@ CREATE TABLE IF NOT EXISTS `appartement` (
 -- Structure de la table `capteur`
 --
 
-DROP TABLE IF EXISTS `capteur`;
-CREATE TABLE IF NOT EXISTS `capteur` (
-  `id_ca` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `capteur` (
+  `id_ca` int(11) NOT NULL,
   `power_state` tinyint(1) NOT NULL,
   `powered_timestamp` int(11) NOT NULL,
   `shutdown_timestamp` int(11) NOT NULL,
-  `id_piece` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  KEY `CAPTEUR_PIECE_FK` (`id_piece`)
+  `id_piece` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -61,13 +47,10 @@ CREATE TABLE IF NOT EXISTS `capteur` (
 -- Structure de la table `co2`
 --
 
-DROP TABLE IF EXISTS `co2`;
-CREATE TABLE IF NOT EXISTS `co2` (
+CREATE TABLE `co2` (
   `id_ca` int(11) NOT NULL,
   `taux_CO2` tinyint(4) NOT NULL,
-  `timestamp_co2` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  UNIQUE KEY `timestamp_co2` (`timestamp_co2`)
+  `timestamp_co2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -76,13 +59,17 @@ CREATE TABLE IF NOT EXISTS `co2` (
 -- Structure de la table `employe_municipal`
 --
 
-DROP TABLE IF EXISTS `employe_municipal`;
-CREATE TABLE IF NOT EXISTS `employe_municipal` (
+CREATE TABLE `employe_municipal` (
   `id_u` int(11) NOT NULL,
-  `id_ville` int(11) NOT NULL,
-  PRIMARY KEY (`id_u`) USING BTREE,
-  KEY `EMPLOYE_MUNICIPAL_VILLE_FK` (`id_ville`)
+  `id_ville` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `employe_municipal`
+--
+
+INSERT INTO `employe_municipal` (`id_u`, `id_ville`) VALUES
+(4, 1);
 
 -- --------------------------------------------------------
 
@@ -90,13 +77,10 @@ CREATE TABLE IF NOT EXISTS `employe_municipal` (
 -- Structure de la table `fumee`
 --
 
-DROP TABLE IF EXISTS `fumee`;
-CREATE TABLE IF NOT EXISTS `fumee` (
+CREATE TABLE `fumee` (
   `id_ca` int(11) NOT NULL,
   `fumee` tinyint(1) NOT NULL,
-  `timestamp_fumee` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  UNIQUE KEY `timestamp_fumee` (`timestamp_fumee`)
+  `timestamp_fumee` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -105,28 +89,36 @@ CREATE TABLE IF NOT EXISTS `fumee` (
 -- Structure de la table `gardien`
 --
 
-DROP TABLE IF EXISTS `gardien`;
-CREATE TABLE IF NOT EXISTS `gardien` (
-  `id_u` int(11) NOT NULL,
-  PRIMARY KEY (`id_u`) USING BTREE
+CREATE TABLE `gardien` (
+  `id_u` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `gardien`
+--
+
+INSERT INTO `gardien` (`id_u`) VALUES
+(3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gerant`
+-- Structure de la table `gernat`
 --
 
-DROP TABLE IF EXISTS `gerant`;
-CREATE TABLE IF NOT EXISTS `gerant` (
-  `id_gerant` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `gerant` (
+  `id_gerant` int(11) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
-  `id_habitation` int(11) NOT NULL,
-  `id_u` int(11) NOT NULL,
-  PRIMARY KEY (`id_gerant`),
-  KEY `GERANT_HABITATION_FK` (`id_habitation`),
-  KEY `GERANT_UTILISATEUR_FK` (`id_u`)
+  `id_habitation` int(11) DEFAULT NULL,
+  `id_u` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `gerant`
+--
+
+INSERT INTO `gerant` (`id_gerant`, `admin`, `id_habitation`, `id_u`) VALUES
+(1, 1, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -134,14 +126,12 @@ CREATE TABLE IF NOT EXISTS `gerant` (
 -- Structure de la table `habitation`
 --
 
-DROP TABLE IF EXISTS `habitation`;
-CREATE TABLE IF NOT EXISTS `habitation` (
-  `id_habitation` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `habitation` (
+  `id_habitation` int(11) NOT NULL,
   `pays_habitation` varchar(40) NOT NULL,
   `num_rue_habitation` smallint(6) NOT NULL,
   `rue_habitation` varchar(150) NOT NULL,
-  `sup_habitation` smallint(6) NOT NULL,
-  PRIMARY KEY (`id_habitation`)
+  `sup_habitation` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -150,13 +140,10 @@ CREATE TABLE IF NOT EXISTS `habitation` (
 -- Structure de la table `humidite`
 --
 
-DROP TABLE IF EXISTS `humidite`;
-CREATE TABLE IF NOT EXISTS `humidite` (
+CREATE TABLE `humidite` (
   `id_ca` int(11) NOT NULL,
   `taux_humidite` tinyint(4) NOT NULL,
-  `timestamp_humidite` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  UNIQUE KEY `timestamp_humidite` (`timestamp_humidite`)
+  `timestamp_humidite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -165,14 +152,10 @@ CREATE TABLE IF NOT EXISTS `humidite` (
 -- Structure de la table `immeuble`
 --
 
-DROP TABLE IF EXISTS `immeuble`;
-CREATE TABLE IF NOT EXISTS `immeuble` (
-  `id_immeuble` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `immeuble` (
+  `id_immeuble` int(11) NOT NULL,
   `id_quartier` int(11) NOT NULL,
-  `id_u` int(11) NOT NULL,
-  PRIMARY KEY (`id_immeuble`),
-  KEY `IMMEUBLE_QUARTIER_FK` (`id_quartier`),
-  KEY `IMMEUBLE_UTILISATEUR_FK` (`id_u`)
+  `id_u` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='ensemble d''appartements';
 
 -- --------------------------------------------------------
@@ -181,13 +164,10 @@ CREATE TABLE IF NOT EXISTS `immeuble` (
 -- Structure de la table `luminosite`
 --
 
-DROP TABLE IF EXISTS `luminosite`;
-CREATE TABLE IF NOT EXISTS `luminosite` (
+CREATE TABLE `luminosite` (
   `id_ca` int(11) NOT NULL,
   `taux_luminosite` tinyint(4) NOT NULL,
-  `timestamp_luminosite` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  UNIQUE KEY `timestamp_luminosite` (`timestamp_luminosite`)
+  `timestamp_luminosite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -196,13 +176,10 @@ CREATE TABLE IF NOT EXISTS `luminosite` (
 -- Structure de la table `maison`
 --
 
-DROP TABLE IF EXISTS `maison`;
-CREATE TABLE IF NOT EXISTS `maison` (
+CREATE TABLE `maison` (
   `id_habitation` int(11) NOT NULL,
   `nb_etage` tinyint(11) NOT NULL,
-  `id_quartier` int(11) NOT NULL,
-  PRIMARY KEY (`id_habitation`),
-  KEY `MAISON_QUARTIER_FK` (`id_quartier`)
+  `id_quartier` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -211,16 +188,13 @@ CREATE TABLE IF NOT EXISTS `maison` (
 -- Structure de la table `piece`
 --
 
-DROP TABLE IF EXISTS `piece`;
-CREATE TABLE IF NOT EXISTS `piece` (
-  `id_piece` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `piece` (
+  `id_piece` int(11) NOT NULL,
   `type_piece` varchar(100) NOT NULL,
   `long_piece` smallint(11) NOT NULL,
   `largeur_piece` smallint(11) NOT NULL,
   `hauteur_piece` smallint(11) NOT NULL,
-  `id_gerant` int(11) NOT NULL,
-  PRIMARY KEY (`id_piece`),
-  KEY `PIECE_GERANT_FK` (`id_gerant`)
+  `id_gerant` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -229,13 +203,10 @@ CREATE TABLE IF NOT EXISTS `piece` (
 -- Structure de la table `presence`
 --
 
-DROP TABLE IF EXISTS `presence`;
-CREATE TABLE IF NOT EXISTS `presence` (
+CREATE TABLE `presence` (
   `id_ca` int(11) NOT NULL,
   `presence` tinyint(1) NOT NULL,
-  `timestamp_temperature` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`)
+  `timestamp_temperature` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -244,13 +215,10 @@ CREATE TABLE IF NOT EXISTS `presence` (
 -- Structure de la table `quartier`
 --
 
-DROP TABLE IF EXISTS `quartier`;
-CREATE TABLE IF NOT EXISTS `quartier` (
-  `id_quartier` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `quartier` (
+  `id_quartier` int(11) NOT NULL,
   `nom` varchar(100) NOT NULL,
-  `id_ville` int(11) NOT NULL,
-  PRIMARY KEY (`id_quartier`),
-  KEY `QUARTIER_VILLE_FK` (`id_ville`)
+  `id_ville` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -259,13 +227,10 @@ CREATE TABLE IF NOT EXISTS `quartier` (
 -- Structure de la table `temperature`
 --
 
-DROP TABLE IF EXISTS `temperature`;
-CREATE TABLE IF NOT EXISTS `temperature` (
+CREATE TABLE `temperature` (
   `id_ca` int(11) NOT NULL,
   `temperature` tinyint(4) NOT NULL,
-  `timestamp_temperature` int(11) NOT NULL,
-  PRIMARY KEY (`id_ca`),
-  UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`)
+  `timestamp_temperature` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -274,16 +239,25 @@ CREATE TABLE IF NOT EXISTS `temperature` (
 -- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id_u` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utilisateur` (
+  `id_u` int(11) NOT NULL,
   `email_u` varchar(150) NOT NULL,
   `prenom_u` varchar(100) NOT NULL,
   `nom_u` varchar(100) NOT NULL,
   `mdp_u` varchar(100) DEFAULT NULL,
-  `clef_u` int(11) NOT NULL,
-  PRIMARY KEY (`id_u`) USING BTREE
+  `clef_u` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`, `clef_u`) VALUES
+(1, 'henry.mthsn@gmail.com', 'Henry', 'Matheisen', 'blabla', 123456789),
+(2, 'gerant@gmail.com', 'gerant', 'Lourtet', 'gerant', 234567891),
+(3, 'gardien@gmail.com', 'gardien', 'Lathiere', 'gardien', 345678912),
+(4, 'employe@gmail.com', 'employe', 'Lambert', 'employe', 456789123),
+(5, 'admin@gmail.com', 'Amin', 'ROOT', 'admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -291,13 +265,190 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Structure de la table `ville`
 --
 
-DROP TABLE IF EXISTS `ville`;
-CREATE TABLE IF NOT EXISTS `ville` (
-  `id_ville` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_ville`)
+CREATE TABLE `ville` (
+  `id_ville` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `ville`
+--
+
+INSERT INTO `ville` (`id_ville`, `nom`) VALUES
+(1, 'Paris');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `appartement`
+--
+ALTER TABLE `appartement`
+  ADD PRIMARY KEY (`id_habitation`),
+  ADD KEY `APPARTEMENT_IMMEUBLE_FK` (`id_immeuble`);
+
+--
+-- Index pour la table `capteur`
+--
+ALTER TABLE `capteur`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD KEY `CAPTEUR_PIECE_FK` (`id_piece`);
+
+--
+-- Index pour la table `co2`
+--
+ALTER TABLE `co2`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD UNIQUE KEY `timestamp_co2` (`timestamp_co2`);
+
+--
+-- Index pour la table `employe_municipal`
+--
+ALTER TABLE `employe_municipal`
+  ADD PRIMARY KEY (`id_u`) USING BTREE,
+  ADD KEY `EMPLOYE_MUNICIPAL_VILLE_FK` (`id_ville`);
+
+--
+-- Index pour la table `fumee`
+--
+ALTER TABLE `fumee`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD UNIQUE KEY `timestamp_fumee` (`timestamp_fumee`);
+
+--
+-- Index pour la table `gardien`
+--
+ALTER TABLE `gardien`
+  ADD PRIMARY KEY (`id_u`) USING BTREE;
+
+--
+-- Index pour la table `gerant`
+--
+ALTER TABLE `gerant`
+  ADD PRIMARY KEY (`id_gerant`),
+  ADD KEY `GERANT_HABITATION_FK` (`id_habitation`),
+  ADD KEY `GERANT_UTILISATEUR_FK` (`id_u`);
+
+--
+-- Index pour la table `habitation`
+--
+ALTER TABLE `habitation`
+  ADD PRIMARY KEY (`id_habitation`);
+
+--
+-- Index pour la table `humidite`
+--
+ALTER TABLE `humidite`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD UNIQUE KEY `timestamp_humidite` (`timestamp_humidite`);
+
+--
+-- Index pour la table `immeuble`
+--
+ALTER TABLE `immeuble`
+  ADD PRIMARY KEY (`id_immeuble`),
+  ADD KEY `IMMEUBLE_QUARTIER_FK` (`id_quartier`),
+  ADD KEY `IMMEUBLE_UTILISATEUR_FK` (`id_u`);
+
+--
+-- Index pour la table `luminosite`
+--
+ALTER TABLE `luminosite`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD UNIQUE KEY `timestamp_luminosite` (`timestamp_luminosite`);
+
+--
+-- Index pour la table `maison`
+--
+ALTER TABLE `maison`
+  ADD PRIMARY KEY (`id_habitation`),
+  ADD KEY `MAISON_QUARTIER_FK` (`id_quartier`);
+
+--
+-- Index pour la table `piece`
+--
+ALTER TABLE `piece`
+  ADD PRIMARY KEY (`id_piece`),
+  ADD KEY `PIECE_GERANT_FK` (`id_gerant`);
+
+--
+-- Index pour la table `presence`
+--
+ALTER TABLE `presence`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`);
+
+--
+-- Index pour la table `quartier`
+--
+ALTER TABLE `quartier`
+  ADD PRIMARY KEY (`id_quartier`),
+  ADD KEY `QUARTIER_VILLE_FK` (`id_ville`);
+
+--
+-- Index pour la table `temperature`
+--
+ALTER TABLE `temperature`
+  ADD PRIMARY KEY (`id_ca`),
+  ADD UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id_u`) USING BTREE;
+
+--
+-- Index pour la table `ville`
+--
+ALTER TABLE `ville`
+  ADD PRIMARY KEY (`id_ville`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `capteur`
+--
+ALTER TABLE `capteur`
+  MODIFY `id_ca` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `gerant`
+--
+ALTER TABLE `gerant`
+  MODIFY `id_gerant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `habitation`
+--
+ALTER TABLE `habitation`
+  MODIFY `id_habitation` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `immeuble`
+--
+ALTER TABLE `immeuble`
+  MODIFY `id_immeuble` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `piece`
+--
+ALTER TABLE `piece`
+  MODIFY `id_piece` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `quartier`
+--
+ALTER TABLE `quartier`
+  MODIFY `id_quartier` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT pour la table `ville`
+--
+ALTER TABLE `ville`
+  MODIFY `id_ville` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Contraintes pour les tables déchargées
 --
@@ -396,8 +547,3 @@ ALTER TABLE `quartier`
 --
 ALTER TABLE `temperature`
   ADD CONSTRAINT `TEMPERATURE_CAPTEUR_FK` FOREIGN KEY (`id_ca`) REFERENCES `capteur` (`id_ca`) ON DELETE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
