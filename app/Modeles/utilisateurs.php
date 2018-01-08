@@ -12,14 +12,14 @@ class Utilisateurs extends Modele {
 
   }
 
+  public function chercherUtilisateur($id_u){
 
-    public function chercherUtilisateur($id_u){
-
-      $sql = "SELECT email_u, mdp_u FROM utilisateur WHERE id_u = :id_u";
-      $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
-      return $resultatRequete;
+    $sql = "SELECT email_u, mdp_u FROM utilisateur WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
+    return $resultatRequete;
 
   }
+
 
   public function chercherUtilisateurs(){
     $sql = "SELECT email_u, prenom_u, nom_u FROM utilisateur";
@@ -28,20 +28,20 @@ class Utilisateurs extends Modele {
   }
 
 
-    public function enregistrerUtilisateur($valeurs){
+  public function enregistrerUtilisateur($valeurs){
 
-      $sql = "INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u, clef_u) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]', '$valeurs[3]', '$valeurs[5]')";
-      $resultatrequete = $this->executerRequete($sql);
-      return $resultatrequete;
+    $sql = "INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u, clef_u) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]', '$valeurs[3]', '$valeurs[5]')";
+    $resultatrequete = $this->executerRequete($sql);
+    return $resultatrequete;
 
   }
 
 
   public function afficherCompte($id_u){
 
-      $sql = "SELECT * FROM utilisateur WHERE id_u = :id_u";
-      $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
-      return $resultatRequete;
+    $sql = "SELECT * FROM utilisateur WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
+    return $resultatRequete;
 
   }
 
@@ -56,6 +56,14 @@ class Utilisateurs extends Modele {
   public function chercherEmployeMunicipal($id_u){
 
     $sql = "SELECT id_u FROM employe_municipal WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
+    return $resultatRequete;
+
+  }
+
+  public function chercherAdmin($id_u){
+
+    $sql = "SELECT admin FROM gerant WHERE id_u = :id_u";
     $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
 

@@ -30,7 +30,8 @@ class ControleurAuthentification{
 
       $estUtilisateur = $utilisateur->chercherUtilisateur($id_u);
       $estGardien = $utilisateur->chercherGardien($id_u);
-      $estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
+      //$estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
+      $estAdmin = $utilisateur->chercherAdmin($id_u);
 
 
       if ($estUtilisateur) {
@@ -43,7 +44,7 @@ class ControleurAuthentification{
           if ($estGardien) {
             $_SESSION['id'] = 1;
           }
-          if ($estEmployeMunicipal) {
+          if ($estAdmin) {
             $_SESSION['id'] = 2;
           }
       }
