@@ -65,11 +65,11 @@
                     <h1>Ajouter un capteur :</h1>
                     <form action="" method="post">
                         <label for="type_capteur" id="Type"><p>Type de capteur :</p></label>
-                        <input type="text" name="type_capteur"></br>
+                        <input type="text" name="type_ca"></br>
                         <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
                         <input type="text" name="capteur"></br>
                         <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
-                        <select name="id_piece">
+                        <select name="type_piece">
                             <option value="chambre">Chambre</option>
                             <option value="cuisine">Cuisine</option>
                             <option value="bureau">Bureau</option>

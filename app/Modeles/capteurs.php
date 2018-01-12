@@ -6,14 +6,14 @@ require_once "Modeles/modele.php";
 class Capteurs extends Modele
 {
 
-    public function afficherPiece($id_piece)
+    public function afficherPiece($type_piece)
     {
 
-        $sql = "SELECT id_piece FROM capteur WHERE id_piece=:id_piece";
-        $resultatRequete = $this->executerRequete($sql, array('piece' => $id_piece))->fetch();
+        $sql = "SELECT type_piece FROM piece WHERE type_piece=:type_piece";
+        $resultatRequete = $this->executerRequete($sql, array('piece' => $type_piece))->fetch();
     }
 
-    public function afficherCapteur($id_ca)
+    /*public function afficherCapteur($id_ca)
     {
 
         $sql = "SELECT id_ca FROM capteur WHERE id_ca = :id_ca";
@@ -21,19 +21,19 @@ class Capteurs extends Modele
 
         return $resultatRequete;
 
-    }
+    }*/
 
-    public function afficherEtat($on_off)
+    public function afficherEtat()
     {
-            $sql = "SELECT power_state FROM capteur WHERE power_state = :on_off";
-            $resultatRequete = $this->executerRequete($sql, array('on_off' => $on_off))->fetch();
+            $sql = "SELECT power_state FROM capteur";
+            $resultatRequete = $this->executerRequete($sql)->fetch();
 
         return $resultatRequete;
     }
 
     public function enregistrerCapteur($valeurs)
     {
-        $sql = "INSERT INTO capteur (id_ca, power_state) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]')";
+        $sql = "INSERT INTO capteur (power_state) VALUES ('$valeurs[1]')";
         $resultatrequete = $this->executerRequete($sql);
         return $resultatrequete;
     }
