@@ -58,7 +58,7 @@ class ControleurMaMaison{
                 $vue->generer(array('erreur' => $this->erreur));
             }
         }
-        //On genère la vue Enregistrement
+
         $vue = new Vue('TableauDeBord');
         $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
     }

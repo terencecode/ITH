@@ -114,6 +114,7 @@ class ControleurAuthentification{
 
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['passe'] = $_POST['prenom'];
+        $_SESSION['id'] = 0;
         header("Location: http://localhost:8080/ITH/accueil");
 
       } catch (Exception $e) {
