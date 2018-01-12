@@ -41,10 +41,10 @@ class Utilisateurs extends Modele {
   }
 
 
-  public function afficherCompte($email){
+  public function afficherCompte($id){
 
-      $sql = "SELECT * FROM utilisateur WHERE email_u = :email";
-      $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+      $sql = "SELECT * FROM utilisateur WHERE id_u = :id";
+      $resultatRequete = $this->executerRequete($sql, array('id' => $id))->fetch();
       return $resultatRequete;
 
   }

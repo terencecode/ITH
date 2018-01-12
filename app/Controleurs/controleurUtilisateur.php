@@ -5,10 +5,10 @@ require_once 'Vues/vue.php';
 
 class ControleurUtilisateur {
 
-  public function affichageMonCompte($email){
+  public function affichageMonCompte($id){
 
       $utilisateur = new Utilisateurs();
-      $donnees = $utilisateur->afficherCompte($email);
+      $donnees = $utilisateur->afficherCompte($id);
 
       $vue = new Vue('Utilisateur');
       $vue->generer($donnees);
