@@ -20,11 +20,12 @@
             </tr>
             </thead>
             <tbody>
+            <?php echo $etat ?>
             </tbody>
         </table>
 
 
-        <script>
+        <!--<script>
             var i = 0;
             function ajouterLigne()
             {
@@ -44,7 +45,7 @@
                 var colonne4 = ligne.insertCell(3);
                 colonne4.innerHTML += '<div style="text-align:center;"><label class="switch"><input type="checkbox"><span class="slider round"></span></label></div>'
             }
-        </script>
+        </script> -->
 
     </div>
 </div>
