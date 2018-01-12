@@ -30,8 +30,6 @@
                        placeholder="10 caractères minimum"></br>
                 <label for="mdp2">Répeter mot de passe:</label>
                 <input type="password" name="passe2" id="mdp2"></br>
-                <label for="code">Code d'inscription:</label>
-                <input type="text" name="code" id="code"></br>
                 <input class="submit-button" name="valider" type="submit" value="Valider">
             </form>
         </div>
