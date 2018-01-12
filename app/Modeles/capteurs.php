@@ -33,7 +33,7 @@ class Capteurs extends Modele
 
     public function enregistrerCapteur($valeurs)
     {
-        $sql = "INSERT INTO capteur (power_state) VALUES ('$valeurs[1]')";
+        $sql = "INSERT INTO capteur (type_Capteur,power_state) VALUES ('$valeurs[0]', '$valeurs[1]')";
         $resultatrequete = $this->executerRequete($sql);
         return $resultatrequete;
     }

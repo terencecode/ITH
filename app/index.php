@@ -35,6 +35,8 @@ $router->get('/tableau-de-bord', function(){ $controleur = new ControleurMaMaiso
     $controleur->affichageTableauDeBord(); });
 $router->get('/editer', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageEditerMaMaison(); });
+$router->post('/editer', function(){ $controleur = new ControleurMaMaison;
+    $controleur->affichageEditerMaMaison(); });
 $router->get('/deconnexion', function(){ $controleur = new ControleurAuthentification;
     $controleur->affichageDeconnexion(); });
 
