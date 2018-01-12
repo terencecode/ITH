@@ -1,7 +1,7 @@
 -- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
---lololololol
+--
 -- HÃ´te : 127.0.0.1:3306
 -- GÃ©nÃ©rÃ© le :  ven. 12 jan. 2018 Ã  13:47
 -- Version du serveur :  5.7.19
