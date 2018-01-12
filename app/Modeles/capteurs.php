@@ -23,7 +23,7 @@ class Capteurs extends Modele
 
     }*/
 
-    public function afficherEtat()
+    public function afficherEtat($type)
     {
             $sql = "SELECT power_state FROM capteur";
             $resultatRequete = $this->executerRequete($sql)->fetch();
