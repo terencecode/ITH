@@ -45,8 +45,8 @@
                         <input type="text" name="emplacement"></br>
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
-                        <input class="submit-button" name="valider" type="submit" value="Valider">
-                        <input class="cancel-button" name="valider" type="submit" value="Annuler">
+                        <input class="submit-button" name="valider-Piece" type="submit" value="Valider">
+                        <input class="cancel-button" name="valider-Piece" type="submit" value="Annuler">
                     </form>
 
 
@@ -75,15 +75,15 @@
                             <option value="bureau">Bureau</option>
                             <option value="salon">Salon</option>
                         </select>
-                        <label for="etat_capteur" id="Etat"><p>Etat du capteur :</p></label>
+                        <label for="etat_capteur" id="Etat"><p>Etat du capteur : ( 1 ou 0 ) </p></label>
                         <select name="on_off">
-                            <option value="ON">ON</option>
-                            <option value="OFF">OFF</option>
+                            <option value="1">1</option>
+                            <option value="0">0</option>
                         </select>
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
-                        <input class="submit-button" name="valider" type="submit" value="Valider">
-                        <input class="cancel-button" name="valider" type="submit" value="Annuler">
+                        <input class="submit-button" name="valider-Capteur" type="submit" value="Valider">
+                        <input class="cancel-button" name="valider-Capteur" type="submit" value="Annuler">
                     </form>
 
                 </div>

@@ -2,8 +2,8 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 12 jan. 2018 à 13:47
+-- HÃ´te : 127.0.0.1:3306
+-- GÃ©nÃ©rÃ© le :  ven. 12 jan. 2018 Ã  13:47
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ith`
+-- Base de donnÃ©es :  `ith`
 --
 
 -- --------------------------------------------------------
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `capteur` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `capteur`
+-- DÃ©chargement des donnÃ©es de la table `capteur`
 --
 
 INSERT INTO `capteur` (`id_ca`, `type`, `power_state`, `id_piece`) VALUES
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `gerant` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `gerant`
+-- DÃ©chargement des donnÃ©es de la table `gerant`
 --
 
 INSERT INTO `gerant` (`id_gerant`, `admin`, `id_habitation`, `id_u`) VALUES
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `habitation` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `habitation`
+-- DÃ©chargement des donnÃ©es de la table `habitation`
 --
 
 INSERT INTO `habitation` (`id_habitation`, `pays_habitation`, `num_rue_habitation`, `rue_habitation`, `sup_habitation`) VALUES
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `piece` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `piece`
+-- DÃ©chargement des donnÃ©es de la table `piece`
 --
 
 INSERT INTO `piece` (`id_piece`, `type_piece`, `long_piece`, `largeur_piece`, `hauteur_piece`, `id_gerant`) VALUES
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `temperature` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `temperature`
+-- DÃ©chargement des donnÃ©es de la table `temperature`
 --
 
 INSERT INTO `temperature` (`id`, `id_ca`, `temperature`, `timestamp_temperature`) VALUES
@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `utilisateur`
+-- DÃ©chargement des donnÃ©es de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`) VALUES
@@ -351,14 +351,14 @@ CREATE TABLE IF NOT EXISTS `ville` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `ville`
+-- DÃ©chargement des donnÃ©es de la table `ville`
 --
 
 INSERT INTO `ville` (`id_ville`, `nom`) VALUES
 (1, 'Paris');
 
 --
--- Contraintes pour les tables déchargées
+-- Contraintes pour les tables dÃ©chargÃ©es
 --
 
 --
@@ -460,3 +460,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

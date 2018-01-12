@@ -1,15 +1,22 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Accueil"; ?>
 <?php if (isset($_SESSION['id']) && $_SESSION['id'] == 1): ?>
-  Vous êtes gardien <br><br>
 
-  <table>
-    <tr>
-      <th>Mail</th>
-      <th>Prénom</th>
-      <th>Nom</th>
-    </tr>
+  <!--DataTables -->
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
+  <table id="myTable">
+
+    <thead>
+      <tr>
+        <th>Mail</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+      </tr>
+    </thead>
+
+    <tbody>
       <?php foreach ($donnees as $key => $value): ?>
         <tr>
           <?php foreach ($value as $key => $donnees): ?>
@@ -17,8 +24,18 @@
           <?php endforeach; ?>
         </tr>
       <?php endforeach; ?>
+    </tbody>
 
   </table>
+
+  <script type="text/javascript">
+  $(document).ready( function () {
+      $('#myTable').DataTable({
+        paging: false,
+        info: false
+      });
+  } );
+  </script>
 
 <?php else: ?>
   <div id="body">
@@ -53,4 +70,5 @@
       </div>
 
   </div>
+
 <?php endif; ?>

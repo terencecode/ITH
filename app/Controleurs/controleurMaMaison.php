@@ -9,12 +9,12 @@ class ControleurMaMaison{
 
         //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
         //Sera remplacé par du js
-        if (isset($_POST['valider']))
+        if (isset($_POST['valider-Piece']))
         {
 
 
 
-            if (empty($_POST['type_piece']))
+            if (empty($_POST['type_de_piece']))
             {
                 $this->erreur[] = "Veuillez saisir le nom de la piece";
             }
@@ -36,7 +36,7 @@ class ControleurMaMaison{
 
             //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
             $valeurs = [];
-            $valeurs[] = $_POST['type_piece'];
+            $valeurs[] = $_POST['type_de_piece'];
             $valeurs[] = $_POST['long_piece'];
             $valeurs[] = $_POST['largeur_piece'];
             $valeurs[] = $_POST['hauteur_piece'];
@@ -58,7 +58,7 @@ class ControleurMaMaison{
                 $vue->generer(array('erreur' => $this->erreur));
             }
         }
-        //On genère la vue Enregistrement
+
         $vue = new Vue('TableauDeBord');
         $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
     }
@@ -93,10 +93,10 @@ class ControleurMaMaison{
   }
 
   //Mettre toutes les fonctions relatives à la page éditer ma maison
-  public function affichageEditerMaMaison(){
+  public function RecupDonCapteur(){
       //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
       //Sera remplacé par du js
-      if (isset($_POST['valider'])) {
+      if (isset($_POST['valider-Capteur'])) {
 
           if (empty($_POST['capteur'])) {
               $this->erreur[] = "Veuillez saisir le nom du capteur";
