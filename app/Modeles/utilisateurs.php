@@ -20,11 +20,11 @@ class Utilisateurs extends Modele {
   }
 
 
-        public function enregistrerUtilisateur($valeurs){
+    public function enregistrerUtilisateur($valeurs){
 
-            $sql = "INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u, clef_u) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]', '$valeurs[3]', '$valeurs[5]')";
-            $resultatrequete = $this->executerRequete($sql);
-            return $resultatrequete;
+      $sql = "INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u, clef_u) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]', '$valeurs[3]', '$valeurs[5]')";
+      $resultatrequete = $this->executerRequete($sql);
+      return $resultatrequete;
 
   }
 
