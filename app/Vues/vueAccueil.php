@@ -20,26 +20,6 @@
 
   </table>
 
-<?php elseif (isset($_SESSION['id']) && $_SESSION['id'] == 2): ?>
-    vous êtes admin <br><br>
-
-    <table>
-      <tr>
-        <th>Mail</th>
-        <th>Prénom</th>
-        <th>Nom</th>
-      </tr>
-
-        <?php foreach ($donnees as $key => $value): ?>
-          <tr>
-            <?php foreach ($value as $key => $donnees): ?>
-              <td><?php echo $donnees ?></td>
-            <?php endforeach; ?>
-          </tr>
-        <?php endforeach; ?>
-
-    </table>
-
 <?php else: ?>
   <div id="body">
       <div class="row">

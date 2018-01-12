@@ -29,7 +29,7 @@ class ControleurAuthentification{
       $id_u = $utilisateur->chercherId($email)[0];
 
       $estUtilisateur = $utilisateur->chercherUtilisateur($id_u);
-      $estGardien = $utilisateur->chercherGardien($id_u);
+      //$estGardien = $utilisateur->chercherGardien($id_u);
       //$estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
       $estAdmin = $utilisateur->chercherAdmin($id_u);
 
@@ -41,11 +41,8 @@ class ControleurAuthentification{
               $_SESSION['id_u'] = $id_u;
               $_SESSION['id'] = 0;
           }
-          if ($estGardien) {
-            $_SESSION['id'] = 1;
-          }
           if ($estAdmin) {
-            $_SESSION['id'] = 2;
+            $_SESSION['id'] = 1;
           }
       }
 
