@@ -85,10 +85,6 @@ class ControleurAuthentification{
         $this->erreur[] = "Veuillez confirmer le Mot de Passe";
       }
 
-      if (empty($_POST['code'])) {
-        $this->erreur[] = "Veuillez saisir le Code d'Inscription";
-      }
-
       //verification mots de passes identiques
       if ($_POST['passe'] != $_POST['passe2']) {
         $this->messagePassesDifferents = "Les deux mots de passe sont différents";
@@ -102,7 +98,6 @@ class ControleurAuthentification{
       $valeurs[] = $_POST['nom'];
       $valeurs[] = $_POST['passe'];
       $valeurs[] = $_POST['passe2'];
-      $valeurs[] = $_POST['code'];
 
       //On essaye de rentrer l'utilisateur dans la bdd
       //On créé les variables de session
