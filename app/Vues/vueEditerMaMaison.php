@@ -23,9 +23,6 @@
                     <span class="close">&times;</span>
                     <h1>Ajouter une pièce :</h1>
                     <form action="" method="post">
-                        <label><p>Numéro de piece :</p></label>
-                        <input type="text" name="id_piece"
-                               placeholder="Numero de piece"></br>
                         <label for="dimensions"><p>Dimensions :</p></label>
                         <input type="text" name="long_piece"
                                placeholder="Longueur"></br>
@@ -48,15 +45,8 @@
                         <input class="submit-button" name="valider-Piece" type="submit" value="Valider">
                         <input class="cancel-button" name="valider-Piece" type="submit" value="Annuler">
                     </form>
-
-
                 </div>
-
             </div>
-            <!-- Modale des capteurs-->
-
-
-            <!-- The Modal -->
             <div id="modal_capteur" class="modal">
 
                 <!-- Modal content -->
@@ -67,7 +57,7 @@
                         <label for="type_capteur" id="Type"><p>Type de capteur :</p></label>
                         <input type="text" name="type_ca"></br>
                         <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
-                        <input type="text" name="capteur"></br>
+                        <input type="text" name="fonction"></br>
                         <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
                         <select name="type_piece">
                             <option value="chambre">Chambre</option>
@@ -77,13 +67,13 @@
                         </select>
                         <label for="etat_capteur" id="Etat"><p>Etat du capteur : ( 1 ou 0 ) </p></label>
                         <select name="on_off">
-                            <option value="1">1</option>
-                            <option value="0">0</option>
+                            <option value=1>1</option>
+                            <option value=0>0</option>
                         </select>
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
                         <input class="submit-button" name="valider-Capteur" type="submit" value="Valider">
-                        <input class="cancel-button" name="valider-Capteur" type="submit" value="Annuler">
+                        <input class="cancel-button" name="Annuler" type="submit" value="Annuler">
                     </form>
 
                 </div>

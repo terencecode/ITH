@@ -2,69 +2,9 @@
 
 require_once 'Vues/vue.php';
 require_once 'Modeles/capteurs.php';
+require_once 'Modeles/piece.php';
 
 class ControleurMaMaison{
-
-    public function affichagePiece(){
-
-        //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
-        //Sera remplacé par du js
-        if (isset($_POST['valider-Piece']))
-        {
-
-
-
-            if (empty($_POST['type_de_piece']))
-            {
-                $this->erreur[] = "Veuillez saisir le nom de la piece";
-            }
-
-            if (empty($_POST['long_piece']))
-            {
-                $this->erreur[] = "Veuillez saisir la longueur de la piece";
-            }
-
-            if (empty($_POST['largeur_piece']))
-            {
-                $this->erreur[] = "Veuillez saisir la largeur de la piece";
-            }
-
-            if (empty($_POST['largeur_piece']))
-            {
-                $this->erreur[] = "Veuillez saisir la hauteur de la piece";
-            }
-
-            //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
-            $valeurs = [];
-            $valeurs[] = $_POST['type_de_piece'];
-            $valeurs[] = $_POST['long_piece'];
-            $valeurs[] = $_POST['largeur_piece'];
-            $valeurs[] = $_POST['hauteur_piece'];
-
-            //On essaye de rentrer l'utilisateur dans la bdd
-            //On créé les variables de session
-            //Si l'utilisateur existe déjà: retourne une erreur
-            try
-            {
-
-                $capteur = new Piece();
-                $capteur->enregistrerPiece($valeurs);
-
-            } catch (Exception $e) {
-
-                $this->erreur[] = "Vous avez déjà enregistré cette piece, veuillez en saisir une nouvelle";
-
-                $vue = new Vue('TableauDeBord');
-                $vue->generer(array('erreur' => $this->erreur));
-            }
-        }
-
-        $vue = new Vue('TableauDeBord');
-        $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
-    }
-
-
-
 
   public function affichageStatistiques(){
     if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
@@ -93,9 +33,10 @@ class ControleurMaMaison{
   }
 
   //Mettre toutes les fonctions relatives à la page éditer ma maison
-  public function RecupDonCapteur(){
-      //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
-      //Sera remplacé par du js
+
+  public function affichageEditerMaMaison(){
+
+
       if (isset($_POST['valider-Capteur'])) {
 
           if (empty($_POST['capteur'])) {
@@ -109,24 +50,38 @@ class ControleurMaMaison{
 
           //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
           $valeurs = [];
-          $valeurs[0] = $_POST['capteur'];
-          $valeurs[1] = $_POST['on_off'];
+          $valeurs[] = $_POST['type_ca'];
+          $valeurs[] = $_POST['on_off'];
+          $valeurs[] = $_POST['fonction'];
+          $valeurs[] = $_POST['type_piece'];
 
           $capteur = new Capteurs();
           $capteur->enregistrerCapteur($valeurs);
 
-          header("Location: http://localhost:8080/ITH/tableau-de-bord");
-
+          header("Location: http://localhost:8080/ITH/accueil");
 
       }
+      if ((isset($_POST['valider-Piece']))) {
 
-    if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
-      $vue = new Vue('EditerMaMaison');
-      $vue->generer();
-    } else {
-      $vue = new Vue('404');
-      $vue->generer();
-    }
+          $valeurs = [];
+          $valeurs[] = $_POST['type_piece'];
+          $valeurs[] = $_POST['long_piece'];
+          $valeurs[] = $_POST['largeur_piece'];
+          $valeurs[] = $_POST['hauteur_piece'];
+
+          $piece = new Piece();
+          $piece->enregistrerPiece($valeurs);
+
+          header("Location: http://localhost:8080/ITH/accueil");
+
+      }
+      if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
+          $vue = new Vue('EditerMaMaison');
+          $vue->generer();
+      } else {
+          $vue = new Vue('404');
+          $vue->generer();
+      }
+
   }
-
 }
