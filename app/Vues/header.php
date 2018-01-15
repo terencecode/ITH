@@ -10,7 +10,7 @@
       <li class="header-link"><a href="profil">Mon Compte</a></li>
       <li id="dropdown-container">
           <ul class="dropdown">
-            <li class="header-link-dropdown"><a href="javascript:void(0);" onclick="showDropdown()">Mon habitation</a></li>
+            <li class="header-link-dropdown"><a href="javascript:void(0);">Mon habitation</a></li>
               <div class="dropdown-content">
                 <a class="header-link-dropdown" href="editer">Éditer ma maison</a>
                 <a class="header-link-dropdown" href="statistiques">Statistiques</a>
@@ -24,7 +24,7 @@
       <li class="right header-link"><a href="aide">Aide</a></li>
       <li class="right header-link"><a href="apropos">A Propos</a></li>
       <li class="right header-link"><a href="deconnexion">Deconnexion</a></li>
-      <li class="right" id="collapsible-icon"><a href="javascript:void(0);" onclick="showNav()"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>
+      <li class="right" id="collapsible-icon"><a href="javascript:void(0);"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>
 
     <?php elseif ($_SESSION['id'] == 1): ?>
 
@@ -43,7 +43,7 @@
       <li class="header-link"><a href="enregistrement">S'enregistrer</a></li>
       <li class="right header-link"><a href="aide">Aide</a></li>
       <li class="right header-link"><a href="apropos">A Propos</a></li>
-      <li class="right" id="collapsible-icon"><a href="javascript:void(0);" onclick="showNav()"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>
+      <li class="right" id="collapsible-icon"><a href="javascript:void(0);"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>
 
   <?php endif; ?>
 

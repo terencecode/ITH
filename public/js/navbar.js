@@ -1,17 +1,25 @@
-function showNav() {
-    var navbar = document.getElementById("navigation");
-    if (navbar.className === "topNav") {
-        navbar.className += " responsive";
-    } else {
-        navbar.className = "topNav";
-    }
-}
+$(document).ready(function() {
 
-function showDropdown() {
-    if ($(".dropdown").hasClass("dropped")) {
-        $(".dropdown").removeClass("dropped");
-    }
-    else {
+    $(".header-link-dropdown").mouseover(function() {
         $(".dropdown").addClass("dropped");
-    }
-}
+    });
+
+    $(".header-link-dropdown").mouseleave(function() {
+        if ($(".dropdown").hasClass("dropped")) {
+            $(".dropdown").removeClass("dropped");
+        }
+    });
+
+    $("#collapsible-icon").click(function() {
+       if (!($("#navigation").hasClass("responsive"))) {
+           $("#navigation").addClass("responsive");
+       }
+       else {
+           $("#navigation").removeClass("responsive");
+       }
+    });
+
+    $('[class*="header-link"]').click(function() {
+        $(this).children()[0].click();
+    });
+});
