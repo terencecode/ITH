@@ -13,9 +13,8 @@ class Piece extends Modele
 
     public function afficherPiece($id_gerant)
     {
-
         $sql = "SELECT type_piece FROM piece WHERE id_gerant=:id_gerant";
-        $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetch();
+        $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
 }

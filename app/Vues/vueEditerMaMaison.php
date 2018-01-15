@@ -1,6 +1,7 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Editer Ma Maison"; ?>
 
+
 <div id="body">
     <div class="row">
 
@@ -30,14 +31,9 @@
                                placeholder="Largeur"></br>
                         <input type="text" name="hauteur_piece"
                                placeholder="Hauteur"></br>
-                        <label for="type_de_piece"><p>Type de pièce :</p></label>
-                        <select class="choix" name="type_piece">
-                            <option value="Chambre">Chambre</option>
-                            <option value="Cuisine">Cuisine</option>
-                            <option value="Bureau">Bureau</option>
-                            <option value="Salon">Salon</option>
-                            <option value="Autre">Autre</option>
-                        </select></br>
+                        <input type="text" name="type_piece"
+                               placeholder="Type de piece"></br>
+
                         <label for="emplacement"><p>Emplacement :</p></label>
                         <input type="text" name="emplacement"></br>
                         <label><p>Description :</p></label>
@@ -59,12 +55,14 @@
                         <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
                         <input type="text" name="fonction"></br>
                         <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
-                        <select name="type_pieceC">
 
-                            <option value="chambre">Chambre</option>
-                            <option value="cuisine">Cuisine</option>
-                            <option value="bureau">Bureau</option>
-                            <option value="salon">Salon</option>
+                        <select name="type_pieceC">
+                            <?php foreach ($pieces as $key=>$value):?>
+                            <?php foreach ($value as $key =>$value2):?>
+                            <option value=""><?php echo $value2 ?></option>
+                            <?php endforeach;?>
+                            <?php endforeach;?>
+
                         </select>
                         <label for="etat_capteur" id="Etat"><p>Etat du capteur : ( 1 ou 0 ) </p></label>
                         <select name="on_off">

@@ -20,7 +20,11 @@
             </tr>
             </thead>
             <tbody>
-            <?php echo $etat ?>
+            <?php //foreach ($pieces as $key=>$value):?>
+                <?php //foreach ($value as $key =>$value2):?>
+                    <!--<option value=""><?php //echo $value2 ?></option>-->
+                <?php //endforeach;?>
+            <?php //endforeach;?>
             </tbody>
         </table>
 

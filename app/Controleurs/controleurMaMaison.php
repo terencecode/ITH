@@ -55,9 +55,12 @@ class ControleurMaMaison{
           $valeurs[] = $_POST['fonction'];
           $valeurs[] = $_POST['type_pieceC'];
 
+          $utilisateur= new Utilisateurs();
+          $valeurs[] = $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
+
 
           $capteur = new Capteurs();
-          $valeurs[] = $capteur->chercher_id_piece($valeurs[3])[0];
+          $valeurs[] = $capteur->chercher_id_piece($valeurs[4])[0];
           $capteur->enregistrerCapteur($valeurs);
 
           header("Location: http://localhost:8080/ITH/accueil");
@@ -82,16 +85,16 @@ class ControleurMaMaison{
       }
 
       $utilisateur= new Utilisateurs();
-      $id_gerant= $utilisateur->chercherIdGerant($_SESSION['id_u']);
+      $id_gerant= $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
 
-      $piece= new Piece();
-      $pieces[]=$piece->afficherPiece($id_gerant);
+      $piece = new Piece();
+      $pieces = $piece->afficherPiece($id_gerant);
 
 
 
       if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
           $vue = new Vue('EditerMaMaison');
-          $vue->generer($pieces);
+          $vue->generer(array('pieces'=>$pieces));
       } else {
           $vue = new Vue('404');
           $vue->generer();
