@@ -13,11 +13,9 @@
               echo $messagePassesDifferents;
               } ?>
             <?php if (!empty($erreur)) {
-              foreach ($erreur as $key => $text) {
-                echo $text;
-                echo "<br>";
+              echo $erreur;
               }
-            } ?>
+             ?>
             <form action="" method="post">
                 <label type="prenom">Prénom:</label>
                 <input type="text" name="prenom" id="prenom"></br>

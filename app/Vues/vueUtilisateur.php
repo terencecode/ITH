@@ -23,8 +23,6 @@
                    placeholder="Modifier le mot de passe"></br>
             <label for="mdp2">Répeter mot de passe:</label></br>
             <input type="password" name="passe2" id="mdp2"></br>
-            <label for="code">Code d'inscription:</label></br>
-            <input type="text" name="code" id="code" readonly value="<?php echo $donnees[5]?>"></br>
             <input class="submit-button" name="valider" type="submit" value="Enregistrer">
             <input class="cancel-button" name="valider" type="submit" value="Annuler">
         </div>
