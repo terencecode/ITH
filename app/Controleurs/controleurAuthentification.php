@@ -41,7 +41,7 @@ class ControleurAuthentification{
               $_SESSION['id_u'] = $id_u;
               $_SESSION['id'] = 0;
           }
-          if ($estAdmin) {
+          if ($estAdmin == 1) {
             $_SESSION['id'] = 1;
           }
       }

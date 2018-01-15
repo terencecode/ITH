@@ -20,7 +20,7 @@ class Utilisateurs extends Modele {
 
   public function chercherAdmin($id_u){
 
-    $sql = "SELECT id_u FROM gerant WHERE id_u = :id_u";
+    $sql = "SELECT admin FROM gerant WHERE id_u = :id_u";
     $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
 
