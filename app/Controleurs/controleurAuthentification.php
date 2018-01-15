@@ -71,9 +71,6 @@ class ControleurAuthentification{
           $messagePassesDifferents = "Veuillez entrer 2 mots de passe identiques";
         }
 
-        $vue = new Vue('Enregistrement');
-        $vue->generer(array('erreur' => $this->erreur, 'messagePassesDifferents' => $this->messagePassesDifferents));
-
       } else {
         //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
         $valeurs = [];
