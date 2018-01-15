@@ -49,20 +49,10 @@ class Utilisateurs extends Modele {
 
   }
 
-  public function chercherGardien($email){
-
-    $sql = "SELECT email_u FROM gardien WHERE email_u = :email";
-    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+  public function chercherIdGerant($id_u){
+    $sql = "SELECT id_gerant FROM gerant WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
-
-  }
-
-  public function chercherEmployeMunicipal($email){
-
-    $sql = "SELECT email_u FROM employe_municipal WHERE email_u = :email";
-    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
-    return $resultatRequete;
-
   }
 
 }
