@@ -40,6 +40,12 @@ class Utilisateurs extends Modele {
 
   }
 
+  public function enregistrerGerant($id_u){
+    $sql = "INSERT INTO gerant (admin, id_u) VALUES (0, '$id_u')";
+    $resultatRequete = $this->executerRequete($sql);
+    return $resultatRequete;
+  }
+
 
   public function afficherCompte($id){
 

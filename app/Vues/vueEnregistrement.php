@@ -16,13 +16,8 @@
             <?php if (!empty($erreur)) {
               echo $erreur;
               }
-<<<<<<< HEAD
              ?>
-            <form action="" method="post">
-=======
-            } ?>
             <form action="" method="post" id="formEnregistrement">
->>>>>>> c6d4f924c9f116d2fe824c71ca9ce380c4fa0c53
                 <label type="prenom">Prénom:</label>
                 <input type="text" name="prenom" id="prenom"></br>
                 <label for="nom">Nom:</label>

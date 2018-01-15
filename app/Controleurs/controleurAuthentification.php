@@ -95,8 +95,10 @@ class ControleurAuthentification{
           $_SESSION['passe'] = $_POST['prenom'];
           $_SESSION['id'] = 0;
 
-          $_SESSION['id_u'] = $utilisateur->chercherId($_SESSION['email']);
+          $id_u = $utilisateur->chercherId($_SESSION['email'])[0];
+          $_SESSION['id_u'] = $id_u;
 
+          $utilisateur->enregistrerGerant($id_u);
 
           header("Location: http://localhost:8080/ITH/accueil");
 
