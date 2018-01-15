@@ -16,7 +16,7 @@ if (!empty($erreur)) {
         <div id="background-image" class="col-xs-hide col-sm-4 col-md-7 col-lg-9"></div>
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
-            <h1>Se connecter</h1>
+            <h1>me connecter</h1>
             <form action="" method="post" id="formConnexion">
                 <label for="email">Adresse mail:</label>
                 <input type="text" name="email" id="email"></br>
