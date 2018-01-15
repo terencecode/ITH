@@ -59,7 +59,8 @@
                         <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
                         <input type="text" name="fonction"></br>
                         <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
-                        <select name="type_piece">
+                        <select name="type_pieceC">
+
                             <option value="chambre">Chambre</option>
                             <option value="cuisine">Cuisine</option>
                             <option value="bureau">Bureau</option>
