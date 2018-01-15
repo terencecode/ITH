@@ -20,7 +20,7 @@ class Utilisateurs extends Modele {
 
   public function chercherAdmin($id_u){
 
-    $sql = "SELECT id_u FROM gerant WHERE id_u = :id_u";
+    $sql = "SELECT admin FROM gerant WHERE id_u = :id_u";
     $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
 
@@ -40,6 +40,12 @@ class Utilisateurs extends Modele {
 
   }
 
+  public function enregistrerGerant($id_u){
+    $sql = "INSERT INTO gerant (admin, id_u) VALUES (0, '$id_u')";
+    $resultatRequete = $this->executerRequete($sql);
+    return $resultatRequete;
+  }
+
 
   public function afficherCompte($id){
 
@@ -49,20 +55,10 @@ class Utilisateurs extends Modele {
 
   }
 
-  public function chercherGardien($email){
-
-    $sql = "SELECT email_u FROM gardien WHERE email_u = :email";
-    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
+  public function chercherIdGerant($id_u){
+    $sql = "SELECT id_gerant FROM gerant WHERE id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
-
-  }
-
-  public function chercherEmployeMunicipal($email){
-
-    $sql = "SELECT email_u FROM employe_municipal WHERE email_u = :email";
-    $resultatRequete = $this->executerRequete($sql, array('email' => $email))->fetch();
-    return $resultatRequete;
-
   }
 
 }

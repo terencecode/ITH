@@ -41,7 +41,7 @@ class ControleurAuthentification{
               $_SESSION['id_u'] = $id_u;
               $_SESSION['id'] = 0;
           }
-          if ($estAdmin) {
+          if ($estAdmin == 1) {
             $_SESSION['id'] = 1;
           }
       }
@@ -61,66 +61,54 @@ class ControleurAuthentification{
 
   public function affichageEnregistrement(){
 
-    //Gestion des messagges d'erreur si l'utilisateur ne remplis pas les champs
-    //Sera remplacé par du js
     if (isset($_POST['valider'])) {
 
-      if (empty($_POST['nom'])) {
-        $this->erreur[] = "Veuillez saisir le Nom";
-      }
+      if ($_POST['email'] == "" || $_POST['prenom'] == "" || $_POST['nom'] == "" || $_POST['passe'] == "" || $_POST['passe2'] == "") {
 
-      if (empty($_POST['prenom'])) {
-        $this->erreur[] = "Veuillez saisir le Prenom";
-      }
+        $erreur = "Veuillez compléter tous les champs";
 
-      if (empty($_POST['email'])) {
-        $this->erreur[] = "Veuillez saisir le Mail";
-      }
+        if ($_POST['passe'] != $_POST['passe2']) {
+          $messagePassesDifferents = "Veuillez entrer 2 mots de passe identiques";
+        }
 
-      if (empty($_POST['passe'])) {
-        $this->erreur[] = "Veuillez saisir le Mot de Passe";
-      }
+      } else {
+        //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
+        $valeurs = [];
+        $valeurs[] = $_POST['email'];
+        $valeurs[] = $_POST['prenom'];
+        $valeurs[] = $_POST['nom'];
+        $valeurs[] = $_POST['passe'];
+        $valeurs[] = $_POST['passe2'];
 
-      if (empty($_POST['passe2'])) {
-        $this->erreur[] = "Veuillez confirmer le Mot de Passe";
-      }
+        //On essaye de rentrer l'utilisateur dans la bdd
+        //On créé les variables de session
+        //Si l'utilisateur existe déjà => retourne une erreur
+        try {
 
-      //verification mots de passes identiques
-      if ($_POST['passe'] != $_POST['passe2']) {
-        $this->messagePassesDifferents = "Les deux mots de passe sont différents";
-      }
+          $utilisateur = new Utilisateurs();
+          $utilisateur->enregistrerUtilisateur($valeurs);
 
+          $_SESSION['email'] = $_POST['email'];
+          $_SESSION['passe'] = $_POST['prenom'];
+          $_SESSION['id'] = 0;
 
-      //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
-      $valeurs = [];
-      $valeurs[] = $_POST['email'];
-      $valeurs[] = $_POST['prenom'];
-      $valeurs[] = $_POST['nom'];
-      $valeurs[] = $_POST['passe'];
-      $valeurs[] = $_POST['passe2'];
+          $id_u = $utilisateur->chercherId($_SESSION['email'])[0];
+          $_SESSION['id_u'] = $id_u;
 
-      //On essaye de rentrer l'utilisateur dans la bdd
-      //On créé les variables de session
-      //Si l'utilisateur existe déjà => retourne une erreur
-      try {
+          $utilisateur->enregistrerGerant($id_u);
 
-        $utilisateur = new Utilisateurs();
-        $utilisateur->enregistrerUtilisateur($valeurs);
+          header("Location: http://localhost:8080/ITH/accueil");
 
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['passe'] = $_POST['prenom'];
-        $_SESSION['id'] = 0;
-        header("Location: http://localhost:8080/ITH/accueil");
+        } catch (Exception $e) {
 
-      } catch (Exception $e) {
+          $this->erreur[] = "Vous êtes déjà enregistré, veuillez vous connecter";
 
-        $this->erreur[] = "Vous êtes déjà enregistré, veuillez vous connecter";
+          $vue = new Vue('Enregistrement');
+          $vue->generer(array('erreur' => $this->erreur));
 
-        $vue = new Vue('Enregistrement');
-        $vue->generer(array('erreur' => $this->erreur));
+        }
 
       }
-
 
     }
 
