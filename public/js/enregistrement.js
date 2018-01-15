@@ -1,11 +1,3 @@
-function validerMotDePasse (mdp) {
-    if (mdp.length < 10) {
-        return false;
-    }
-
-    return true;
-}
-
 $(document).ready(function() {
 
     $("#formEnregistrement #prenom").blur(function() {
@@ -53,7 +45,7 @@ $(document).ready(function() {
             $("#formEnregistrement #mdp2ErrorMessage").text("");
             $(this).addClass("error");
         }
-        else if ($("#formEnregistrement #mdp2").val().length != 0 && $(this).val() != $("#formEnregistrement #mdp2").text()) {
+        else if ($("#formEnregistrement #mdp2").val().length != 0 && $(this).val() != $("#formEnregistrement #mdp2").val()) {
             $("#formEnregistrement #mdp2ErrorMessage").text("Les mots de passe ne correspondent pas");
             $(this).addClass("error");
         }
@@ -79,7 +71,7 @@ $(document).ready(function() {
             $("#formEnregistrement #mdpErrorMessage").text("");
             $(this).addClass("error");
         }
-        else if ($("#formEnregistrement #mdp").val().length != 0 && $(this).val() != $("#formEnregistrement #mdp").text()) {
+        else if ($("#formEnregistrement #mdp").val().length != 0 && $(this).val() != $("#formEnregistrement #mdp").val()) {
             $("#formEnregistrement #mdp2ErrorMessage").text("Les mots de passe ne correspondent pas");
             $(this).addClass("error");
         }
