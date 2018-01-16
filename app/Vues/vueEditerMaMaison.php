@@ -1,6 +1,6 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Editer Ma Maison"; ?>
-
+<script src="public/js/EditerMaMaison.js"></script>
 
 <div id="body">
     <div class="row">
@@ -25,21 +25,27 @@
                     <h1>Ajouter une pièce :</h1>
                     <form action="" method="post">
                         <label for="dimensions"><p>Dimensions :</p></label>
-                        <input type="text" name="long_piece"
-                               placeholder="Longueur"></br>
-                        <input type="text" name="largeur_piece"
-                               placeholder="Largeur"></br>
-                        <input type="text" name="hauteur_piece"
-                               placeholder="Hauteur"></br>
-                        <input type="text" name="type_piece"
-                               placeholder="Type de piece"></br>
+                        <input type="number" name="long_piece"
+                               placeholder="Longueur" id="long_piece" min="0" ></br>
+
+                        <input type="number" name="largeur_piece"
+                               placeholder="Largeur" id="largeur_piece"></br>
+
+                        <input type="number" name="hauteur_piece"
+                               placeholder="Hauteur" id="hauteur_piece"></br>
+
+                        <input type="text" name="Type de piece"
+                               placeholder="Type de piece" id="Type_de_piece"></br>
+
 
                         <label for="emplacement"><p>Emplacement :</p></label>
-                        <input type="text" name="emplacement"></br>
+                        <input type="text" name="emplacement" id="emplacement" placeholder="Description de l'emplacement de la pièce"></br>
+
                         <label><p>Description :</p></label>
-                        <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
+                        <textarea class="commentaire" name="Description" id="Description" rows="4" cols="40"></textarea>
                         <input class="submit-button" name="valider-Piece" type="submit" value="Valider">
                         <input class="cancel-button" name="valider-Piece" type="submit" value="Annuler">
+                        <label Id="IdChampManquant" hidden="true"  >champ(s) manquant(s) </label>
                     </form>
                 </div>
             </div>
