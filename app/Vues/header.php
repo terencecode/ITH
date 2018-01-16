@@ -12,13 +12,13 @@
           <ul class="dropdown">
             <li class="header-link-dropdown"><a href="javascript:void(0);">Mon habitation</a></li>
               <div class="dropdown-content">
-                <a class="header-link-dropdown" href="editer">Éditer ma maison</a>
+                <a class="header-link-dropdown" href="editer">Éditer mon habitation</a>
                 <a class="header-link-dropdown" href="statistiques">Statistiques</a>
                 <a class="header-link-dropdown" href="tableau-de-bord">Tableau de bord</a>
               </div>
           </ul>
       </li>
-      <li class="header-link-dropdown-responsive"><a href="editer">Éditer ma maison</a></li>
+      <li class="header-link-dropdown-responsive"><a href="editer">Éditer mon habitation</a></li>
       <li class="header-link-dropdown-responsive"><a href="statistiques">Statistiques</a></li>
       <li class="header-link-dropdown-responsive"><a href="tableaudebord">Tableau de bord</a></li>
       <li class="right header-link"><a href="aide">Aide</a></li>
