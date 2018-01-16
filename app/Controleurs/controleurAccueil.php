@@ -11,7 +11,6 @@ class ControleurAccueil{
 
       $utilisateurs = new Utilisateurs;
       $donnees = $utilisateurs->chercherUtilisateurs();
-      
 
       $vue = new Vue('Accueil');
       $vue->generer($donnees);

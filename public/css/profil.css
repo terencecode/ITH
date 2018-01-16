@@ -1,0 +1,47 @@
+#form-container {
+    font-size: 13px;
+    margin: 0px 10px 0px 10px;
+    padding-bottom: 0;
+}
+
+form {
+    margin-top: 0;
+}
+
+.space {
+    height: 2em;
+}
+
+
+/*C'es dans Theme
+input:focus {
+    box-shadow: 0 0 5px rgba(152, 201, 163, 1);
+    border: 1px solid rgba(152, 201, 163, 1);
+}
+
+input::placeholder {
+    font-size: 11px;
+}
+
+input:focus::placeholder {
+    color: rgba(152, 201, 163, 1);
+}
+*/
+
+#body #background-image {
+    background: url("../images/photo-à-venir.jpg") no-repeat;
+    background-size: 100%;
+    padding: 0;
+    margin: 20px;
+    max-width: 200px;
+    min-width: 150px;
+    margin-top: 55px;
+}
+#body .row {
+    height: auto;
+}
+
+#mdp,#mdp2, #code {
+    width: 300px;
+}
+

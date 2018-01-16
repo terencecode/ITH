@@ -22,4 +22,5 @@ $(document).ready(function() {
     $('[class*="header-link"]').click(function() {
         $(this).children()[0].click();
     });
+
 });

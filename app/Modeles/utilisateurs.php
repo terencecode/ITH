@@ -27,7 +27,7 @@ class Utilisateurs extends Modele {
 }
 
   public function chercherUtilisateurs(){
-    $sql = "SELECT email_u, prenom_u, nom_u FROM utilisateur";
+    $sql = "SELECT email_u, prenom_u, nom_u, id_u FROM utilisateur";
     $resultatRequete = $this->executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
     return $resultatRequete;
   }
@@ -60,5 +60,6 @@ class Utilisateurs extends Modele {
     $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
   }
+
 
 }

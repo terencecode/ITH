@@ -37,7 +37,7 @@ $router->post('/editer', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageEditerMaMaison(); });
 $router->get('/deconnexion', function(){ $controleur = new ControleurAuthentification;
     $controleur->affichageDeconnexion(); });
-$router->get('/utilisateur', function(){ $controleur = new ControleurUtilisateur;
+$router->get('/:id', function($id){ $controleur = new ControleurUtilisateur;
     $controleur->affichageUtilisateur($id); });
 
 $router->run();

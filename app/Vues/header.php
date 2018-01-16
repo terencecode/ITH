@@ -1,5 +1,5 @@
-<script src="public/js/navbar.js"></script>
 <ul id="navigation" class="topNav">
+<script type="text/javascript" src="public/js/navbar.js"></script>
 
   <?php if (!empty($_SESSION['email'])): ?>
 

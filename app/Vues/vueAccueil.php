@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
-  <table id="myTable">
+  <table id="myTable" class="hover row-border stripe">
 
     <thead>
       <tr>
@@ -19,10 +19,10 @@
 
     <tbody>
       <?php foreach ($donnees as $key => $value): ?>
-          <tr>
-            <?php foreach ($value as $key => $donnees): ?>
-              <td><?php echo $donnees ?></td>
-            <?php endforeach; ?>
+          <tr onclick="window.location.href='http://localhost:8080/ITH/<?php echo $value['id_u'] ?>' ">
+            <td> <?php echo $value['email_u'] ?> </td>
+            <td> <?php echo $value['prenom_u'] ?> </td>
+            <td> <?php echo $value['nom_u'] ?> </td>
           </tr>
       <?php endforeach; ?>
     </tbody>
