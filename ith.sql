@@ -247,12 +247,14 @@ CREATE TABLE IF NOT EXISTS `piece` (
   `largeur_piece` smallint(11) NOT NULL,
   `hauteur_piece` smallint(11) NOT NULL,
   `id_gerant` int(11) NOT NULL,
+  `Emplacement` varchar(535) NOT NULL,
   PRIMARY KEY (`id_piece`),
   KEY `PIECE_GERANT_FK` (`id_gerant`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- DÃ©chargement des donnÃ©es de la table `piece`
+
 --
 
 INSERT INTO `piece` (`id_piece`, `type_piece`, `long_piece`, `largeur_piece`, `hauteur_piece`, `id_gerant`) VALUES

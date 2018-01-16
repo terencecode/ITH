@@ -27,29 +27,25 @@
                         <label for="dimensions"><p>Dimensions :</p></label>
                         <input type="number" name="long_piece"
                                placeholder="Longueur" id="long_piece" min="0" ></br>
-                        <span id="long_pieceErrorMessage" class="errorMessage"></span>
 
                         <input type="number" name="largeur_piece"
                                placeholder="Largeur" id="largeur_piece"></br>
-                        <span id="largeur_pieceErrorMessage" class="errorMessage" min="0"></span>
 
                         <input type="number" name="hauteur_piece"
                                placeholder="Hauteur" id="hauteur_piece"></br>
-                        <span id="hauteur_pieceErrorMessage" class="errorMessage" min="0"></span>
 
                         <input type="text" name="Type de piece"
                                placeholder="Type de piece" id="Type_de_piece"></br>
-                        <span id="type_pieceErrorMessage" class="errorMessage"></span>
 
 
                         <label for="emplacement"><p>Emplacement :</p></label>
-                        <input type="text" name="emplacement" id="emplacement" placeholder="Déscription de l'emplacement de la pièce"></br>
-                        <span id="emplacementErrorMessage" class="errorMessage"></span>
+                        <input type="text" name="emplacement" id="emplacement" placeholder="Description de l'emplacement de la pièce"></br>
+
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Description" id="Description" rows="4" cols="40"></textarea>
-                        <span id="emailErrorMessage" class="errorMessage"></span>
                         <input class="submit-button" name="valider-Piece" type="submit" value="Valider">
                         <input class="cancel-button" name="valider-Piece" type="submit" value="Annuler">
+                        <label Id="IdChampManquant" hidden="true"  >champ(s) manquant(s) </label>
                     </form>
                 </div>
             </div>
