@@ -25,10 +25,8 @@ $router->get('/enregistrement', function(){ $controleur = new ControleurAuthenti
     $controleur->affichageEnregistrement(); });
 $router->post('/enregistrement', function(){ $controleur = new ControleurAuthentification;
     $controleur->affichageEnregistrement(); });
-$router->get('/profil', function(){ if(isset($_SESSION['id_u'])) {
-    $controleur = new ControleurUtilisateur;
-    $controleur->affichageMonCompte($_SESSION['id_u']);
-}});
+$router->get('/profil', function(){ if(isset($_SESSION['id_u'])) { $controleur = new ControleurUtilisateur;
+    $controleur->affichageMonCompte($_SESSION['id_u']); }});
 $router->get('/statistiques', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageStatistiques(); });
 $router->get('/tableau-de-bord', function(){ $controleur = new ControleurMaMaison;
@@ -39,5 +37,7 @@ $router->post('/editer', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageEditerMaMaison(); });
 $router->get('/deconnexion', function(){ $controleur = new ControleurAuthentification;
     $controleur->affichageDeconnexion(); });
+$router->get('/utilisateur', function(){ $controleur = new ControleurUtilisateur;
+    $controleur->affichageUtilisateur($id); });
 
 $router->run();

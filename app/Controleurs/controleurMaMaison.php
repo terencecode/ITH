@@ -36,7 +36,6 @@ class ControleurMaMaison{
 
   public function affichageEditerMaMaison(){
 
-
       if (isset($_POST['valider-Capteur'])) {
 
           if (empty($_POST['capteur'])) {
@@ -58,12 +57,9 @@ class ControleurMaMaison{
           $utilisateur= new Utilisateurs();
           $valeurs[] = $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
 
-
           $capteur = new Capteurs();
           $valeurs[] = $capteur->chercher_id_piece($valeurs[4])[0];
           $capteur->enregistrerCapteur($valeurs);
-
-          header("Location: http://localhost:8080/ITH/accueil");
 
       }
       if ((isset($_POST['valider-Piece']))) {
@@ -79,8 +75,6 @@ class ControleurMaMaison{
 
           $piece = new Piece();
           $piece->enregistrerPiece($valeurs);
-
-          header("Location: http://localhost:8080/ITH/accueil");
 
       }
 

@@ -10,9 +10,18 @@ class ControleurUtilisateur {
       $utilisateur = new Utilisateurs();
       $donnees = $utilisateur->afficherCompte($id);
 
-      $vue = new Vue('Utilisateur');
+      $vue = new Vue('Profil');
       $vue->generer($donnees);
 
+  }
+
+  public function affichageUtilisateur($id)
+  {
+    $utilisateur = new Utilisateurs();
+    $donnees = $utilisateur->afficherCompte($id);
+
+    $vue = new Vue('Utilisateur');
+    $vue->generer($donnees);
   }
 
 }

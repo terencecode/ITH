@@ -11,14 +11,7 @@ class ControleurAccueil{
 
       $utilisateurs = new Utilisateurs;
       $donnees = $utilisateurs->chercherUtilisateurs();
-
-      $vue = new Vue('Accueil');
-      $vue->generer($donnees);
-
-    } elseif (isset($_SESSION['id']) && $_SESSION['id'] == 2) {
-
-      $utilisateurs = new Utilisateurs;
-      $donnees = $utilisateurs->chercherUtilisateurs();
+      
 
       $vue = new Vue('Accueil');
       $vue->generer($donnees);

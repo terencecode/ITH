@@ -2,6 +2,7 @@
 <?php $this->titre = "Accueil"; ?>
 <?php if (isset($_SESSION['id']) && $_SESSION['id'] == 1): ?>
 
+
   <!--DataTables -->
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
@@ -18,11 +19,11 @@
 
     <tbody>
       <?php foreach ($donnees as $key => $value): ?>
-        <tr>
-          <?php foreach ($value as $key => $donnees): ?>
-            <td><?php echo $donnees ?></td>
-          <?php endforeach; ?>
-        </tr>
+          <tr>
+            <?php foreach ($value as $key => $donnees): ?>
+              <td><?php echo $donnees ?></td>
+            <?php endforeach; ?>
+          </tr>
       <?php endforeach; ?>
     </tbody>
 
@@ -30,11 +31,11 @@
 
   <script type="text/javascript">
   $(document).ready( function () {
-      $('#myTable').DataTable({
-        paging: false,
-        info: false
-      });
-  } );
+    $('#myTable').DataTable({
+      paging: false,
+      info: false
+    });
+  });
   </script>
 
 <?php else: ?>

@@ -16,23 +16,18 @@ class ControleurAuthentification{
     //Sera remplacé par du js
     if(isset($_POST['valider'])){
 
-      if (empty($_POST['email'])) {
-        $this->erreur[] = "Veuillez saisir le Mail";
-      }
-      if (empty($_POST['passe'])) {
-        $this->erreur[] = "Veuillez saisir le Mot de Passe";
-      }
-
       $email = $_POST['email'];
       $passe = $_POST['passe'];
+
       $utilisateur = new Utilisateurs();
       $id_u = $utilisateur->chercherId($email)[0];
 
       $estUtilisateur = $utilisateur->chercherUtilisateur($id_u);
       //$estGardien = $utilisateur->chercherGardien($id_u);
       //$estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
-      $estAdmin = $utilisateur->chercherAdmin($id_u);
+      $estAdmin = $utilisateur->chercherAdmin($id_u)[0];
 
+      //die(var_dump($estAdmin));
 
       if ($estUtilisateur) {
           if ($estUtilisateur[1] == $passe) {
