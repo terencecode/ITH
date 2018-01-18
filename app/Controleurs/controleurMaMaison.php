@@ -18,13 +18,19 @@ class ControleurMaMaison{
 
   public function affichageTableauDeBord(){
 
-      $capteur = new Capteurs();
-      $etat = $capteur->afficherEtat();
+      $utilisateur= new Utilisateurs();
+      $id_gerant= $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
 
+      $capteur = new Capteurs();
+      $id_piece=$capteur->chercher_id_piece($id_gerant)[0];
+      $capteurs = $capteur->afficherEtat($id_piece);
+
+      $piece = new Piece();
+      $pieces=$piece->afficherPiece($id_gerant);
 
     if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
         $vue = new Vue('TableauDeBord');
-        $vue->generer(array('etat' => $etat));
+        $vue->generer(array('capteurs' => $capteurs, 'pieces'=>$pieces));
 
     } else {
       $vue = new Vue('404');
@@ -47,18 +53,23 @@ class ControleurMaMaison{
           }
 
 
+
           //On stock les valeurs de l'utilisateur pour les passer au modèle ensuite
           $valeurs = [];
-          $valeurs[] = $_POST['type_ca'];
-          $valeurs[] = $_POST['on_off'];
-          $valeurs[] = $_POST['fonction'];
-          $valeurs[] = $_POST['type_pieceC'];
+          $valeurs[0] = $_POST['type_ca'];
+          if (isset($_POST['on_off'])){
+              $valeurs[1] = 1;
+          }
+          else {
+              $valeurs[1]=0;
+          }
+          $valeurs[3] = $_POST['type_pieceC'];
 
           $utilisateur= new Utilisateurs();
-          $valeurs[] = $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
+          $valeurs[4] = $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
 
           $capteur = new Capteurs();
-          $valeurs[] = $capteur->chercher_id_piece($valeurs[4])[0];
+          $valeurs[5] = $capteur->chercher_id_piece($valeurs[4])[0];
           $capteur->enregistrerCapteur($valeurs);
 
       }

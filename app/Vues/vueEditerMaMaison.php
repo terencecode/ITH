@@ -34,14 +34,11 @@
                         <input type="number" name="hauteur_piece"
                                placeholder="Hauteur" id="hauteur_piece"></br>
 
-                        <input type="text" name="Type de piece"
+                        <label for="TYPE"><p>Type de pièce :</p></label>
+                        <input type="text" name="type_piece"
                                placeholder="Type de piece" id="Type_de_piece"></br>
 
-
-                        <label for="emplacement"><p>Emplacement :</p></label>
-                        <input type="text" name="emplacement" id="emplacement" placeholder="Description de l'emplacement de la pièce"></br>
-
-                        <label><p>Description :</p></label>
+                        <label><p>Emplacemnent :</p></label></br>
                         <textarea class="commentaire" name="Description" id="Description" rows="4" cols="40"></textarea>
                         <input class="submit-button" name="valider-Piece" type="submit" value="Valider">
                         <input class="cancel-button" name="valider-Piece" type="submit" value="Annuler">
@@ -58,8 +55,9 @@
                     <form action="" method="post">
                         <label for="type_capteur" id="Type"><p>Type de capteur :</p></label>
                         <input type="text" name="type_ca"></br>
-                        <label for="fonction_capteur" id="Fonction"><p>Fonction du capteur :</p></label>
-                        <input type="text" name="fonction"></br>
+
+
+
                         <label for="piece_capteur" id="Piece"><p>Pièce du capteur :</p></label>
 
                         <select name="type_pieceC">
@@ -70,11 +68,77 @@
                             <?php endforeach;?>
 
                         </select>
-                        <label for="etat_capteur" id="Etat"><p>Etat du capteur : ( 1 ou 0 ) </p></label>
-                        <select name="on_off">
-                            <option value=1>1</option>
-                            <option value=0>0</option>
-                        </select>
+                        <html>
+                        <head>
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <style>
+                                .switch {
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 60px;
+                                    height: 34px;
+                                }
+
+                                .switch input {display:none;}
+
+                                .slider {
+                                    position: absolute;
+                                    cursor: pointer;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    background-color: #ccc;
+                                    -webkit-transition: .4s;
+                                    transition: .4s;
+                                }
+
+                                .slider:before {
+                                    position: absolute;
+                                    content: "";
+                                    height: 26px;
+                                    width: 26px;
+                                    left: 4px;
+                                    bottom: 4px;
+                                    background-color: white;
+                                    -webkit-transition: .4s;
+                                    transition: .4s;
+                                }
+
+                                input:checked + .slider {
+                                    background-color: #2196F3;
+                                }
+
+                                input:focus + .slider {
+                                    box-shadow: 0 0 1px #2196F3;
+                                }
+
+                                input:checked + .slider:before {
+                                    -webkit-transform: translateX(26px);
+                                    -ms-transform: translateX(26px);
+                                    transform: translateX(26px);
+                                }
+
+                                /* Rounded sliders */
+                                .slider.round {
+                                    border-radius: 34px;
+                                }
+
+                                .slider.round:before {
+                                    border-radius: 50%;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                        <p>Etat du capteur : </p></br>
+
+                        <label class="switch">
+                            <input type="checkbox" name="on_off">
+                            <span class="slider round"></span>
+                        </label>
+                        </body>
+                        </html>
+
                         <label><p>Description :</p></label>
                         <textarea class="commentaire" name="Description" rows="4" cols="40"></textarea>
                         <input class="submit-button" name="valider-Capteur" type="submit" value="Valider">

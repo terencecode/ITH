@@ -6,21 +6,10 @@ require_once "Modeles/modele.php";
 class Capteurs extends Modele
 {
 
-    /*public function afficherCapteur($id_ca)
+    public function afficherEtat($id_piece)
     {
-
-        $sql = "SELECT id_ca FROM capteur WHERE id_ca = :id_ca";
-        $resultatRequete = $this->executerRequete($sql, array('capteur' => $id_ca))->fetch();
-
-        return $resultatRequete;
-
-    }*/
-
-    public function afficherEtat($type)
-    {
-            $sql = "SELECT power_state FROM capteur";
-            $resultatRequete = $this->executerRequete($sql)->fetch();
-
+        $sql = "SELECT type_Capteur FROM capteur WHERE id_piece=:id_piece";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
 
@@ -37,6 +26,7 @@ class Capteurs extends Modele
         $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetch();
         return $resultatRequete;
     }
+
 
 
 
