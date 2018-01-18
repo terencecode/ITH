@@ -24,6 +24,12 @@ class ControleurUtilisateur {
       $vue = new Vue('Utilisateur');
       $vue->generer(array('id' => $id));
 
+      if (isset($_POST['addHabitation'])) {
+
+        
+
+      }
+
     } else {
 
       $vue = new Vue('404');

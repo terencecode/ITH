@@ -18,6 +18,10 @@
 
 </table>
 
+<button type="button" name="addHabitation">Ajouter une habitation</button> <br>
+<button type="button" name="addAdmin">Ajouter en tant qu'admin</button>
+
+
 <script type="text/javascript">
 $(document).ready( function () {
   $('#myTable').DataTable({
