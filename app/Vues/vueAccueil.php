@@ -40,37 +40,40 @@
 
 <?php else: ?>
     <div id="body">
-        <div class="row pub">
-            <div id="background-image" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-        </div>
-        <div id="col-sm" class="row topspace">
-            <div id="espace" class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
-            <div id="form-container" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+        <div class="row">
+            <div id="pub" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                <img class="img_1" src="public/images/pexels-photo-186078.jpeg">
+            </div>
+    </div>
+        <div id="row_1" class="row topspace">
+            <div class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 content">
                 <h2>Qui sommes-nous ?</h2>
-                Domisep est une entreprise spécialisée dans la télésurveillance d'immeubles, grâce à la pose de systèmes d'alarme sans fil adaptés aux besoins des particuliers et une centrale d'alarme opérationnelle 24h/24. Domisep gère un parc de plusieurs milliers d’habitations dans plus d’une dizaine de pays en Europe.
+                <p>Domisep est une entreprise spécialisée dans la télésurveillance d'immeubles, grâce à la pose de systèmes d'alarme sans fil adaptés aux besoins des particuliers et une centrale d'alarme opérationnelle 24h/24. Domisep gère un parc de plusieurs milliers d’habitations dans plus d’une dizaine de pays en Europe.</p>
             </div>
-            <div id="espace" class="col-xs-hide col-sm-hide col-md-0 col-lg-0"></div>
-            <div id="form-container" class="col-xs- col-sm-12 col-md-4 col-lg-4">
+            <div class="col-xs-hide col-sm-hide col-md-0 col-lg-0"></div>
+            <div class="col-xs- col-sm-12 col-md-4 col-lg-4 content">
                 <h2>Ce que nous proposons</h2>
-                Domisep offrira à chacun de ses clients, la possibilité de se connecter en toute sécurité afin de :<br>
-                <ul class="pres">
-                    <li>
-                        Piloter son domicile : ouvertures et fermetures automatiques, mise en route et extinction d'équipements électroniques, etc.
-                    </li>
-                    <li>
-                        Protéger son domicile : détection d'intrusion, alarmes, détection de fuites, etc.
-                    </li>
-                    <li>
-                        Réduire ses factures de chauffage ou d'énergie : contrôle de température
-                    </li>
-                </ul>
+                <p>Domisep offrira à chacun de ses clients, la possibilité de se connecter en toute sécurité afin de :<br/>
+                    <ul class="pres">
+                        <li>
+                            Piloter son domicile : ouvertures et fermetures automatiques, mise en route et extinction d'équipements électroniques, etc.
+                        </li>
+                        <li>
+                            Protéger son domicile : détection d'intrusion, alarmes, détection de fuites, etc.
+                        </li>
+                        <li>
+                            Réduire ses factures de chauffage ou d'énergie : contrôle de température
+                        </li>
+                    </ul>
+                </p>
             </div>
-            <div id="espace" class="col-xs-hide col-sm-hide col-md-0 col-lg-0"></div>
-            <div id="form-container" class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="col-xs-hide col-sm-hide col-md-0 col-lg-0"></div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 content">
                 <h2>Pour quelle clientèle ?</h2>
-                Dans le cadre de son expansion et de la diversification de ses activités, Domisep souhaite proposer une gestion complète des habitations connectées (immeubles et maisons) pour les particuliers. Domisep souhaite, pour ce faire, rassembler toutes les technologies de l'informatique, des télécommunications et de l'électronique et les mettre au service de ses clients, grâce à un traitement optimisé des signaux et des informations.
+                <p>Dans le cadre de son expansion et de la diversification de ses activités, Domisep souhaite proposer une gestion complète des habitations connectées (immeubles et maisons) pour les particuliers. Domisep souhaite, pour ce faire, rassembler toutes les technologies de l'informatique, des télécommunications et de l'électronique et les mettre au service de ses clients, grâce à un traitement optimisé des signaux et des informations.</p>
             </div>
-            <div id="espace" class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
+            <div class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
         </div>
     </div>
 

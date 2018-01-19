@@ -1,24 +1,25 @@
 
-#body #background-image {
-    background: url("../../public/images/Accueil.jpg") no-repeat;
-    background-size: 100%;
-    padding: 0;
-    box-shadow: 3px 0px 15px #888888;
+.fond{
+    width: auto;
 }
 
 @media (max-width: 768px) {
-    [id*="col-sm"]{
-        display: block}
+    [id*="row_1"]{
+        display: block;
+    padding-top: 0}
 }
-
-#form-container{
+.img_1{
+    width: 100%;
+}
+/*.content{
     border:solid;
     border-radius: 15px;
     border-color: black;
-}
+}*/
 h2{
-    height: 65px;
+    height: auto;
     text-align: center;
+    padding-bottom: 15px;
 }
 
 .topspace{
@@ -29,14 +30,16 @@ h2{
 }
 
 
-.pub{
-    height: 90vh;
+#pub{
+    height: auto;
+    padding: 0;
 }
 
 p{
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
 .link-button{
     background-color: white;
 
