@@ -45,14 +45,14 @@
                 <img class="img_1" src="public/images/pexels-photo-186078.jpeg">
             </div>
     </div>
-        <div id="row_1" class="row topspace">
+        <div class="row topspace row_retour_ligne_s">
             <div class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 content">
                 <h2>Qui sommes-nous ?</h2>
                 <p>Domisep est une entreprise spécialisée dans la télésurveillance d'immeubles, grâce à la pose de systèmes d'alarme sans fil adaptés aux besoins des particuliers et une centrale d'alarme opérationnelle 24h/24. Domisep gère un parc de plusieurs milliers d’habitations dans plus d’une dizaine de pays en Europe.</p>
             </div>
             <div class="col-xs-hide col-sm-hide col-md-0 col-lg-0"></div>
-            <div class="col-xs- col-sm-12 col-md-4 col-lg-4 content">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content">
                 <h2>Ce que nous proposons</h2>
                 <p>Domisep offrira à chacun de ses clients, la possibilité de se connecter en toute sécurité afin de :<br/>
                     <ul class="pres">

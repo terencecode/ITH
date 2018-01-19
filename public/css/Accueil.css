@@ -3,11 +3,6 @@
     width: auto;
 }
 
-@media (max-width: 768px) {
-    [id*="row_1"]{
-        display: block;
-    padding-top: 0}
-}
 .img_1{
     width: 100%;
 }
