@@ -267,7 +267,7 @@
         Url = Url+"1";
 
         var date = document.getElementById("choix_date").value;
-        echo 'Le '.date('d/m/Y', choix_date).' &agrave; '.date('H:i:s', choix_date);
+       // echo 'Le '.date('d/m/Y', choix_date).' &agrave; '.date('H:i:s', choix_date);
 
 
 
@@ -346,7 +346,30 @@
 </script>
 <body>
 
+<form action="" method="post">
+    <label for="habitation"><p>Choix de l'habitation :</p></label>
+    <select name="habitation">
+        <?php foreach ($habitations as $key=>$value):?>
+            <?php foreach ($value as $key =>$value2):?>
+                <option value="<?php echo $value2 ?>"><?php echo $value2 ?>"</option>
+            <?php endforeach;?>
+        <?php endforeach;?>
 
+    </select>
+    <input class="submit-button" name="valider-Piece" type="submit" value="Go!">
+</form></br>
+<form action="" method="post">
+    <label for="habitation"><p>Choix de la pièce :</p></label>
+    <select name="habitation">
+        <?php foreach ($habitations as $key=>$value):?>
+            <?php foreach ($value as $key =>$value2):?>
+                <option value="<?php echo $value2 ?>"><?php echo $value2 ?>"</option>
+            <?php endforeach;?>
+        <?php endforeach;?>
+
+    </select>
+    <input class="submit-button" name="valider-Piece" type="submit" value="Go!">
+</form></br>
 
 <div class="container">
     <div class="row">
@@ -384,21 +407,35 @@
 
 
                         <ul id="menu-demo2">
-                            <li><a href="#">CO2</a>
-                                <ul>
-                                    <li><a href="#" onclick= "elecStat() >Cycle Journaliers</a></li>
-         <li><a href="#">Cycle hebdomadaire</a></li>
-                                    <li><a href="#">Cycle Annuel</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Temperature</a>
+                                    <li><a href="#">Temperature</a>
                                 <ul>
                                     <li><a href="#"  id="temp_journalier"  onclick= "TempStat(this.id)">Cycle Journaliers</a></li>
                                     <li><a href="#">Cycle hebdomadaire</a></li>
                                     <li><a href="#">Cycle Annuel</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Ensoleillement</a>
+                            <li><a href="#">Humidité</a>
+                                <ul>
+                                    <li><a href="#">Cycle Journaliers</a></li>
+                                    <li><a href="#">Cycle hebdomadaire</a></li>
+                                    <li><a href="#">Cycle Annuel</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">CO2</a>
+                                <ul>
+                                    <li><a href="#">Cycle Journaliers</a></li>
+                                    <li><a href="#">Cycle hebdomadaire</a></li>
+                                    <li><a href="#">Cycle Annuel</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">luminosité</a>
+                                <ul>
+                                    <li><a href="#">Cycle Journaliers</a></li>
+                                    <li><a href="#">Cycle hebdomadaire</a></li>
+                                    <li><a href="#">Cycle Annuel</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Fumée</a>
                                 <ul>
                                     <li><a href="#">Cycle Journaliers</a></li>
                                     <li><a href="#">Cycle hebdomadaire</a></li>

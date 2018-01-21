@@ -14,7 +14,7 @@
             <h2>Posez nous votre question :</h2>
             <form action="#" method="post">
                 <textarea name="Question" rows="4" cols="40"></textarea>
-                <input type="button" name="Envoyer">
+                <input type="submit" name="Envoyer">
             </form>
         </div>
     </div>
