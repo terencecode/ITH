@@ -4,6 +4,12 @@
     padding-bottom: 0;
 }
 
+#valid{
+    display: block;
+}
+.img_1{
+    max-width: 346px;
+}
 form {
     margin-top: 0;
 }
@@ -12,6 +18,17 @@ form {
     height: 2em;
 }
 
+.formulaire{
+    padding: 0 0 10px 0;
+}
+
+.no_padding_bottom{
+    padding-bottom: 0;
+}
+
+.no_padding_top{
+    padding-top: 0;
+}
 
 /*C'es dans Theme
 input:focus {
@@ -40,8 +57,8 @@ input:focus::placeholder {
 #body .row {
     height: auto;
 }
-
-#mdp,#mdp2, #code {
-    width: 300px;
+input{
+    width: 100%;
 }
+
 

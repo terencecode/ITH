@@ -1,28 +1,40 @@
 
-#body #background-image {
-    margin: 0.5%;
-    background: url("../images/Capteur_infrarouge.png") no-repeat;
-    background-size:auto;
+.fond{
+    width: auto;
 }
 
+.img_1{
+    width: 100%;
+}
+/*.content{
+    border:solid;
+    border-radius: 15px;
+    border-color: black;
+}*/
 h2{
-    height: 100px;
+    height: auto;
     text-align: center;
+    padding-bottom: 15px;
 }
 
+.topspace{
+    padding-top: 20px;
+}
 .pres{
     padding-left: 30px;
 }
 
 
-.pub{
+#pub{
     height: auto;
+    padding: 0;
 }
 
 p{
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
 .link-button{
     background-color: white;
 

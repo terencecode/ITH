@@ -6,21 +6,10 @@ require_once "Modeles/modele.php";
 class Capteurs extends Modele
 {
 
-    /*public function afficherCapteur($id_ca)
+    public function afficherEtat($id_piece)
     {
-
-        $sql = "SELECT id_ca FROM capteur WHERE id_ca = :id_ca";
-        $resultatRequete = $this->executerRequete($sql, array('capteur' => $id_ca))->fetch();
-
-        return $resultatRequete;
-
-    }*/
-
-    public function afficherEtat($type)
-    {
-            $sql = "SELECT power_state FROM capteur";
-            $resultatRequete = $this->executerRequete($sql)->fetch();
-
+        $sql = "SELECT type_Capteur FROM capteur WHERE id_piece=:id_piece";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
 
@@ -31,14 +20,33 @@ class Capteurs extends Modele
         return $resultatRequete;
     }
 
-    public function chercher_id_piece($id_gerant)
+    public function chercher_id_piece($type_piece)
     {
-        $sql = "SELECT id_piece FROM piece WHERE id_gerant = :id_gerant ";
-        $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetch();
+        $sql = "SELECT id_piece FROM piece WHERE type_piece=:type_piece ";
+        $resultatRequete = $this->executerRequete($sql, array('type_piece' => $type_piece))->fetchAll(PDO::FETCH_ASSOC);
+        return $resultatRequete;
+    }
+    public function chercher_id_pieceG($id_gerant)
+    {
+        $sql = "SELECT id_piece FROM piece WHERE id_gerant=:id_gerant ";
+        $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
 
 
+    public function supprimer_capteur($type_capteur)
+    {
+        $sql = "DELETE FROM capteur WHERE type_capteur=:type_capteur ";
+        $resultatRequete = $this->executerRequete($sql, array('type_capteur' => $type_capteur));
+        return $resultatRequete;
+    }
+
+    public function supprimer_capteur_piece($id_piece)
+    {
+        $sql = "DELETE FROM capteur WHERE id_piece=:id_piece ";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece));
+        return $resultatRequete;
+    }
 
 }
 ?>
