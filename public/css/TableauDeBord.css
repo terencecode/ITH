@@ -6,6 +6,9 @@
     height: 1129px;
 }
 
+.button{
+    width: 200px;
+}
 .switch {
     position: relative;
     display: inline-block;

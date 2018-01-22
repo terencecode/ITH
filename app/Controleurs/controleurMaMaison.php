@@ -22,34 +22,8 @@ class ControleurMaMaison{
         $id_gerant= $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
 
 
-
-
-      $capteur= new Capteurs();
-      $id_piece=$capteur->chercher_id_pieceG($id_gerant);
-
-
-      /*$liste=[];
-      for ($i=0;$i<sizeof($id_piece);$i++)
-      {
-          $liste[] = $id_piece[$i];
-      }*/
-
-      $capteurs=[];
-      $capteur = new Capteurs();
-      foreach ($id_piece as $key=> $value):
-          $capteurs[]=$capteur->afficherEtat($value['id_piece']);
-      endforeach;
-
-
       $capteur=new Capteurs();
-      foreach($id_piece as $key=>$value):
-        $tableauCapPiece=$capteur->joinCapteurPiece($value['id_piece']);
-      endforeach;
-      //die(var_dump($tableauCapPiece));
-
-
-
-
+      $tableauCapPiece=$capteur->joinCapteurPiece($id_gerant);
 
 
 
@@ -123,9 +97,13 @@ class ControleurMaMaison{
               $this->erreur[] = "Veuillez saisir le nom du capteur à supprimer";
           }
           $SupprC = [];
-          $SupprC[]=$_POST['Suppcapteur'];
+          $SupprC[0]=$_POST['Suppcapteur'];
+          $SupprC[1]=$_POST['Supp-piece'];
+
           $capteur=new Capteurs();
-          $capteur->supprimer_capteur($SupprC[0]);
+          $id_piece=$capteur->chercher_id_piece($SupprC[1]);
+          $capteur->supprimer_capteur($id_piece[0]['id_piece'],$SupprC[0]);
+
       }
       if((isset($_POST['Supprimer_piece'])))
       {
@@ -133,24 +111,16 @@ class ControleurMaMaison{
               $this->erreur[] = "Veuillez saisir le nom de la pièce dans laquelle vous souhaitez supprimer des capteurs";
           }
           $SupprP = [];
-          $SupprP[]=$_POST['Supprimer_piece'];
+          $SupprP[0]=$_POST['Supprimer_piece'];
+
+          $capteur=new Capteurs();
+          $id_piece=$capteur->chercher_id_piece($SupprP[0]);
+          $capteur->supprimer_capteur_piece($id_piece[0]['id_piece']);
+
           $piece=new Piece();
           $piece->supprimer_piece($SupprP[0]);
-
-          $capteur=new Capteurs();
-          $id_piece=$capteur->chercher_id_piece($SupprP[0])[0];
-          $capteur=new Capteurs();
-          $capteur->supprimer_capteur_piece($id_piece);
       }
 
-      if((isset($_POST['supp-piece2'])))
-      {
-          $id_piece2=$_POST['Supp-piece'];
-          $capteur=new Capteurs();
-          $id_piece=$capteur->chercher_id_piece($id_piece2)[0];
-          $capteur=new Capteurs();
-          $capteurs=$capteur->afficherEtat($id_piece)[0];
-      }
 
       $utilisateur= new Utilisateurs();
       $id_gerant= $utilisateur->chercherIdGerant($_SESSION['id_u'])[0];
@@ -158,13 +128,6 @@ class ControleurMaMaison{
       $capteur = new Capteurs();
       $id_piece=$capteur->chercher_id_pieceG($id_gerant);
 
-
-      /*$liste=[];
-      for ($i=0;$i<sizeof($id_piece);$i++)
-                  {
-                      $liste[] = $id_piece[$i];
-                  }
-        */
       $capteurs=[];
       $capteur = new Capteurs();
       foreach ($id_piece as $key=> $value):
@@ -185,6 +148,7 @@ class ControleurMaMaison{
 
       if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
           $vue = new Vue('EditerMaMaison');
+          //die(var_dump($capteurs));
           $vue->generer(array('pieces'=>$pieces, 'capteurs'=>$capteurs,'habitations'=>$habitations));
       } else {
           $vue = new Vue('404');

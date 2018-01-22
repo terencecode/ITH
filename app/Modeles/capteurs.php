@@ -13,10 +13,10 @@ class Capteurs extends Modele
         return $resultatRequete;
     }
 
-    public function joinCapteurPiece($id_piece)
+    public function joinCapteurPiece($id_gerant)
     {
-        $sql = "SELECT * FROM capteur JOIN piece ON capteur.id_piece=piece.id_piece";
-        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece))->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM capteur JOIN piece ON capteur.id_piece=piece.id_piece WHERE piece.id_gerant=:id_gerant";
+        $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
 
@@ -41,10 +41,10 @@ class Capteurs extends Modele
     }
 
 
-    public function supprimer_capteur($type_capteur)
+    public function supprimer_capteur($id_piece, $type_Capteur)
     {
-        $sql = "DELETE FROM capteur WHERE type_capteur=:type_capteur ";
-        $resultatRequete = $this->executerRequete($sql, array('type_capteur' => $type_capteur));
+        $sql = "DELETE FROM capteur WHERE id_piece=:id_piece AND type_Capteur=:type_Capteur";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece'=>$id_piece,'type_Capteur' => $type_Capteur));
         return $resultatRequete;
     }
 

@@ -19,8 +19,14 @@
                     <tr>
                         <td bgcolor="#98C9A3" style="width:100px;"><?php echo $value['type_Capteur'] ?></td>
                         <td bgcolor="#98C9A3" style="width:100px;"><?php echo $value['type_piece'] ?></td>
-                        <td bgcolor="#98C9A3" style="width:100px;"><?php if($value['power_state']==1){ echo $value['power_state'];}?>
-                        <?php if($value['power_state']==0){ echo $value['power_state'];}?></td>
+                        <td bgcolor="#98C9A3" style="width:100px;"><?php if($value['power_state']==1): ?><label class="switch">
+                                <input type="checkbox" name="on_off" checked>
+                                <span class="slider round"></span>
+                            </label><?php endif;?>
+                        <?php if($value['power_state']==0):?><label class="switch">
+                            <input type="checkbox" name="on_off">
+                            <span class="slider round"></span>
+                        </label><?php endif;?></td>
                     </tr>
             <?php endforeach;?>
             </tbody>

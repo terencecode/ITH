@@ -95,7 +95,7 @@
                         </select>
 
                         <body>
-                        <p>Etat du capteur : </p></br>
+                        <p>État du capteur : </p></br>
 
                         <label class="switch">
                             <input type="checkbox" name="on_off">
@@ -104,7 +104,7 @@
                         </body>
                         </html>
 
-                        <label><p>Nom de votre capteur (différent des autres) :</p></label>
+                        <label><p>Nom de votre capteur :</p></label>
                         <input type="text" name="Nom_capteur"></br>
                         <input class="submit-button" name="valider-Capteur" type="submit" value="Valider">
                         <input class="cancel-button" name="Annuler" type="submit" value="Annuler">
@@ -156,17 +156,15 @@
                                 <?php endforeach;?>
                             <?php endforeach;?>
                         </select>
-                        <input class="submit-button" name="supp-piece2" type="submit" value="Selectionner">
+
                         <label for="piece_capteur" id="Piece"><p>Capteur à supprimer :</p></label>
                         <select name="Suppcapteur">
                             <?php foreach ($capteurs as $key=>$value):?>
                                 <?php foreach ($value as $key =>$value2):?>
-                                    <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
+                                    <option value="<?php echo $value2['type_Capteur'] ?>"><?php echo $value2['type_Capteur'] ?></option>
                                 <?php endforeach;?>
                             <?php endforeach;?>
                         </select>
-
-
                         <input class="submit-button" name="Supprimer_capteur" type="submit" value="Valider">
                         <input class="cancel-button" name="Supprimer_capteur" type="submit" value="Annuler">
                         <label Id="IdChampManquant" hidden="true"  >champ(s) manquant(s) </label>
