@@ -28,21 +28,21 @@ class ControleurMaMaison{
       $id_piece=$capteur->chercher_id_pieceG($id_gerant);
 
 
-      $liste=[];
-      for ($i=0;$i<sizeof($id_piece)+1;$i++)
+      /*$liste=[];
+      for ($i=0;$i<sizeof($id_piece);$i++)
       {
           $liste[] = $id_piece[$i];
-      }
+      }*/
 
       $capteurs=[];
       $capteur = new Capteurs();
-      foreach ($liste as $key=> $value):
+      foreach ($id_piece as $key=> $value):
           $capteurs[]=$capteur->afficherEtat($value['id_piece']);
       endforeach;
 
 
       $capteur=new Capteurs();
-      foreach($liste as $key=>$value):
+      foreach($id_piece as $key=>$value):
         $tableauCapPiece=$capteur->joinCapteurPiece($value['id_piece']);
       endforeach;
       //die(var_dump($tableauCapPiece));
@@ -159,15 +159,15 @@ class ControleurMaMaison{
       $id_piece=$capteur->chercher_id_pieceG($id_gerant);
 
 
-      $liste=[];
-      for ($i=0;$i<sizeof($id_piece)+1;$i++)
+      /*$liste=[];
+      for ($i=0;$i<sizeof($id_piece);$i++)
                   {
                       $liste[] = $id_piece[$i];
                   }
-
+        */
       $capteurs=[];
       $capteur = new Capteurs();
-      foreach ($liste as $key=> $value):
+      foreach ($id_piece as $key=> $value):
         $capteurs[]=$capteur->afficherEtat($value['id_piece']);
       endforeach;
 
