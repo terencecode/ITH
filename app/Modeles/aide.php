@@ -5,9 +5,9 @@
  * Date: 21/01/2018
  * Time: 14:24
  */
-equire_once "Modeles/modele.php";
+require_once "Modeles/modele.php";
 
-class FAQ extends Modele
+class aide extends Modele
 {
 
 
