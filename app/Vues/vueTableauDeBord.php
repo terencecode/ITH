@@ -25,6 +25,8 @@
             <?php endforeach;?>
             </tbody>
         </table>
+        </br>
+        <button class="button" type="button" id="Gestion">Gestion</button>
     </div>
 </div>
 

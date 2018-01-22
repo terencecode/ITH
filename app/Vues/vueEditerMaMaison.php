@@ -30,8 +30,7 @@
             <button class="button" type="button" id="button_piece2">Supprimer une pièce</button>
             </br>
             <button class="button" type="button" id="button_capteur2">Supprimer un capteur</button>
-            </br>
-            <button class="button" type="button" id="Gestion">Gestion</button>
+
 
 
 
