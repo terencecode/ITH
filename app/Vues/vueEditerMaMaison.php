@@ -1,6 +1,5 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Editer Ma Maison"; ?>
-<script src="public/js/EditerMaMaison.js"></script>
 
 <div id="body">
     <div class="row">
