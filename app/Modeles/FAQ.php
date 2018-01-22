@@ -7,17 +7,16 @@
  */
 equire_once "Modeles/modele.php";
 
-class FAQ extends FAQ
+class FAQ extends Modele
 {
 
 
-    public function enregistrerQuestion($valeurs)
+    public function enregistrerQuestion($enregistrerQuestion)
     {
-        $sql = "INSERT INTO question (question) VALUES ('$valeurs[0]',)";
+        $sql = "INSERT INTO question (question) VALUES ('$enregistrerQuestion[0]')";
         $resultatrequete = $this->executerRequete($sql);
         return $resultatrequete;
     }
 
 }
-
 ?>

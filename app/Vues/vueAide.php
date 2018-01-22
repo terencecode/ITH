@@ -13,8 +13,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h2>Posez nous votre question :</h2>
             <form action="#" method="post">
-                <textarea name="Question" rows="4" cols="40"></textarea>
-                <input type="submit" name="Envoyer">
+                <textarea id="enregistrerQuestion" name="Question" rows="4" cols="40"></textarea>
+                <input class="submit-button" name="enregistrerQuestion" type="submit" value="Valider">
             </form>
         </div>
     </div>

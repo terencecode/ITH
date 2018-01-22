@@ -3,7 +3,7 @@
     padding:0;
     margin:0;
     list-style:none;
-    text-align:center;
+    /*text-align:center;*/
 }
 #menu-demo2 li{
     display:inline-block;
