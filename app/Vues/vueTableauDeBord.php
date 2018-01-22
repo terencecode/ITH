@@ -15,18 +15,16 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($capteurs as $key=>$value):?>
-                <?php foreach ($value as $key =>$value2):?>
+            <?php foreach ($tableauCapPiece as $key=>$value):?>
                     <tr>
-                        <td bgcolor="#98C9A3" style="width:100px;"><?php echo $value2 ?></td>
-                        <td bgcolor="#98C9A3" style="width:100px;"><?php echo $pieces ?></td>
-
+                        <td bgcolor="#98C9A3" style="width:100px;"><?php echo $value['type_Capteur'] ?></td>
+                        <td bgcolor="#98C9A3" style="width:100px;"><?php echo $value['type_piece'] ?></td>
+                        <td bgcolor="#98C9A3" style="width:100px;"><?php if($value['power_state']==1){ echo $value['power_state'];}?>
+                        <?php if($value['power_state']==0){ echo $value['power_state'];}?></td>
                     </tr>
-                <?php endforeach;?>
             <?php endforeach;?>
             </tbody>
         </table>
-
     </div>
 </div>
 

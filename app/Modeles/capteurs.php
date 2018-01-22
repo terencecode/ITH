@@ -8,7 +8,14 @@ class Capteurs extends Modele
 
     public function afficherEtat($id_piece)
     {
-        $sql = "SELECT type_Capteur FROM capteur WHERE id_piece=:id_piece";
+        $sql = "SELECT * FROM capteur WHERE id_piece=:id_piece";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece))->fetchAll(PDO::FETCH_ASSOC);
+        return $resultatRequete;
+    }
+
+    public function joinCapteurPiece($id_piece)
+    {
+        $sql = "SELECT * FROM capteur JOIN piece ON capteur.id_piece=piece.id_piece";
         $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
@@ -22,7 +29,7 @@ class Capteurs extends Modele
 
     public function chercher_id_piece($type_piece)
     {
-        $sql = "SELECT id_piece FROM piece WHERE type_piece=:type_piece ";
+        $sql = "SELECT id_piece FROM piece WHERE type_piece=:type_piece";
         $resultatRequete = $this->executerRequete($sql, array('type_piece' => $type_piece))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
