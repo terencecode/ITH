@@ -29,7 +29,7 @@ class ControleurMaMaison{
 
 
       $liste=[];
-      for ($i=0;$i<2;$i++)
+      for ($i=0;$i<sizeof($id_piece);$i++)
       {
           $liste[] = $id_piece[$i];
       }
@@ -160,7 +160,7 @@ class ControleurMaMaison{
 
 
       $liste=[];
-      for ($i=0;$i<2;$i++)
+      for ($i=0;$i<sizeof($id_piece);$i++)
                   {
                       $liste[] = $id_piece[$i];
                   }
