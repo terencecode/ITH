@@ -39,5 +39,7 @@ $router->get('/deconnexion', function(){ $controleur = new ControleurAuthentific
     $controleur->affichageDeconnexion(); });
 $router->get('/:id', function($id){ $controleur = new ControleurUtilisateur;
     $controleur->affichageUtilisateur($id); });
+$router->post('/:id', function($id){ $controleur = new ControleurUtilisateur;
+    $controleur->affichageUtilisateur($id); });
 
 $router->run();

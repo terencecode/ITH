@@ -24,7 +24,13 @@ class Utilisateurs extends Modele {
     $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
     return $resultatRequete;
 
-}
+  }
+
+  public function ajouterAdmin($id){
+    $sql = "UPDATE gerant SET admin = '1' WHERE id_u = :id";
+    $resultatRequete = $this->executerRequete($sql, array('id' => $id ));
+    return $resultatRequete;
+  }
 
   public function chercherUtilisateurs(){
     $sql = "SELECT email_u, prenom_u, nom_u, id_u FROM utilisateur";
@@ -38,6 +44,12 @@ class Utilisateurs extends Modele {
       $resultatrequete = $this->executerRequete($sql);
       return $resultatrequete;
 
+  }
+
+  public function chercherNomPrenom($id){
+    $sql = "SELECT prenom_u, nom_u FROM utilisateur WHERE id_u = :id";
+    $resultatRequete = $this->executerRequete($sql, array('id' => $id ))->fetch(PDO::FETCH_ASSOC);
+    return $resultatRequete;
   }
 
   public function enregistrerGerant($id_u){
