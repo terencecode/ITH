@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 23 jan. 2018 à 15:22
+-- Généré le :  mar. 23 jan. 2018 à 15:55
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -70,20 +70,6 @@ CREATE TABLE IF NOT EXISTS `co2` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `timestamp_co2` (`timestamp`),
   KEY `CO2_CAPTEUR_FK` (`id_ca`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `employe_municipal`
---
-
-DROP TABLE IF EXISTS `employe_municipal`;
-CREATE TABLE IF NOT EXISTS `employe_municipal` (
-  `id_u` int(11) NOT NULL,
-  `id_ville` int(11) NOT NULL,
-  PRIMARY KEY (`id_u`) USING BTREE,
-  KEY `EMPLOYE_MUNICIPAL_VILLE_FK` (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -259,9 +245,7 @@ DROP TABLE IF EXISTS `quartier`;
 CREATE TABLE IF NOT EXISTS `quartier` (
   `id_quartier` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
-  `id_ville` int(11) NOT NULL,
-  PRIMARY KEY (`id_quartier`),
-  KEY `QUARTIER_VILLE_FK` (`id_ville`)
+  PRIMARY KEY (`id_quartier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -325,19 +309,6 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`id_u`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `ville`
---
-
-DROP TABLE IF EXISTS `ville`;
-CREATE TABLE IF NOT EXISTS `ville` (
-  `id_ville` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_ville`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Contraintes pour les tables déchargées
 --
@@ -360,13 +331,6 @@ ALTER TABLE `capteur`
 --
 ALTER TABLE `co2`
   ADD CONSTRAINT `CO2_CAPTEUR_FK` FOREIGN KEY (`id_ca`) REFERENCES `capteur` (`id_ca`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `employe_municipal`
---
-ALTER TABLE `employe_municipal`
-  ADD CONSTRAINT `EMPLOYE_MUNICIPAL_UTILISATEUR_FK` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`id_u`) ON DELETE CASCADE,
-  ADD CONSTRAINT `EMPLOYE_MUNICIPAL_VILLE_FK` FOREIGN KEY (`id_ville`) REFERENCES `ville` (`id_ville`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `fumee`
@@ -426,10 +390,10 @@ ALTER TABLE `presence`
   ADD CONSTRAINT `PRESENCE_CAPTEUR_FK` FOREIGN KEY (`id_ca`) REFERENCES `capteur` (`id_ca`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `quartier`
+-- Contraintes pour la table `reponse`
 --
-ALTER TABLE `quartier`
-  ADD CONSTRAINT `QUARTIER_VILLE_FK` FOREIGN KEY (`id_ville`) REFERENCES `ville` (`id_ville`) ON DELETE CASCADE;
+ALTER TABLE `reponse`
+  ADD CONSTRAINT `id_question` FOREIGN KEY (`id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `temperature`
