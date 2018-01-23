@@ -8,19 +8,28 @@
   <?php echo $value; ?>
 <?php endforeach; ?></h1>
 
-<!--
+<h3>Habitations:</h3>
+
 <table id="myTable" class="hover row-border stripe">
 
   <thead>
-
+    <td>Ville</td>
+    <td>Pays</td>
+    <td>Rue</td>
   </thead>
 
   <tbody>
-
+    <?php foreach ($donnees_habitation as $key => $value): ?>
+      <tr>
+        <?php foreach ($value as $key => $valeurs): ?>
+          <td><?php echo $valeurs ?></td>
+        <?php endforeach; ?>
+      </tr>
+    <?php endforeach; ?>
   </tbody>
 
 </table>
--->
+
 
 <form class="user" action="" method="post">
   <input type="submit" name="addAdmin" value="Ajouter en tant qu'admin">

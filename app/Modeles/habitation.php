@@ -20,4 +20,15 @@ class Habitation extends Modele
     return $resultatRequete;
   }
 
+  public function chercherDonneesHabitation($id_u)
+  {
+    $sql = "SELECT habitation.ville, habitation.pays_habitation, habitation.rue_habitation
+    FROM habitation
+    JOIN gerant ON habitation.id_habitation = gerant.id_habitation
+    JOIN utilisateur ON gerant.id_u = utilisateur.id_u
+    WHERE utilisateur.id_u = :id_u";
+    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetchAll(PDO::FETCH_ASSOC);
+    return $resultatRequete;
+  }
+
 }

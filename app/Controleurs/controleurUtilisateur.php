@@ -53,8 +53,11 @@ class ControleurUtilisateur {
 
       }
 
+      $habitation = new Habitation();
+      $donnees_habitation = $habitation->chercherDonneesHabitation($id);
+
       $vue = new Vue('Utilisateur');
-      $vue->generer(array('id' => $id, 'donnees' => $donnees));
+      $vue->generer(array('donnees' => $donnees, 'donnees_habitation' => $donnees_habitation));
 
     } else {
 

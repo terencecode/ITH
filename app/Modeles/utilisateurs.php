@@ -27,8 +27,8 @@ class Utilisateurs extends Modele {
   }
 
   public function ajouterAdmin($id){
-    $sql = "UPDATE gerant SET admin = '1' WHERE id_u = :id";
-    $resultatRequete = $this->executerRequete($sql, array('id' => $id ));
+    $sql = "INSERT INTO gerant (admin, id_u) VALUES (1, $id)";
+    $resultatRequete = $this->executerRequete($sql);
     return $resultatRequete;
   }
 
