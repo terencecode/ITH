@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 23 jan. 2018 à 15:55
+-- Généré le :  mar. 23 jan. 2018 à 17:26
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ith2`
+-- Base de données :  `ith`
 --
 
 -- --------------------------------------------------------
@@ -48,12 +48,18 @@ DROP TABLE IF EXISTS `capteur`;
 CREATE TABLE IF NOT EXISTS `capteur` (
   `id_ca` int(11) NOT NULL AUTO_INCREMENT,
   `type_Capteur` varchar(60) NOT NULL,
-  `nom_Capteur` varchar(64) NOT NULL,
   `power_state` tinyint(1) NOT NULL,
   `id_piece` int(11) NOT NULL,
   PRIMARY KEY (`id_ca`),
   KEY `CAPTEUR_PIECE_FK` (`id_piece`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `capteur`
+--
+
+INSERT INTO `capteur` (`id_ca`, `type_Capteur`, `power_state`, `id_piece`) VALUES
+(5, 'Temperature', 1, 11);
 
 -- --------------------------------------------------------
 
@@ -65,11 +71,25 @@ DROP TABLE IF EXISTS `co2`;
 CREATE TABLE IF NOT EXISTS `co2` (
   `id` int(11) NOT NULL,
   `id_ca` int(11) NOT NULL,
-  `valeur` tinyint(4) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `taux_CO2` tinyint(4) NOT NULL,
+  `timestamp_co2` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_co2` (`timestamp`),
+  UNIQUE KEY `timestamp_co2` (`timestamp_co2`),
   KEY `CO2_CAPTEUR_FK` (`id_ca`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `employe_municipal`
+--
+
+DROP TABLE IF EXISTS `employe_municipal`;
+CREATE TABLE IF NOT EXISTS `employe_municipal` (
+  `id_u` int(11) NOT NULL,
+  `id_ville` int(11) NOT NULL,
+  PRIMARY KEY (`id_u`) USING BTREE,
+  KEY `EMPLOYE_MUNICIPAL_VILLE_FK` (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,10 +102,10 @@ DROP TABLE IF EXISTS `fumee`;
 CREATE TABLE IF NOT EXISTS `fumee` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `valeur` tinyint(1) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `fumee` tinyint(1) NOT NULL,
+  `timestamp_fumee` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_fumee` (`timestamp`),
+  UNIQUE KEY `timestamp_fumee` (`timestamp_fumee`),
   KEY `FUMEE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -116,7 +136,14 @@ CREATE TABLE IF NOT EXISTS `gerant` (
   PRIMARY KEY (`id_gerant`),
   KEY `GERANT_HABITATION_FK` (`id_habitation`),
   KEY `GERANT_UTILISATEUR_FK` (`id_u`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `gerant`
+--
+
+INSERT INTO `gerant` (`id_gerant`, `admin`, `id_habitation`, `id_u`) VALUES
+(1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -132,7 +159,15 @@ CREATE TABLE IF NOT EXISTS `habitation` (
   `rue_habitation` varchar(150) NOT NULL,
   `sup_habitation` smallint(6) NOT NULL,
   PRIMARY KEY (`id_habitation`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `habitation`
+--
+
+INSERT INTO `habitation` (`id_habitation`, `pays_habitation`, `num_rue_habitation`, `rue_habitation`, `sup_habitation`) VALUES
+(1, 'france', 8, 'marguerite', 21),
+(2, 'france', 12, 'marguerite', 25);
 
 -- --------------------------------------------------------
 
@@ -144,10 +179,10 @@ DROP TABLE IF EXISTS `humidite`;
 CREATE TABLE IF NOT EXISTS `humidite` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `valeur` tinyint(4) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `taux_humidite` tinyint(4) NOT NULL,
+  `timestamp_humidite` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_humidite` (`timestamp`),
+  UNIQUE KEY `timestamp_humidite` (`timestamp_humidite`),
   KEY `HUMIDITE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -177,10 +212,10 @@ DROP TABLE IF EXISTS `luminosite`;
 CREATE TABLE IF NOT EXISTS `luminosite` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `valeur` tinyint(4) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `taux_luminosite` tinyint(4) NOT NULL,
+  `timestamp_luminosite` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_luminosite` (`timestamp`),
+  UNIQUE KEY `timestamp_luminosite` (`timestamp_luminosite`),
   KEY `LUMINOSITE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -213,10 +248,18 @@ CREATE TABLE IF NOT EXISTS `piece` (
   `largeur_piece` smallint(11) NOT NULL,
   `hauteur_piece` smallint(11) NOT NULL,
   `id_gerant` int(11) NOT NULL,
-  `emplacement` varchar(535) NOT NULL,
+  `emplacement` varchar(535) DEFAULT NULL,
   PRIMARY KEY (`id_piece`),
   KEY `PIECE_GERANT_FK` (`id_gerant`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `piece`
+--
+
+INSERT INTO `piece` (`id_piece`, `type_piece`, `long_piece`, `largeur_piece`, `hauteur_piece`, `id_gerant`, `emplacement`) VALUES
+(10, 'Alexandre', 12, 12, 12, 1, '12'),
+(11, 'dgf', 25, 25, 25, 1, 'sery');
 
 -- --------------------------------------------------------
 
@@ -228,10 +271,10 @@ DROP TABLE IF EXISTS `presence`;
 CREATE TABLE IF NOT EXISTS `presence` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `valeur` tinyint(1) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `presence` tinyint(1) NOT NULL,
+  `timestamp_temperature` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_temperature` (`timestamp`),
+  UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`),
   KEY `PRESENCE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -245,7 +288,9 @@ DROP TABLE IF EXISTS `quartier`;
 CREATE TABLE IF NOT EXISTS `quartier` (
   `id_quartier` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_quartier`)
+  `id_ville` int(11) NOT NULL,
+  PRIMARY KEY (`id_quartier`),
+  KEY `QUARTIER_VILLE_FK` (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -259,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `id_question` int(11) NOT NULL AUTO_INCREMENT,
   `question` varchar(535) NOT NULL,
   PRIMARY KEY (`id_question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -305,8 +350,29 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `email_u` varchar(150) NOT NULL,
   `prenom_u` varchar(100) NOT NULL,
   `nom_u` varchar(100) NOT NULL,
-  `mdp_u` varchar(100) DEFAULT NULL,
+  `mdp_u` varchar(100) NOT NULL,
   PRIMARY KEY (`id_u`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`) VALUES
+(1, 'alex.lat@gmail.com', 'Alexandre', 'LAT', 'Alexandre789'),
+(2, 'qfdg', 'qdsg', 'sdfg', 'sdfg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ville`
+--
+
+DROP TABLE IF EXISTS `ville`;
+CREATE TABLE IF NOT EXISTS `ville` (
+  `id_ville` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -331,6 +397,13 @@ ALTER TABLE `capteur`
 --
 ALTER TABLE `co2`
   ADD CONSTRAINT `CO2_CAPTEUR_FK` FOREIGN KEY (`id_ca`) REFERENCES `capteur` (`id_ca`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `employe_municipal`
+--
+ALTER TABLE `employe_municipal`
+  ADD CONSTRAINT `EMPLOYE_MUNICIPAL_UTILISATEUR_FK` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`id_u`) ON DELETE CASCADE,
+  ADD CONSTRAINT `EMPLOYE_MUNICIPAL_VILLE_FK` FOREIGN KEY (`id_ville`) REFERENCES `ville` (`id_ville`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `fumee`
@@ -388,6 +461,12 @@ ALTER TABLE `piece`
 --
 ALTER TABLE `presence`
   ADD CONSTRAINT `PRESENCE_CAPTEUR_FK` FOREIGN KEY (`id_ca`) REFERENCES `capteur` (`id_ca`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `quartier`
+--
+ALTER TABLE `quartier`
+  ADD CONSTRAINT `QUARTIER_VILLE_FK` FOREIGN KEY (`id_ville`) REFERENCES `ville` (`id_ville`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `reponse`
