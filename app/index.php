@@ -17,6 +17,8 @@ $router->get('/apropos', function(){ $controleur = new ControleurAide();
     $controleur->affichageApropos(); });
 $router->get('/aide', function(){ $controleur = new ControleurAide();
     $controleur->affichageAide(); });
+$router->post('/aide', function(){ $controleur = new ControleurAide();
+    $controleur->affichageAide(); });
 $router->get('/connexion', function(){ $controleur = new ControleurAuthentification;
     $controleur->affichageConnexion(); });
 $router->post('/connexion', function(){ $controleur = new ControleurAuthentification;
