@@ -67,9 +67,9 @@ class Utilisateurs extends Modele {
 
   }
 
-  public function chercherIdGerant($id_u){
-    $sql = "SELECT id_gerant FROM gerant WHERE id_u = :id_u";
-    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
+  public function chercherIdGerant($id_habitation){
+    $sql = "SELECT id_gerant FROM gerant WHERE id_habitation = :id_habitation";
+    $resultatRequete = $this->executerRequete($sql, array('id_habitation' => $id_habitation))->fetch();
     return $resultatRequete;
   }
 

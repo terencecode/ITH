@@ -4,7 +4,6 @@
 <div id="body">
     <div class="row">
 
-
         <div id="background-image" class="col-xs-5 col-sm-4 col-md-4 col-lg-4"></div>
 
         <div id="form-container" class="col-xs-7 col-sm-8 col-md-8 col-lg-8">
@@ -13,15 +12,15 @@
                 <label for="habitation"><p>Choix de l'habitation :</p></label>
                 <select name="habitation">
                     <?php foreach ($habitations as $key=>$value):?>
-                        <?php foreach ($value as $key =>$value2):?>
-                            <option value="<?php echo $value2 ?>"><?php echo $value2 ?>"</option>
-                        <?php endforeach;?>
+                        <option value="<?php echo $value['rue_habitation'] ?>"><?php echo $value['rue_habitation'] ?></option>
                     <?php endforeach;?>
 
                 </select>
-                <input class="submit-button" name="valider-Piece" type="submit" value="Go!">
+                <p>Vous êtes chez <?php echo $nom_rue ?></p>
+                <input class="submit-button" name="go" type="submit" value="Go!">
             </form></br>
 
+            <?php if($i==1):?>
             <!-- Trigger/Open The Modal -->
             <button class="button" type="button" id="button_piece">Ajouter une pièce</button>
             </br>
@@ -35,6 +34,7 @@
 
 
             <!-- The Modal -->
+
             <div id="modal_piece" class="modal">
 
                 <!-- Modal content -->
@@ -131,9 +131,6 @@
                             <?php endforeach;?>
 
                         </select>
-
-
-
                         <input class="submit-button" name="Supprimer_Piece" type="submit" value="Valider">
                         <input class="cancel-button" name="Supprimer-Piece" type="submit" value="Annuler">
                         <label Id="IdChampManquant" hidden="true"  >champ(s) manquant(s) </label>
@@ -161,7 +158,7 @@
                         <select name="Suppcapteur">
                             <?php foreach ($capteurs as $key=>$value):?>
                                 <?php foreach ($value as $key =>$value2):?>
-                                    <option value="<?php echo $value2['type_Capteur'] ?>"><?php echo $value2['type_Capteur'] ?></option>
+                                    <option value="<?php echo $value2['nom_Capteur'] ?>"><?php echo $value2['nom_Capteur'] ?></option>
                                 <?php endforeach;?>
                             <?php endforeach;?>
                         </select>
@@ -237,6 +234,6 @@
                 </script>
 
             </div>
-
+        <?php endif?>
         </div>
     </div>
