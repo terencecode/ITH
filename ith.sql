@@ -2,8 +2,8 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- HÃ´te : 127.0.0.1:3306
--- GÃ©nÃ©rÃ© le :  ven. 12 jan. 2018 Ã  13:47
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 23 jan. 2018 à 15:22
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de donnÃ©es :  `ith`
+-- Base de données :  `ith2`
 --
 
 -- --------------------------------------------------------
@@ -47,19 +47,13 @@ CREATE TABLE IF NOT EXISTS `appartement` (
 DROP TABLE IF EXISTS `capteur`;
 CREATE TABLE IF NOT EXISTS `capteur` (
   `id_ca` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(60) NOT NULL,
+  `type_Capteur` varchar(60) NOT NULL,
+  `nom_Capteur` varchar(64) NOT NULL,
   `power_state` tinyint(1) NOT NULL,
   `id_piece` int(11) NOT NULL,
   PRIMARY KEY (`id_ca`),
   KEY `CAPTEUR_PIECE_FK` (`id_piece`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- DÃ©chargement des donnÃ©es de la table `capteur`
---
-
-INSERT INTO `capteur` (`id_ca`, `type`, `power_state`, `id_piece`) VALUES
-(2, 'temperature', 1, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -71,10 +65,10 @@ DROP TABLE IF EXISTS `co2`;
 CREATE TABLE IF NOT EXISTS `co2` (
   `id` int(11) NOT NULL,
   `id_ca` int(11) NOT NULL,
-  `taux_CO2` tinyint(4) NOT NULL,
-  `timestamp_co2` int(11) NOT NULL,
+  `valeur` tinyint(4) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_co2` (`timestamp_co2`),
+  UNIQUE KEY `timestamp_co2` (`timestamp`),
   KEY `CO2_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -102,10 +96,10 @@ DROP TABLE IF EXISTS `fumee`;
 CREATE TABLE IF NOT EXISTS `fumee` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `fumee` tinyint(1) NOT NULL,
-  `timestamp_fumee` int(11) NOT NULL,
+  `valeur` tinyint(1) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_fumee` (`timestamp_fumee`),
+  UNIQUE KEY `timestamp_fumee` (`timestamp`),
   KEY `FUMEE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -136,14 +130,7 @@ CREATE TABLE IF NOT EXISTS `gerant` (
   PRIMARY KEY (`id_gerant`),
   KEY `GERANT_HABITATION_FK` (`id_habitation`),
   KEY `GERANT_UTILISATEUR_FK` (`id_u`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- DÃ©chargement des donnÃ©es de la table `gerant`
---
-
-INSERT INTO `gerant` (`id_gerant`, `admin`, `id_habitation`, `id_u`) VALUES
-(2, 0, 1, 8);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -159,14 +146,7 @@ CREATE TABLE IF NOT EXISTS `habitation` (
   `rue_habitation` varchar(150) NOT NULL,
   `sup_habitation` smallint(6) NOT NULL,
   PRIMARY KEY (`id_habitation`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- DÃ©chargement des donnÃ©es de la table `habitation`
---
-
-INSERT INTO `habitation` (`id_habitation`, `pays_habitation`, `num_rue_habitation`, `rue_habitation`, `sup_habitation`) VALUES
-(1, 'france', 19, 'jean jacques rousseau', 65);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -178,10 +158,10 @@ DROP TABLE IF EXISTS `humidite`;
 CREATE TABLE IF NOT EXISTS `humidite` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `taux_humidite` tinyint(4) NOT NULL,
-  `timestamp_humidite` int(11) NOT NULL,
+  `valeur` tinyint(4) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_humidite` (`timestamp_humidite`),
+  UNIQUE KEY `timestamp_humidite` (`timestamp`),
   KEY `HUMIDITE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -211,10 +191,10 @@ DROP TABLE IF EXISTS `luminosite`;
 CREATE TABLE IF NOT EXISTS `luminosite` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `taux_luminosite` tinyint(4) NOT NULL,
-  `timestamp_luminosite` int(11) NOT NULL,
+  `valeur` tinyint(4) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_luminosite` (`timestamp_luminosite`),
+  UNIQUE KEY `timestamp_luminosite` (`timestamp`),
   KEY `LUMINOSITE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -247,18 +227,10 @@ CREATE TABLE IF NOT EXISTS `piece` (
   `largeur_piece` smallint(11) NOT NULL,
   `hauteur_piece` smallint(11) NOT NULL,
   `id_gerant` int(11) NOT NULL,
-  `Emplacement` varchar(535) NOT NULL,
+  `emplacement` varchar(535) NOT NULL,
   PRIMARY KEY (`id_piece`),
   KEY `PIECE_GERANT_FK` (`id_gerant`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- DÃ©chargement des donnÃ©es de la table `piece`
-
---
-
-INSERT INTO `piece` (`id_piece`, `type_piece`, `long_piece`, `largeur_piece`, `hauteur_piece`, `id_gerant`) VALUES
-(1, 'stfg', 25, 25, 255, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -270,10 +242,10 @@ DROP TABLE IF EXISTS `presence`;
 CREATE TABLE IF NOT EXISTS `presence` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `presence` tinyint(1) NOT NULL,
-  `timestamp_temperature` int(11) NOT NULL,
+  `valeur` tinyint(1) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`),
+  UNIQUE KEY `timestamp_temperature` (`timestamp`),
   KEY `PRESENCE_CAPTEUR_FK` (`id_ca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -295,6 +267,34 @@ CREATE TABLE IF NOT EXISTS `quartier` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `question`
+--
+
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE IF NOT EXISTS `question` (
+  `id_question` int(11) NOT NULL AUTO_INCREMENT,
+  `question` varchar(535) NOT NULL,
+  PRIMARY KEY (`id_question`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse`
+--
+
+DROP TABLE IF EXISTS `reponse`;
+CREATE TABLE IF NOT EXISTS `reponse` (
+  `id_reponse` int(11) NOT NULL AUTO_INCREMENT,
+  `response` varchar(535) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  PRIMARY KEY (`id_reponse`),
+  KEY `id_question` (`id_question`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `temperature`
 --
 
@@ -302,19 +302,12 @@ DROP TABLE IF EXISTS `temperature`;
 CREATE TABLE IF NOT EXISTS `temperature` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ca` int(11) NOT NULL,
-  `temperature` tinyint(4) NOT NULL,
-  `timestamp_temperature` int(11) NOT NULL,
+  `valeur` tinyint(4) NOT NULL,
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `timestamp_temperature` (`timestamp_temperature`),
+  UNIQUE KEY `timestamp_temperature` (`timestamp`),
   KEY `TEMPERATURE_CAPTEUR_FK` (`id_ca`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- DÃ©chargement des donnÃ©es de la table `temperature`
---
-
-INSERT INTO `temperature` (`id`, `id_ca`, `temperature`, `timestamp_temperature`) VALUES
-(1, 2, 25, 3546541);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -330,14 +323,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nom_u` varchar(100) NOT NULL,
   `mdp_u` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_u`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
---
--- DÃ©chargement des donnÃ©es de la table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`) VALUES
-(8, 'al', 'al', 'al', 'al');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -350,17 +336,10 @@ CREATE TABLE IF NOT EXISTS `ville` (
   `id_ville` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
   PRIMARY KEY (`id_ville`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- DÃ©chargement des donnÃ©es de la table `ville`
---
-
-INSERT INTO `ville` (`id_ville`, `nom`) VALUES
-(1, 'Paris');
-
---
--- Contraintes pour les tables dÃ©chargÃ©es
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -462,4 +441,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

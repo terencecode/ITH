@@ -7,13 +7,14 @@
  */
 require_once "Modeles/modele.php";
 
-class aide extends Modele
+
+class Aide extends Modele
 {
 
 
-    public function enregistrerQuestion($enregistrerQuestion)
+    public function enregistrerQuestion($valeurs)
     {
-        $sql = "INSERT INTO question (question) VALUES ('$enregistrerQuestion[0]')";
+        $sql = "INSERT INTO question (question) VALUES ('$valeurs[0]')";
         $resultatrequete = $this->executerRequete($sql);
         return $resultatrequete;
     }
