@@ -30,7 +30,7 @@
 
       <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
       <li class="header-link"><a href="accueil">Utilsateurs</a></li>
-      <li class="header-link"><a href="accueil">Aide</a></li>
+      <li class="header-link"><a href="aide">Aide</a></li>
       <li class="right header-link"><a href="deconnexion">Deconnexion</a></li>
 
     <?php endif; ?>
