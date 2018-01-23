@@ -52,8 +52,8 @@ class Utilisateurs extends Modele {
     return $resultatRequete;
   }
 
-  public function enregistrerGerant($id_u){
-    $sql = "INSERT INTO gerant (admin, id_u) VALUES (0, '$id_u')";
+  public function enregistrerGerant($gerant){
+    $sql = "INSERT INTO gerant (id_u, admin, id_habitation) VALUES ('$gerant[0]', 0, '$gerant[1]')";
     $resultatRequete = $this->executerRequete($sql);
     return $resultatRequete;
   }
