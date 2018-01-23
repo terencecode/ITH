@@ -77,7 +77,7 @@ class ControleurMaMaison
         $pieces=NULL;
         $capteurs=NULL;
         $nom_rue=NULL;
-        $_SESSION['id_gerant']=NULL;
+        $id_gerant=NULL;
 
         $piece = new Piece();
         $habitations = $piece->joinHabitationsGerant($_SESSION['id_u']);
