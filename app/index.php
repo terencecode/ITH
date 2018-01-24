@@ -31,6 +31,8 @@ $router->get('/profil', function(){ if(isset($_SESSION['id_u'])) { $controleur =
     $controleur->affichageMonCompte($_SESSION['id_u']); }});
 $router->get('/statistiques', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageStatistiques(); });
+$router->post('/tableau-de-bord', function(){ $controleur = new ControleurMaMaison;
+    $controleur->affichageTableauDeBord(); });
 $router->get('/tableau-de-bord', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageTableauDeBord(); });
 $router->get('/editer', function(){ $controleur = new ControleurMaMaison;

@@ -22,7 +22,7 @@ class Capteurs extends Modele
 
     public function enregistrerCapteur($valeurs)
     {
-        $sql = "INSERT INTO capteur (type_Capteur,power_state, id_piece) VALUES ('$valeurs[0]', '$valeurs[1]','$valeurs[5]')";
+        $sql = "INSERT INTO capteur (type_Capteur,power_state, id_piece,nom_Capteur) VALUES ('$valeurs[0]', '$valeurs[1]','$valeurs[5]','$valeurs[6]')";
         $resultatRequete = $this->executerRequete($sql);
         return $resultatRequete;
     }
@@ -41,10 +41,10 @@ class Capteurs extends Modele
     }
 
 
-    public function supprimer_capteur($id_piece, $type_Capteur)
+    public function supprimer_capteur($id_piece, $nom_Capteur)
     {
-        $sql = "DELETE FROM capteur WHERE id_piece=:id_piece AND type_Capteur=:type_Capteur";
-        $resultatRequete = $this->executerRequete($sql, array('id_piece'=>$id_piece,'type_Capteur' => $type_Capteur));
+        $sql = "DELETE FROM capteur WHERE id_piece=:id_piece AND nom_Capteur=:nom_Capteur";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece'=>$id_piece,'nom_Capteur' => $nom_Capteur));
         return $resultatRequete;
     }
 
@@ -55,5 +55,11 @@ class Capteurs extends Modele
         return $resultatRequete;
     }
 
+    public function update_capteur($Update)
+    {
+        $sql = "UPDATE capteur SET  WHERE id_piece=:id_piece ";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece));
+        return $resultatRequete;
+    }
 }
 ?>
