@@ -40,12 +40,11 @@
 
 <?php else: ?>
     <div id="body">
-        <div class="row">
-            <div id="pub" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                <img class="img_1" src="public/images/pexels-photo-186078.jpeg">
+        <div class="row" id="slide1">
+            <div id="house_1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
             </div>
-    </div>
-        <div class="row topspace row_retour_ligne_s">
+        </div>
+        <div class="row topspace row_retour_ligne_s" id="slide2">
             <div class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 content">
                 <h2>Qui sommes-nous ?</h2>
@@ -75,6 +74,9 @@
             </div>
             <div class="col-xs-hide col-sm-hide col-md-1 col-lg-1"></div>
         </div>
+        <div class="row" id="slide3">
+            <div id="house_2" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+            </div>
+        </div>
     </div>
-
 <?php endif; ?>

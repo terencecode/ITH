@@ -34,12 +34,12 @@
 
     <?php endif; ?>
 
-  <?php else: ?>
+  <?php else : ?>
 
       <li id="logocontainer"><a href="accueil"><img id="logo" src="public/images/logo.png"></a></li>
       <li class="header-link"><a href="accueil">Accueil</a></li>
       <li class="header-link"><a href="connexion">Connexion</a></li>
-      <li class="header-link"><a href="enregistrement">S'enregistrer</a></li>
+      <li class="header-link"><a href="enregistrement">Enregistrement</a></li>
       <li class="right header-link"><a href="aide">Aide</a></li>
       <li class="right header-link"><a href="apropos">A Propos</a></li>
       <li class="right" id="collapsible-icon"><a href="javascript:void(0);"><img id="menu-button" src="public/svg/menu-button.svg"></a></li>

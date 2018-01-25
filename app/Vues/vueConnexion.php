@@ -16,16 +16,15 @@ if (!empty($erreur)) {
         <div id="background-image" class="col-xs-hide col-sm-4 col-md-7 col-lg-9"></div>
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
-            <h1>me connecter</h1>
-            <form action="" method="post" id="formConnexion">
-                <label for="email">Adresse mail:</label>
+            <h1>Se connecter</h1>
+            <form action="connexion" method="post" id="formConnexion">
+                <label for="email">Adresse email:</label>
                 <input type="text" name="email" id="email"></br>
                 <span id="emailErrorMessage" class="errorMessage"></span>
             <label for="mdp">Mot de passe:</label>
-            <input type="password" name="passe" id="mdp"
-                   placeholder="10 caractères minimum"></br>
+            <input type="password" name="passe" id="mdp"></br>
             <span id="mdpErrorMessage" class="errorMessage"></span>
-            <input class="submit-button" type="submit" name="valider">
+            <input class="submit-button" type="submit" name="valider" value="Valider">
             </form>
         </div>
 

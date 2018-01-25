@@ -61,4 +61,36 @@ input{
     width: 100%;
 }
 
+.error {
+    box-shadow: 0 0 1px rgba(200, 0, 60, 1) inset;
+    border: 1px solid rgba(200, 0, 60, 1);
+}
+
+.error:focus {
+    box-shadow: 0 0 5px rgba(200, 0, 60, 1);
+    border: 1px solid rgba(200, 0, 60, 1);
+}
+
+.error::placeholder {
+    color: rgba(200, 0, 60, 1);
+}
+
+.error:focus::placeholder {
+    color: rgba(200, 0, 60, 1);
+}
+
+.errorMessage {
+     display: block;
+     color: rgba(200, 0, 60, 1);
+     margin-bottom: 4px;
+     text-align: right;
+ }
+
+#successMessage {
+    display: block;
+    color: rgba(60, 200, 60, 1);
+    margin-top: 14px;
+    text-align: left;
+}
+
 

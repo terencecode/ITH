@@ -40,11 +40,28 @@ class Utilisateurs extends Modele {
 
     public function enregistrerUtilisateur($valeurs){
 
-      $sql = "INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]', '$valeurs[3]')";
+      $mdp = password_hash($valeurs[3], PASSWORD_BCRYPT);
+
+      $sql = "INSERT INTO utilisateur (email_u, prenom_u, nom_u, mdp_u) VALUES ('$valeurs[0]', '$valeurs[1]', '$valeurs[2]', '$mdp')";
       $resultatrequete = $this->executerRequete($sql);
       return $resultatrequete;
 
-  }
+    }
+
+    public function modifierUtilisateur($valeurs, $id){
+        $champsUpdate = $valeurs[0] != "" ? "nom_u = '" . $valeurs[0] . "'" : "";
+        $champsUpdate = $champsUpdate . ($valeurs[1] != "" ? ", prenom_u = '" . $valeurs[1] . "'" : "");
+        $champsUpdate = $champsUpdate . ($valeurs[2] != "" ? ", email_u = '" . $valeurs[2] . "'" : "");
+        $champsUpdate = $champsUpdate . ($valeurs[3] != "" ? ", telephone_u = '" . $valeurs[3] . "'" : "");
+        $champsUpdate = $champsUpdate . ($valeurs[4] != "" ? ", mdp_u = '" . password_hash($valeurs[4], PASSWORD_BCRYPT) . "'" : "");
+
+        $champsUpdate = substr($champsUpdate, 0, 1) == "," ? substr($champsUpdate, 1) : $champsUpdate;
+
+        $sql = "UPDATE utilisateur SET " . $champsUpdate . " WHERE id_u = $id";
+        $resultatrequete = $this->executerRequete($sql);
+        return $resultatrequete;
+
+    }
 
   public function chercherNomPrenom($id){
     $sql = "SELECT prenom_u, nom_u FROM utilisateur WHERE id_u = :id";
@@ -59,7 +76,7 @@ class Utilisateurs extends Modele {
   }
 
 
-  public function afficherCompte($id){
+  public function recupererUtilisateur($id){
 
       $sql = "SELECT * FROM utilisateur WHERE id_u = :id";
       $resultatRequete = $this->executerRequete($sql, array('id' => $id))->fetch();
