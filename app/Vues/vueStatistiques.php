@@ -268,7 +268,8 @@
 
         var date = document.getElementById("choix_date").value;
        // echo 'Le '.date('d/m/Y', choix_date).' &agrave; '.date('H:i:s', choix_date);
-
+        Url = Url + "&DateSelected=";
+        Url = Url+date;
 
 
         xhr.open("GET", Url, true);
@@ -389,7 +390,7 @@
                     </div>
                 </div>
 
-<div><input type="date" name="choix_date" id="choix_date" ></div>
+<div><input type="date" name="choix_date" id="choix_date"  value="2018-01-15"></div>
                 <div class="row">
 
                     <div class="col-lg-2 col-lg-offset-4 col-md-offset-4 col-md-2 col-sm-offset-3 col-sm-3 col-xs-offset-3 col-xs-3">

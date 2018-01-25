@@ -6,7 +6,7 @@ require_once "../../../ITH/app/Modeles/modele.php";
 class Capteur extends Modele
 {
 
-    public function GetValues($id_ca,$TypeCapteur)
+    public function GetValues($id_ca,$TypeCapteur,$timestamp)
     {
         $sql = "SELECT  valeur , timestamp FROM ";
         $sql  = $sql  . $TypeCapteur;
@@ -20,6 +20,7 @@ class Capteur extends Modele
 
 
         echo "<list>";
+        echo $timestamp;
 
         while ($Tab_result= $resultat->fetch()) {
 
