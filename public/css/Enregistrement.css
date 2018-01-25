@@ -81,6 +81,7 @@ input:focus::placeholder {
 
 #body #background-image {
     background: url("../images/pexels-photo-440313.jpeg") no-repeat;
+    background-size: cover;
     padding: 0;
     box-shadow: 3px 0px 15px #888888;
 }
