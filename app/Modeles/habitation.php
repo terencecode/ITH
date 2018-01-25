@@ -13,4 +13,11 @@ class Habitation extends Modele
     return $resultatRequete;
   }
 
+  public function chercherIdHabitation()
+  {
+    $sql = "SELECT LAST_INSERT_ID() FROM habitation";
+    $resultatRequete = $this->executerRequete($sql)->fetch();
+    return $resultatRequete;
+  }
+
 }

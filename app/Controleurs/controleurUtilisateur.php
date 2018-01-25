@@ -60,6 +60,15 @@ class ControleurUtilisateur {
         $habitation = new Habitation();
         $habitation->ajouterHabitation($valeurs);
 
+        $id_habitation = $habitation->chercherIdHabitation()[0];
+
+        $gerant = [];
+        $gerant[] = $id;
+        $gerant[] = $id_habitation;
+
+        $utilisateur = new Utilisateurs();
+        $utilisateur->enregistrerGerant($gerant);
+
       }
 
       $vue = new Vue('Utilisateur');

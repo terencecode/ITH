@@ -27,8 +27,6 @@ class ControleurAuthentification{
       //$estEmployeMunicipal = $utilisateur->chercherEmployeMunicipal($id_u);
       $estAdmin = $utilisateur->chercherAdmin($id_u)[0];
 
-      //die(var_dump($estAdmin));
-
       if ($estUtilisateur) {
           if (password_verify($_POST['passe'], $estUtilisateur[1])) {
               $_SESSION['email'] = $email;
@@ -75,36 +73,43 @@ class ControleurAuthentification{
         $valeurs[] = $_POST['passe'];
         $valeurs[] = $_POST['passe2'];
 
-        //On essaye de rentrer l'utilisateur dans la bdd
-        //On créé les variables de session
-        //Si l'utilisateur existe déjà => retourne une erreur
-        try {
+        $utilisateur = new Utilisateurs();
+        $id_u = $utilisateur->chercherId($valeurs[0])[0];
 
-          $utilisateur = new Utilisateurs();
-          $utilisateur->enregistrerUtilisateur($valeurs);
+        $testUtilisateur = $utilisateur->chercherUtilisateur($id_u);
 
-          $_SESSION['email'] = $_POST['email'];
-          $_SESSION['passe'] = $_POST['passe']; //TODO: on met le prenom dans la variable de session pour le mot de passe ?
-          $_SESSION['id'] = 0;
+        if (!$testUtilisateur) {
+          //On essaye de rentrer l'utilisateur dans la bdd
+          //On créé les variables de session
+          try {
 
-          $id_u = $utilisateur->chercherId($_SESSION['email'])[0];
-          $_SESSION['id_u'] = $id_u;
+            $utilisateur = new Utilisateurs();
+            $utilisateur->enregistrerUtilisateur($valeurs);
 
-          $utilisateur->enregistrerGerant($id_u);
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['passe'] = $_POST['passe']; //TODO: on met le prenom dans la variable de session pour le mot de passe ?
+            $_SESSION['id'] = 0;
 
-          header("Location: http://localhost:8080/ITH/accueil");
+            $id_u = $utilisateur->chercherId($_SESSION['email'])[0];
+            $_SESSION['id_u'] = $id_u;
 
-        } catch (Exception $e) {
+            header("Location: http://localhost:8080/ITH/accueil");
 
-          $this->erreur[] = "Vous êtes déjà enregistré, veuillez vous connecter";
+          } catch (Exception $e) {
 
-          $vue = new Vue('Enregistrement');
-          $vue->generer(array('erreur' => $this->erreur));
+            $this->erreur = "Une erreur est survenue";
+
+            $vue = new Vue('Enregistrement');
+            $vue->generer(array('erreur' => $this->erreur));
+
+          }
+
+        } else {
+
+          $this->erreur = "Vous êtes déjà enregistré, veuillez vous connecter";
 
         }
-
       }
-
     }
 
     //On genère la vue Enregistrement

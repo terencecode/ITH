@@ -69,8 +69,8 @@ class Utilisateurs extends Modele {
     return $resultatRequete;
   }
 
-  public function enregistrerGerant($id_u){
-    $sql = "INSERT INTO gerant (admin, id_u) VALUES (0, '$id_u')";
+  public function enregistrerGerant($gerant){
+    $sql = "INSERT INTO gerant (id_u, admin, id_habitation) VALUES ('$gerant[0]', 0, '$gerant[1]')";
     $resultatRequete = $this->executerRequete($sql);
     return $resultatRequete;
   }
@@ -84,9 +84,9 @@ class Utilisateurs extends Modele {
 
   }
 
-  public function chercherIdGerant($id_u){
-    $sql = "SELECT id_gerant FROM gerant WHERE id_u = :id_u";
-    $resultatRequete = $this->executerRequete($sql, array('id_u' => $id_u))->fetch();
+  public function chercherIdGerant($id_habitation){
+    $sql = "SELECT id_gerant FROM gerant WHERE id_habitation = :id_habitation";
+    $resultatRequete = $this->executerRequete($sql, array('id_habitation' => $id_habitation))->fetch();
     return $resultatRequete;
   }
 
