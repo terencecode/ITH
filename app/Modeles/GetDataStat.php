@@ -13,22 +13,20 @@ $DateSelected = (isset($_GET["DateSelected"])) ? $_GET["DateSelected"] : NULL;
 $findjournalier   = 'journalier';
 $pos = strpos($TypeCycle, $findjournalier);
 
-
-if ($pos === true) {
+$timestamp= 123456789;
+if ($pos !== false) {
 // cycle journalier
 
     //formater le time stamp
-    $a = strptime($DateSelected, '%Y -%d-%m--%d');
-    $timestamp = mktime(0, 0, 0, $a['tm_mon']+1, $a['tm_mday'], $a['tm_year']+1900);
-    echo $timestamp;
+   // $a = strptime($DateSelected, '%Y -%d-%m--%d');
+  //  $timestamp = mktime(0, 0, 0, $a['tm_mon']+1, $a['tm_mday'], $a['tm_year']+1900);
+
+    $date = new DateTime($DateSelected);
+// "-2209078800"
+    $timestamp = $date->getTimestamp();
+
 
 }
-
-
-
-
-
-
 
 
 

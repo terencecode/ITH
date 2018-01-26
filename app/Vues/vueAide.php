@@ -1,8 +1,6 @@
 <!-- Titre de la page -->
 <?php $this->titre = "aide"; ?>
 
-
-
 <div id="body">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
@@ -39,6 +37,18 @@
 
 
 </div>
+
 <?php if (!empty($_POST['Question'])) {
     echo $_POST['Question'];
 } ?>
+<select name="voirQuestion">
+    <?php foreach ($question as $key=>$value):?>
+        <?php foreach ($value as $key =>$value2):?>
+            <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
+        <?php endforeach;?>
+    <?php endforeach;?>
+</select>
+</form></br>
+
+ </div>
+

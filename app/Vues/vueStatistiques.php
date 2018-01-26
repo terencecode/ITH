@@ -183,6 +183,13 @@
     {
 
         var lineGraph = new LineGraph("canvas_stat");
+
+
+        for ( cpt = 0; cpt < values.length;cpt ++ ) {
+
+            lineGraph.addPoint(values[cpt][0], values[cpt][1]);
+
+        }
         lineGraph.addPoint("janv", Math.floor((Math.random() * 100) + 1));
         lineGraph.addPoint("fevr", Math.floor((Math.random() * 100) + 1));
         lineGraph.addPoint("mars", Math.floor((Math.random() * 100) + 1));

@@ -18,6 +18,11 @@ class Aide extends Modele
         $resultatrequete = $this->executerRequete($sql);
         return $resultatrequete;
     }
-
+    public function voirQuestion($question)
+    {
+        $sql = "SELECT question FROM question('$question') ";
+        $resultatRequete = $this->executerRequete($sql,array('question' => $question))->fetch();
+return $resultatRequete;
+    }
 }
 ?>
