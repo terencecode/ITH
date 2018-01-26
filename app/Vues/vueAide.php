@@ -36,18 +36,15 @@
     </div>
 
 
+
 </div>
 
-<?php if (!empty($_POST['Question'])) {
-    echo $_POST['Question'];
-} ?>
-<select name="voirQuestion">
-    <?php foreach ($question as $key=>$value):?>
+    <?php foreach ($questions as $key=>$value):?>
         <?php foreach ($value as $key =>$value2):?>
             <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
         <?php endforeach;?>
     <?php endforeach;?>
-</select>
+
 </form></br>
 
  </div>

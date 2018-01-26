@@ -28,12 +28,12 @@ class Controleuraide{
   }
 
   public function afficheAide(){
+
+      $aide = new Aide();
+      $questions = $aide->voirQuestion();
+
     $vue = new Vue('Aide');
-    $vue->generer();
-    $question = [];
-    $question[] = $_GET['question'];
-    $question = new question ();
-    $question -> voirQuestion($question)[0];
+    $vue->generer(array('questions' => $questions));
 
   }
 
