@@ -47,10 +47,10 @@
                            placeholder="Longueur" id="long_piece" min="0" ></br>
 
                     <input type="number" name="largeur_piece"
-                           placeholder="Largeur" id="largeur_piece"></br>
+                           placeholder="Largeur" id="largeur_piece" min="0"></br>
 
                     <input type="number" name="hauteur_piece"
-                           placeholder="Hauteur" id="hauteur_piece"></br>
+                           placeholder="Hauteur" id="hauteur_piece" min="0"></br>
 
                         <label for="TYPE"><p>Type de pièce :</p></label>
                         <input type="text" name="type_piece"

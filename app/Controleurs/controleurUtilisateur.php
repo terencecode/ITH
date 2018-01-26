@@ -7,15 +7,33 @@ require_once 'Vues/vue.php';
 class ControleurUtilisateur {
 
 
-  public function affichageMonCompte($id){
+      public function affichageMonCompte($id){
+          $utilisateur = new Utilisateurs();
+          $donnees = [];
+          $valeurs = [];
+          $modif = false;
+          $valeurs[0] = isset($_POST['nom']) ? $_POST['nom'] : "";
+          $valeurs[1] = isset($_POST['prenom']) ? $_POST['prenom'] : "";
+          $valeurs[2] = isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) !== false ? $_POST['email'] : "";
+          $valeurs[3] = isset($_POST['telephone']) ? $_POST['telephone'] : "";
+          $valeurs[4] = isset($_POST['passe']) && isset($_POST['passe2']) &&
+            $_POST['passe'] == $_POST['passe2'] ? $_POST['passe'] : "";
+          for($i = 0; $i < count($valeurs); $i++) {
+              if ($valeurs[$i] != "") {
+                  $utilisateur->modifierUtilisateur($valeurs, $id);
+                  $modif = true;
+                  break;
+              }
+          }
+          $resultat = $utilisateur->recupererUtilisateur($id);
+          array_push($donnees, $resultat[1]);
+          array_push($donnees, $resultat[2]);
+          array_push($donnees, $resultat[3]);
+          if ($modif) array_push($donnees, '<span id="successMessage">Les données ont bien été mises à jour</span>');
+          $vue = new Vue('Profil');
+          $vue->generer($donnees);
 
-    $utilisateur = new Utilisateurs();
-    $donnees = $utilisateur->afficherCompte($id);
-
-    $vue = new Vue('Profil');
-    $vue->generer($donnees);
-
-  }
+      }
 
   public function affichageUtilisateur($id){
 

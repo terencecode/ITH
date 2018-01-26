@@ -29,6 +29,8 @@ $router->post('/enregistrement', function(){ $controleur = new ControleurAuthent
     $controleur->affichageEnregistrement(); });
 $router->get('/profil', function(){ if(isset($_SESSION['id_u'])) { $controleur = new ControleurUtilisateur;
     $controleur->affichageMonCompte($_SESSION['id_u']); }});
+$router->post('/profil', function(){ if(isset($_SESSION['id_u'])) { $controleur = new ControleurUtilisateur;
+    $controleur->affichageMonCompte($_SESSION['id_u']); }});
 $router->get('/statistiques', function(){ $controleur = new ControleurMaMaison;
     $controleur->affichageStatistiques(); });
 $router->post('/tableau-de-bord', function(){ $controleur = new ControleurMaMaison;

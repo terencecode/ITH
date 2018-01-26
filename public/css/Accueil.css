@@ -4,7 +4,7 @@
 }
 
 .img_1{
-    width: 100%;
+
 }
 /*.content{
     border:solid;
@@ -25,9 +25,20 @@ h2{
 }
 
 
-#pub{
-    height: auto;
-    padding: 0;
+#slide1{
+    background: url("../images/pexels-photo-186078.jpeg") center 0 no-repeat fixed;
+    background-size: cover;
+    height: 500px;
+}
+
+#slide2 {
+    background: white fixed;
+}
+
+#slide3{
+    background: url("../images/pexels-photo-358636.jpeg") center 0 no-repeat fixed;
+    background-size: cover;
+    height: 500px;
 }
 
 p{

@@ -10,19 +10,12 @@
 
         <div id="form-container" class="col-xs-12 col-sm-8 col-md-5 col-lg-3">
             <h1>Créer un compte</h1>
-            <?php if (!empty($messagePassesDifferents)){
-              echo $messagePassesDifferents;
-              } ?>
-            <?php if (!empty($erreur)) {
-              echo $erreur;
-              }
-             ?>
-            <form action="" method="post" id="formEnregistrement">
+            <form action="enregistrement" method="post" id="formEnregistrement">
                 <label type="prenom">Prénom:</label>
                 <input type="text" name="prenom" id="prenom"></br>
                 <label for="nom">Nom:</label>
                 <input type="text" name="nom" id="nom"></br>
-                <label for="email">Adresse mail:</label>
+                <label for="email">Adresse email:</label>
                 <input type="text" name="email" id="email"></br>
                 <span id="emailErrorMessage" class="errorMessage"></span>
                 <label for="mdp">Mot de passe:</label>
