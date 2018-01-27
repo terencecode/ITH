@@ -76,11 +76,9 @@
     cursor: pointer;
 }
 </style>
-</head>
-<body>
 
 <!-- Trigger/Open The Modal -->
-<button id="myBtn">Ajouter Habitaion</button>
+<button class="submit-button" id="myBtn">Ajouter Habitaion</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
