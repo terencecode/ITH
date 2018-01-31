@@ -23,6 +23,7 @@ class ControleurMaMaison
         $nom_rue=NULL;
         $piece = new Piece();
         $habitations = $piece->joinHabitationsGerant($_SESSION['id_u']);
+        $tableauCapPiece=NULL;
 
         if (isset($_POST['go'])) {
             $i = 1;
@@ -37,6 +38,10 @@ class ControleurMaMaison
             $utilisateur = new Utilisateurs();
             $id_gerant = $utilisateur->chercherIdGerant($id_habitation)[0];
             $_SESSION['id_gerant']=$id_gerant;
+
+            $capteur = new Capteurs();
+            $tableauCapPiece = $capteur->joinCapteurPiece($_SESSION['id_gerant']);
+
         }
 
         else{$i=0;}
@@ -53,10 +58,6 @@ class ControleurMaMaison
 
 
 
-            $capteur = new Capteurs();
-            $tableauCapPiece = $capteur->joinCapteurPiece($_SESSION['id_gerant']);
-
-
             if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
                 $vue = new Vue('TableauDeBord');
                 $vue->generer(array('tableauCapPiece' => $tableauCapPiece, 'habitations'=>$habitations,'i'=>$i,'nom_rue'=> $nom_rue));
@@ -69,7 +70,7 @@ class ControleurMaMaison
 
     }
 
-    //Mettre toutes les fonctions relatives à la page éditer ma maison
+
 
     public function affichageEditerMaMaison()
     {
@@ -145,7 +146,7 @@ class ControleurMaMaison
                     $capteur->enregistrerCapteur($valeurs);
 
 
-                }
+        }
                 if ((isset($_POST['valider-Piece']))) {
 
                     $valeurs = [];
