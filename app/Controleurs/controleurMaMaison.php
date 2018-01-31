@@ -77,7 +77,7 @@ class ControleurMaMaison
         $pieces=NULL;
         $capteurs=NULL;
         $nom_rue=NULL;
-        $id_gerant=NULL;
+        $id_gerant=0;
 
         $piece = new Piece();
         $habitations = $piece->joinHabitationsGerant($_SESSION['id_u']);
@@ -96,6 +96,19 @@ class ControleurMaMaison
             $utilisateur = new Utilisateurs();
             $id_gerant = $utilisateur->chercherIdGerant($id_habitation)[0];
             $_SESSION['id_gerant']=$id_gerant;
+
+            $capteur = new Capteurs();
+            $id_piece = $capteur->chercher_id_pieceG($_SESSION['id_gerant']);
+
+            $capteurs = [];
+            $capteur = new Capteurs();
+            foreach ($id_piece as $key => $value):
+                $capteurs[] = $capteur->afficherEtat($value['id_piece']);
+            endforeach;
+
+
+            $piece = new Piece();
+            $pieces = $piece->afficherPiece($_SESSION['id_gerant']);
         }
 
         else{$i=0;}
@@ -178,18 +191,7 @@ class ControleurMaMaison
                     $piece->supprimer_piece($SupprP[0]);
                 }
 
-                    $capteur = new Capteurs();
-                    $id_piece = $capteur->chercher_id_pieceG($_SESSION['id_gerant']);
 
-                    $capteurs = [];
-                    $capteur = new Capteurs();
-                    foreach ($id_piece as $key => $value):
-                        $capteurs[] = $capteur->afficherEtat($value['id_piece']);
-                    endforeach;
-
-
-                    $piece = new Piece();
-                    $pieces = $piece->afficherPiece($_SESSION['id_gerant']);
 
                 if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
                     $vue = new Vue('EditerMaMaison');
