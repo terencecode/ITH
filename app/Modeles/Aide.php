@@ -21,9 +21,28 @@ class Aide extends Modele
     public function voirQuestion()
     {
         //Requete sql
-        $sql = "SELECT question FROM question";
+        $sql = "SELECT question, id_question, reponse FROM question";
         $resultatRequete = $this->executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
+
+    public function enregistrerReponse($reponse, $id)
+    {
+        $sql = "UPDATE question SET reponse=:reponse WHERE id_question=:id";
+        $resultatrequete = $this->executerRequete($sql,array(
+            "reponse"=>$reponse,
+            "id"=>$id
+        ));
+        return $resultatrequete;
+    }
+
+    public function supprimerQuestion($id)
+    {
+        $sql = "DELETE FROM question WHERE id_question = :id";
+        $resultatrequete = $this->executerRequete($sql, array('id' => $id));
+        return $resultatrequete;
+    }
+
+    
 }
 ?>

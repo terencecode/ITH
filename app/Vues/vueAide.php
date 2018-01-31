@@ -1,5 +1,5 @@
 <!-- Titre de la page -->
-<?php $this->titre = "aide"; ?>
+<?php $this->titre = "Aide"; ?>
 
 <?php if (isset($_SESSION['id']) && $_SESSION['id'] == 1): ?>
 
@@ -14,15 +14,24 @@
 
 </div>
 
+
 <?php foreach ($questions as $key=>$value):?>
-        <?php foreach ($value as $key =>$value2):?>
 
-            <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
+<br><p><?php echo $value["question"] ?></p><br>
 
-            <textarea name="reponse" id="reponse" cols="20" rows="5"></textarea>
+    <?php if(!empty($value["reponse"])):?>
+    <br><p><?php echo $value["reponse"] ?></p><br>
 
-        <?php endforeach;?>
-    <?php endforeach;?>
+    <?php else:?>
+ 
+    <form action="" method="post">
+        <textarea name="reponse" id="reponse" rows="4"></textarea>
+        <input type="hidden" name="id" value= <?php echo($value['id_question'])?> >
+        <input class="submit-button" name"reponse" type="submit" value="Valider">
+        <input class="cancel-button" name="supprimer" type="submit" value="Supprimer">
+    </form>
+<?php endif;?>
+<?php endforeach;?>
 
 <?php else: ?>
 
@@ -64,9 +73,9 @@
 </div>
 
     <?php foreach ($questions as $key=>$value):?>
-        <?php foreach ($value as $key =>$value2):?>
-            <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
-        <?php endforeach;?>
+
+            <p><?php echo $value["question"] ?></p>
+
     <?php endforeach;?>
 
 </form></br>
