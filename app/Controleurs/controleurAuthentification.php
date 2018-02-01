@@ -40,7 +40,7 @@ class ControleurAuthentification{
       }
 
       if (isset($_SESSION['email']) && isset($_SESSION['passe']) && isset($_SESSION['id'])) {
-          header("Location: http://localhost:8080/ITH/accueil");
+          header("Location: /ITH/accueil");
         } else {
           $this->erreur[] = "Mail où Mot de passe incorrect";
       }
@@ -93,7 +93,7 @@ class ControleurAuthentification{
             $id_u = $utilisateur->chercherId($_SESSION['email'])[0];
             $_SESSION['id_u'] = $id_u;
 
-            header("Location: http://localhost:8080/ITH/accueil");
+            header("Location: /ITH/accueil");
 
           } catch (Exception $e) {
 
@@ -122,7 +122,7 @@ class ControleurAuthentification{
   {
     //Vide les variables de session lors de la deconnexion
     session_destroy();
-    header("Location: http://localhost:8080/ITH/accueil");
+    header("Location: /ITH/accueil");
 
   }
 

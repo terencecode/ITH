@@ -19,7 +19,7 @@
 
     <tbody>
       <?php foreach ($donnees as $key => $value): ?>
-          <tr onclick="window.location.href='http://localhost:8080/ITH/<?php echo $value['id_u'] ?>' ">
+          <tr onclick="window.location.href='/ITH/<?php echo $value['id_u'] ?>' ">
             <td> <?php echo $value['email_u'] ?> </td>
             <td> <?php echo $value['prenom_u'] ?> </td>
             <td> <?php echo $value['nom_u'] ?> </td>

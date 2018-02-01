@@ -247,7 +247,7 @@
 
     function GetStatJson(type,cycle) {
 
-//ajaxGet("http://localhost:8080/ITH/app/stat/GetDataStat.php?typeStat=type&TypeCycle=bidule", afficher);
+
         ajaxGet("GetDataStat.php?typeStat=type&TypeCycle=bidule", afficher);
     }
 
