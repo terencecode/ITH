@@ -103,7 +103,7 @@
                         <input type="text" name="type_piece"
                                placeholder="Type de piece" id="Type_de_piece" required></br>
 
-                        <label><p>Emplacemnent :</p></label></br>
+                        <label><p>Emplacement :</p></label></br>
                         <textarea class="commentaire" name="Emplacement" id="Emplacement" rows="4" cols="40"></textarea>
                         <input class="submit-button" name="valider-Piece" type="submit" value="Valider">
                         <input class="cancel-button" name="valider-Piece" type="submit" value="Annuler">

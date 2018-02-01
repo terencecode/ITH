@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 26 jan. 2018 à 14:26
+-- Généré le :  jeu. 01 fév. 2018 à 19:04
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -53,17 +53,17 @@ CREATE TABLE IF NOT EXISTS `capteur` (
   `id_piece` int(11) NOT NULL,
   PRIMARY KEY (`id_ca`),
   KEY `CAPTEUR_PIECE_FK` (`id_piece`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteur`
 --
 
 INSERT INTO `capteur` (`id_ca`, `type_Capteur`, `nom_Capteur`, `power_state`, `id_piece`) VALUES
-(1, 'Temperature', 'Temperature1_offpiece1_rue1', 0, 1),
-(2, 'Temperature', 'Temperature1_onpiece1_rue1', 1, 1),
-(3, 'CO2', 'CO2_offpiece2_rue2', 0, 4),
-(4, 'Humidite', 'Humidite_offpiece2_rue2', 0, 4);
+(2, 'Temperature', 'NomDuCapteur(température)_piece1_Rue1user', 1, 1),
+(3, 'Temperature', 'NomDuCapteur(température)2_piece1_Rue1user', 0, 1),
+(4, 'Humidite', 'Humidité_Piece2_Rue1user', 1, 3),
+(5, 'CO2', 'Co2Piece2_Rue1user', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `gerant` (
   PRIMARY KEY (`id_gerant`),
   KEY `GERANT_HABITATION_FK` (`id_habitation`),
   KEY `GERANT_UTILISATEUR_FK` (`id_u`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `gerant`
@@ -134,9 +134,10 @@ CREATE TABLE IF NOT EXISTS `gerant` (
 
 INSERT INTO `gerant` (`id_gerant`, `admin`, `id_habitation`, `id_u`) VALUES
 (1, 1, NULL, 1),
-(2, 0, NULL, 2),
-(3, 0, 1, 2),
-(6, 0, 4, 2);
+(4, 0, 3, 2),
+(5, 0, 4, 2),
+(6, 0, 5, 3),
+(7, 0, 6, 3);
 
 -- --------------------------------------------------------
 
@@ -153,15 +154,17 @@ CREATE TABLE IF NOT EXISTS `habitation` (
   `rue_habitation` varchar(150) NOT NULL,
   `sup_habitation` smallint(6) NOT NULL,
   PRIMARY KEY (`id_habitation`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `habitation`
 --
 
 INSERT INTO `habitation` (`id_habitation`, `pays_habitation`, `ville`, `num_rue_habitation`, `rue_habitation`, `sup_habitation`) VALUES
-(1, 'Pays_User', 'Ville_User', 8, 'Rue', 9),
-(4, 'Pays2_user', 'Ville2_User', 9, 'Rue2', 10);
+(3, 'Pays1user', 'Ville1user', 1, 'Rue1user', 1),
+(4, 'Pays2user', 'Ville2user', 2, 'Rue2user', 2),
+(5, 'Pays1user2', 'Ville1user2', 3, 'Rue1user2', 3),
+(6, 'Pays2user2', 'Ville2user2', 4, 'Rue2user2', 4);
 
 -- --------------------------------------------------------
 
@@ -245,17 +248,15 @@ CREATE TABLE IF NOT EXISTS `piece` (
   `emplacement` varchar(535) NOT NULL,
   PRIMARY KEY (`id_piece`),
   KEY `PIECE_GERANT_FK` (`id_gerant`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `piece`
 --
 
 INSERT INTO `piece` (`id_piece`, `type_piece`, `long_piece`, `largeur_piece`, `hauteur_piece`, `id_gerant`, `emplacement`) VALUES
-(1, 'Type_de_piece1rue', 1, 2, 3, 3, 'Emplacement1rue'),
-(2, 'Type_de_piece2rue', 4, 5, 6, 3, 'Emplacement2rue'),
-(3, 'Type_de_piece3rue2', 7, 8, 9, 6, 'Emplacement3rue2'),
-(4, 'Type_de_piece4rue2', 10, 11, 12, 6, 'Emplacement4rue2');
+(1, 'TypeDePièce1_Rue1user', 1, 1, 1, 4, 'Emplacement1_Rue1user'),
+(3, 'Piece2_Rue1user', 2, 2, 2, 4, 'Emplacement_Piece2_Rue1user');
 
 -- --------------------------------------------------------
 
@@ -296,32 +297,20 @@ CREATE TABLE IF NOT EXISTS `quartier` (
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE IF NOT EXISTS `question` (
   `id_question` int(11) NOT NULL AUTO_INCREMENT,
-  `question` varchar(535) NOT NULL,
+  `question` text NOT NULL,
+  `reponse` text,
   PRIMARY KEY (`id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `question`
 --
 
-INSERT INTO `question` (`id_question`, `question`) VALUES
-(1, 'Je me pose une question 1'),
-(2, 'Je me pose une question 2');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `reponse`
---
-
-DROP TABLE IF EXISTS `reponse`;
-CREATE TABLE IF NOT EXISTS `reponse` (
-  `id_reponse` int(11) NOT NULL AUTO_INCREMENT,
-  `response` varchar(535) NOT NULL,
-  `id_question` int(11) NOT NULL,
-  PRIMARY KEY (`id_reponse`),
-  KEY `id_question` (`id_question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `question` (`id_question`, `question`, `reponse`) VALUES
+(1, 'Question1', 'Reponse1'),
+(2, 'Question2', 'Reponse2'),
+(3, 'Question3', NULL),
+(4, 'Question4', NULL);
 
 -- --------------------------------------------------------
 
@@ -356,15 +345,16 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `telephone_u` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_u`) USING BTREE,
   UNIQUE KEY `email_u` (`email_u`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`, `telephone_u`) VALUES
-(1, 'admin@isep.fr', 'Admin_prenom', 'Admin_nom', '$2y$10$S1Pr3FwfMTkZRjVlkGBBhu2SSjxwkAwW.A9qC0PzXwbcdYyzqajD6', NULL),
-(2, 'user@isep.fr', 'User_prenom', 'User_nom', '$2y$10$z0vVOgEFP.ly9trrIb7TNeQgJ5LQpJ0B/k9o.C4TSZYrRXm88FAGK', NULL);
+(1, 'admin@domisep.fr', 'Admin', 'Domisep', '$2y$10$M4CPTBTKBkkTTQ9Qd/ZPK.UZIymTNgLB/kyd95m4Yjw1PjFORonGS', NULL),
+(2, 'user@gmail.com', 'Prénom_user', 'Nom_user', '$2y$10$7rD0CS8WcmmPtfbfXxFH8.oxh7.NAzcYeHMg/bG2MgMKf2LezhZ7e', NULL),
+(3, 'user2@gmail.com', 'Prénom_user2', 'Nom_user2', '$2y$10$4zn1SU5kO9NhauL.GxV9ueKlTRtPR55vQzb5DGHYajwO5IFhXTkjW', NULL);
 
 --
 -- Contraintes pour les tables déchargées
@@ -445,12 +435,6 @@ ALTER TABLE `piece`
 --
 ALTER TABLE `presence`
   ADD CONSTRAINT `PRESENCE_CAPTEUR_FK` FOREIGN KEY (`id_ca`) REFERENCES `capteur` (`id_ca`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `reponse`
---
-ALTER TABLE `reponse`
-  ADD CONSTRAINT `id_question` FOREIGN KEY (`id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `temperature`
