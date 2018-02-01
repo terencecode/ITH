@@ -1,23 +1,27 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Tableau De Bord"; ?>
 
+
 <div class="row">
 
-    <div class="col-xs-5 col-sm-4 col-md-7 col-xl-5" id="background-image"></div>
-    <div class="col-xs-7 col-sm-8 col-md-4 col-xl-7">
-
-        <form action="" method="post">
-            <label for="habitation"><p>Choix de l'habitation :</p></label>
+    <div class="col-xs-5 col-sm-4 col-md-7 col-xl-5">
+        <form style="margin-left: 50px;" action="" method="post">
+            <label for="habitation"><p style="margin-left: -25px;">Choix de l'habitation </p></label>
             <select name="habitation">
                 <?php foreach ($habitations as $key=>$value):?>
                     <option value="<?php echo $value['rue_habitation'] ?>"><?php echo $value['rue_habitation'] ?></option>
                 <?php endforeach;?>
-            </select>
-            <?php if($nom_rue!=NULL):?>
-            <p>Vous êtes chez <?php echo $nom_rue ?></p>
-            <?php endif;?>
+            </select></br>
             <input class="submit-button" name="go" type="submit" value="Go!">
+            <?php if($nom_rue!=NULL):?>
+                <p>Vous êtes chez <?php echo $nom_rue ?></p>
+            <?php endif;?>
         </form></br>
+    </div>
+
+
+<div class="col-xs-7 col-sm-8 col-md-4 col-xl-7">
+
 <?php if($i==1):?>
         <table id="tableau">
             <thead>
@@ -49,7 +53,9 @@
             </tbody>
         </table>
         </br>
+    <?php if($tableauCapPiece!=NULL):?>
         <button class="button" type="button" id="button_piece">Modifier</button>
+    <?php endif;?>
         <div id="modal_piece" class="modal">
 
 
@@ -72,11 +78,11 @@
                                     <?php endforeach;?>
                                 </select></td>
                             <td><p></p></td>
-                            <td><label><input type="text" name="nom_Capteur"></label></td>
+                            <td><label><input type="text" name="nom_Capteur" required></label></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></td>
+                            <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
                             <td><label><p>Nouvelle pièce du capteur :</p></label></td>
                         </tr>
                         <tr>
@@ -84,7 +90,7 @@
                             <td><p></p></td>
                             <td><label><select name="type_piece">
                                         <?php foreach ($pieces as $key=>$value):?>
-                                            <option value="<?php echo $value['type_piece'] ?>"><?php echo $value['type_piece'] ?></option>
+                                            <option value="<?php echo $value['id_piece'] ?>"><?php echo $value['type_piece'] ?></option>
                                         <?php endforeach;?>
                                     </select></label></td>
                         </tr>

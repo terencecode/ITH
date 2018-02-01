@@ -4,33 +4,78 @@
 <div id="body">
     <div class="row">
 
-        <div id="background-image" class="col-xs-5 col-sm-4 col-md-4 col-lg-4"></div>
+        <form style="margin-left: 50px;" action="" method="post">
+            <label for="habitation"><p style="margin-left: -25px;">Choix de l'habitation :</p></label>
+            <select name="habitation">
+                <?php foreach ($habitations as $key=>$value):?>
+                    <option value="<?php echo $value['rue_habitation'] ?>"><?php echo $value['rue_habitation'] ?></option>
+                <?php endforeach;?>
+            </select>
+            <input class="submit-button" name="go" type="submit" value="Go!">
+            <?php if($nom_rue!=NULL):?>
+                <p>Vous êtes chez <?php echo $nom_rue ?></p>
+            <?php endif;?>
+        </form></br>
 
-        <div id="form-container" class="col-xs-7 col-sm-8 col-md-8 col-lg-8">
 
-            <form action="" method="post">
-                <label for="habitation"><p>Choix de l'habitation :</p></label>
-                <select name="habitation">
-                    <?php foreach ($habitations as $key=>$value):?>
-                        <option value="<?php echo $value['rue_habitation'] ?>"><?php echo $value['rue_habitation'] ?></option>
+        <div  class="col-xs-5 col-sm-4 col-md-4 col-lg-4"><?php if($i==1):?>
+                <table id="tableau">
+                    <thead>
+                    <tr style="width: 500px; height:50px;">
+                        <th bgcolor="#5f9ea0" style="width:100px;">Vos pieces</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($pieces as $key=>$value):?>
+                        <tr>
+                            <td bgcolor="#98C9A3" style="width:1000px;height:50px; text-align:center;"><?php echo $value['type_piece'] ?></td>
+                        </tr>
                     <?php endforeach;?>
+                    </tbody>
+                </table>
+            <?php endif;?>
+            <?php if($pieces!=NULL):?>
+            <button class="button" type="button" id="button_piece2"style="margin-left: 50px;">Supprimer une pièce</button>
+            <?php endif;?>
+        </div>
+        <div id="form-container" class="col-xs-3 col-sm-4 col-md-4 col-lg-4"><?php if($i==1):?>
+            <table id="tableau">
+                <thead>
+                <tr style="width: 500px; height:50px;">
+                    <th bgcolor="#5f9ea0" style="width:100px;">Vos capteurs</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($capteurs as $key=>$value1):?>
+                <?php foreach ($value1 as $key=>$value2):?>
+                    <tr>
+                        <td bgcolor="#98C9A3" style="width:1000px;height:50px; text-align:center;"><?php echo $value2['nom_Capteur'] ?></td>
+                    </tr>
+                    <?php endforeach;?>
+                <?php endforeach;?>
+                </tbody>
+            </table><?php if($capteurs[0]!=NULL):?>
+                    <button class="button" type="button" id="button_capteur2"  style="margin-left: 50px;">Supprimer un capteur</button>
+                <?php endif;?><?php endif;?>
 
-                </select>
-                <?php if($nom_rue!=NULL):?>
-                    <p>Vous êtes chez <?php echo $nom_rue ?></p>
-                <?php endif;?>
-                <input class="submit-button" name="go" type="submit" value="Go!">
-            </form></br>
+        </div>
+
+        <div id="form-container" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+
 
             <?php if($i==1):?>
             <!-- Trigger/Open The Modal -->
             <button class="button" type="button" id="button_piece">Ajouter une pièce</button>
             </br>
+                <?php if($pieces!=NULL):?>
             <button class="button" type="button" id="button_capteur">Ajouter un capteur</button>
+            <?php endif;?>
             </br>
-            <button class="button" type="button" id="button_piece2">Supprimer une pièce</button>
-            </br>
-            <button class="button" type="button" id="button_capteur2">Supprimer un capteur</button>
+
+
+
+
 
 
 
@@ -46,17 +91,17 @@
                   <form action="" method="post">
                     <label for="dimensions"><p>Dimensions :</p></label>
                     <input type="number" name="long_piece"
-                           placeholder="Longueur" id="long_piece" min="0" ></br>
+                           placeholder="Longueur" id="long_piece" min="0" required></br>
 
                     <input type="number" name="largeur_piece"
-                           placeholder="Largeur" id="largeur_piece" min="0"></br>
+                           placeholder="Largeur" id="largeur_piece" min="0" required></br>
 
                     <input type="number" name="hauteur_piece"
-                           placeholder="Hauteur" id="hauteur_piece" min="0"></br>
+                           placeholder="Hauteur" id="hauteur_piece" min="0" required></br>
 
                         <label for="TYPE"><p>Type de pièce :</p></label>
                         <input type="text" name="type_piece"
-                               placeholder="Type de piece" id="Type_de_piece"></br>
+                               placeholder="Type de piece" id="Type_de_piece" required></br>
 
                         <label><p>Emplacemnent :</p></label></br>
                         <textarea class="commentaire" name="Emplacement" id="Emplacement" rows="4" cols="40"></textarea>
@@ -89,9 +134,7 @@
 
                         <select name="type_pieceC">
                             <?php foreach ($pieces as $key=>$value):?>
-                                <?php foreach ($value as $key =>$value2):?>
-                                    <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
-                                <?php endforeach;?>
+                                    <option value="<?php echo $value['id_piece']?>"><?php echo $value['type_piece'] ?></option>
                             <?php endforeach;?>
 
                         </select>
@@ -107,7 +150,7 @@
                         </html>
 
                         <label><p>Nom de votre capteur :</p></label>
-                        <input type="text" name="Nom_capteur"></br>
+                        <input type="text" name="Nom_capteur" required></br>
                         <input class="submit-button" name="valider-Capteur" type="submit" value="Valider">
                         <input class="cancel-button" name="Annuler" type="submit" value="Annuler">
                     </form>
@@ -127,9 +170,7 @@
 
                         <select name="Supprimer_piece">
                             <?php foreach ($pieces as $key=>$value):?>
-                                <?php foreach ($value as $key =>$value2):?>
-                                    <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
-                                <?php endforeach;?>
+                                    <option value="<?php echo $value['id_piece']?>"><?php echo $value['type_piece'] ?></option>
                             <?php endforeach;?>
 
                         </select>
@@ -146,22 +187,13 @@
                     <span class="close">&times;</span>
                     <h1>Supprimer un capteur :</h1>
                     <form action="" method="post">
-                        <label for="piece_capteur" id="Piece"><p>Piece du capteur à supprimer :</p></label>
-
-                        <select name="Supp-piece">
-                            <?php foreach ($pieces as $key=>$value):?>
-                                <?php foreach ($value as $key =>$value2):?>
-                                    <option value="<?php echo $value2 ?>"><?php echo $value2 ?></option>
-                                <?php endforeach;?>
-                            <?php endforeach;?>
-                        </select>
 
                         <label for="piece_capteur" id="Piece"><p>Capteur à supprimer :</p></label>
                         <select name="Suppcapteur">
                             <?php foreach ($capteurs as $key=>$value):?>
-                                <?php foreach ($value as $key =>$value2):?>
-                                    <option value="<?php echo $value2['nom_Capteur'] ?>"><?php echo $value2['nom_Capteur'] ?></option>
-                                <?php endforeach;?>
+                            <?php foreach ($value as $key=>$value1):?>
+                                    <option value="<?php echo $value1['nom_Capteur'] ?>"><?php echo $value1['nom_Capteur'] ?></option>
+                            <?php endforeach;?>
                             <?php endforeach;?>
                         </select>
                         <input class="submit-button" name="Supprimer_capteur" type="submit" value="Valider">

@@ -14,15 +14,15 @@ class Piece extends Modele
 
     public function afficherPiece($id_gerant)
     {
-        $sql = "SELECT type_piece FROM piece WHERE id_gerant=:id_gerant";
+        $sql = "SELECT * FROM piece WHERE id_gerant=:id_gerant";
         $resultatRequete = $this->executerRequete($sql, array('id_gerant' => $id_gerant))->fetchAll(PDO::FETCH_ASSOC);
         return $resultatRequete;
     }
 
-    public function supprimer_piece($type_piece)
+    public function supprimer_piece($id_piece)
     {
-        $sql = "DELETE FROM piece WHERE type_piece=:type_piece";
-        $resultatRequete = $this->executerRequete($sql, array('type_piece' => $type_piece));
+        $sql = "DELETE FROM piece WHERE id_piece=:id_piece";
+        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece));
         return $resultatRequete;
     }
 

@@ -26,13 +26,12 @@ class ControleurMaMaison
         $tableauCapPiece=NULL;
         $pieces=NULL;
 
+
         if (isset($_POST['go'])) {
             $i = 1;
 
             $piece = new Piece();
             $id_habitation = $piece->chercherHabitations($_POST['habitation'])[0];
-
-            $piece = new Piece();
             $nom_rue = $piece->chercherHabitationsRue($id_habitation)[0];
 
 
@@ -67,8 +66,7 @@ class ControleurMaMaison
 
 
             $capteur = new Capteurs();
-            $Update2=$capteur->chercher_id_piece($Update[1]);
-            $capteur->update_capteur($Update, $Update2[0]['id_piece']);
+            $capteur->update_capteur($Update);
 
 
 
@@ -104,8 +102,6 @@ class ControleurMaMaison
 
             $piece = new Piece();
             $id_habitation = $piece->chercherHabitations($_POST['habitation'])[0];
-
-            $piece = new Piece();
             $nom_rue = $piece->chercherHabitationsRue($id_habitation)[0];
 
 
@@ -121,6 +117,9 @@ class ControleurMaMaison
             foreach ($id_piece as $key => $value):
                 $capteurs[] = $capteur->afficherEtat($value['id_piece']);
             endforeach;
+            for($i=0;$i++;$i<sizeof($capteurs)):
+                for($j=0;$j++;$j<sizeof($capteurs)):
+                if($capteurs[$i][$j]==NULL){unset($capteurs[$i][$j]);}endfor;endfor;
 
 
             $piece = new Piece();
@@ -154,10 +153,7 @@ class ControleurMaMaison
                     $valeurs[4] = $_SESSION['id_gerant'];
 
                     $capteur = new Capteurs();
-                    $valeurs[5] = $capteur->chercher_id_piece($valeurs[3])[0];
-                    $valeurs[5] = $valeurs[5]['id_piece'];
                     $valeurs[6] = $_POST['Nom_capteur'];
-                    //die(var_dump($valeurs[5]));
                     $capteur->enregistrerCapteur($valeurs);
 
 
@@ -177,6 +173,7 @@ class ControleurMaMaison
                     $piece = new Piece();
                     $piece->enregistrerPiece($valeurs);
 
+
                 }
 
                 if ((isset($_POST['Supprimer_capteur']))) {
@@ -185,11 +182,10 @@ class ControleurMaMaison
                     }
                     $SupprC = [];
                     $SupprC[0] = $_POST['Suppcapteur'];
-                    $SupprC[1] = $_POST['Supp-piece'];
 
                     $capteur = new Capteurs();
-                    $id_piece = $capteur->chercher_id_piece($SupprC[1]);
-                    $capteur->supprimer_capteur($id_piece[0]['id_piece'], $SupprC[0]);
+                    $capteur->supprimer_capteur($SupprC[0]);
+
 
                 }
                 if ((isset($_POST['Supprimer_piece']))) {
@@ -200,8 +196,7 @@ class ControleurMaMaison
                     $SupprP[0] = $_POST['Supprimer_piece'];
 
                     $capteur = new Capteurs();
-                    $id_piece = $capteur->chercher_id_piece($SupprP[0]);
-                    $capteur->supprimer_capteur_piece($id_piece[0]['id_piece']);
+                    $capteur->supprimer_capteur_piece($SupprP[0]);
 
                     $piece = new Piece();
                     $piece->supprimer_piece($SupprP[0]);
