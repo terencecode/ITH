@@ -54,6 +54,7 @@ class Utilisateurs extends Modele {
         $champsUpdate = $champsUpdate . ($valeurs[2] != "" ? ", email_u = '" . $valeurs[2] . "'" : "");
         $champsUpdate = $champsUpdate . ($valeurs[3] != "" ? ", telephone_u = '" . $valeurs[3] . "'" : "");
         $champsUpdate = $champsUpdate . ($valeurs[4] != "" ? ", mdp_u = '" . password_hash($valeurs[4], PASSWORD_BCRYPT) . "'" : "");
+        $champsUpdate = $champsUpdate . ($valeurs[5] != "" ? ", photo_u = '" . $valeurs[5] . "'" : "");
 
         $champsUpdate = substr($champsUpdate, 0, 1) == "," ? substr($champsUpdate, 1) : $champsUpdate;
 

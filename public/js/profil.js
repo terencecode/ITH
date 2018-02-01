@@ -8,8 +8,19 @@ var bEstMdp2Identique = false;
 var bEstMdp2TropCourt = false;
 var bNaPasMdp2Majuscule = false;
 var bNaPasMdp2Chiffre = false;
+var bimageTropGrande = false;
 
 $(document).ready(function() {
+
+    var fileInput = $('#fileToUpload');
+
+    $('#fileToUpload').change(function(e) {
+        bimageTropGrande = false;
+        if(this.files[0].size > 2*1024*1024){
+          $("#fileErrorMessage").text("Le fichier choisi dépasse 2 Mo");
+          bimageTropGrande = true;
+        } //Image de 2Mo maximum
+    });
 
     $("#email").on("keyup blur", function() {
         if ($(this).val().length === 0) {
@@ -102,15 +113,15 @@ $(document).ready(function() {
 
     $("#formProfil").submit(function(e){
         if (bEstEmailVide || bEstEmailInvalide || bAreMdpIdentique || bEstMdpTropCourt || bNaPasMdpMajuscule ||
-            bNaPasMdpChiffre || bEstMdp2Identique || bEstMdp2TropCourt || bNaPasMdp2Majuscule || bNaPasMdp2Chiffre) {
+            bNaPasMdpChiffre || bEstMdp2Identique || bEstMdp2TropCourt || bNaPasMdp2Majuscule || bNaPasMdp2Chiffre || bimageTropGrande) {
             e.preventDefault(e);
         }
     });
 
     $("#cancelModif").on("click", function() {
-        $("#nom").val(donnees[2]);
-        $("#prenom").val(donnees[1]);
-        $("#email").val(donnees[0]);
+        $("#nom").val(donnees["nom"]);
+        $("#prenom").val(donnees["prenom"]);
+        $("#email").val(donnees["email"]);
         console.log(donnees);
     });
 });
