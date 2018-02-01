@@ -16,7 +16,9 @@
                     <?php endforeach;?>
 
                 </select>
-                <p>Vous êtes chez <?php echo $nom_rue ?></p>
+                <?php if($nom_rue!=NULL):?>
+                    <p>Vous êtes chez <?php echo $nom_rue ?></p>
+                <?php endif;?>
                 <input class="submit-button" name="go" type="submit" value="Go!">
             </form></br>
 

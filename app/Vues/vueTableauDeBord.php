@@ -12,9 +12,10 @@
                 <?php foreach ($habitations as $key=>$value):?>
                     <option value="<?php echo $value['rue_habitation'] ?>"><?php echo $value['rue_habitation'] ?></option>
                 <?php endforeach;?>
-
             </select>
+            <?php if($nom_rue!=NULL):?>
             <p>Vous êtes chez <?php echo $nom_rue ?></p>
+            <?php endif;?>
             <input class="submit-button" name="go" type="submit" value="Go!">
         </form></br>
 <?php if($i==1):?>
@@ -48,7 +49,7 @@
             </tbody>
         </table>
         </br>
-        <!--<button class="button" type="button" id="button_piece">Modifier</button>
+        <button class="button" type="button" id="button_piece">Modifier</button>
         <div id="modal_piece" class="modal">
 
 
@@ -57,25 +58,52 @@
                 <h1>Modifier les caractéristiques du capteur : </h1></br>
                 <form action="" method="post">
 
+                    <table>
 
-                    <label for="nom_Capteur"><p>Nouveau nom du capteur :</p></label>
-                    <input type="number" name="long_piece"
-                           placeholder="Longueur" id="long_piece" min="0" >
-
-                    <label for="nom_Capteur"><p>Nouvel état du capteur :</p></label>
-                    <input type="number" name="long_piece"
-                           placeholder="Longueur" id="long_piece" min="0" >
-
-                    <label for="TYPE"><p>Nouvel emplacement du capteur :</p></label>
-                    <input type="text" name="type_piece"
-                           placeholder="Type de piece" id="Type_de_piece"></br>
-
-
-
-                    <input class="submit-button" name="Supprimer_capteur" type="submit" value="Enregistrer">
-                    <input class="cancel-button" name="Supprimer_capteur" type="submit" value="Annuler">
-
-                    <label Id="IdChampManquant" hidden="true"  >champ(s) manquant(s) </label>
+                        <tr>
+                            <td><label><p>Ancien nom du capteur :</p></label></td>
+                            <td></td>
+                            <td><label><p>Nouveau nom du capteur :</p></label></td>
+                        </tr>
+                        <tr>
+                            <td><select name="nom_Capteur2">
+                                    <?php foreach ($tableauCapPiece as $key=>$value):?>
+                                        <option value="<?php echo $value['nom_Capteur'] ?>"><?php echo $value['nom_Capteur'] ?></option>
+                                    <?php endforeach;?>
+                                </select></td>
+                            <td><p></p></td>
+                            <td><label><input type="text" name="nom_Capteur"></label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></td>
+                            <td><label><p>Nouvelle pièce du capteur :</p></label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><p></p></td>
+                            <td><label><select name="type_piece">
+                                        <?php foreach ($pieces as $key=>$value):?>
+                                            <option value="<?php echo $value['type_piece'] ?>"><?php echo $value['type_piece'] ?></option>
+                                        <?php endforeach;?>
+                                    </select></label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><label><p>Nouvel état du capteur :</p></label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><p></p></td>
+                            <td><label class="switch">
+                                    <input type="checkbox" name="on_off">
+                                    <span class="slider round"></span>
+                                </label></td>
+                        </tr>
+                    </table></br>
+                    <input class="submit-button" name="update" type="submit" value="Enregistrer">
+                    <input class="cancel-button" name="capteur" type="submit" value="Annuler">
                 </form>
             </div>
         </div>
@@ -107,6 +135,6 @@
                 }
             }
         </script>
-    </div>-->
+    </div>
 </div>
 <?php endif?>

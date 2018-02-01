@@ -55,10 +55,10 @@ class Capteurs extends Modele
         return $resultatRequete;
     }
 
-    public function update_capteur($Update)
+    public function update_capteur($Update,$Update2)
     {
-        $sql = "UPDATE capteur SET  WHERE id_piece=:id_piece ";
-        $resultatRequete = $this->executerRequete($sql, array('id_piece' => $id_piece));
+        $sql = "UPDATE capteur SET nom_Capteur='$Update[0]',id_piece='$Update2',power_state='$Update[2]' WHERE nom_Capteur='$Update[3]'";
+        $resultatRequete = $this->executerRequete($sql);//, array('Update'=>$Update))->fetch();
         return $resultatRequete;
     }
 }
