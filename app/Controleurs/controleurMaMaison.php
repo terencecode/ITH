@@ -24,6 +24,7 @@ class ControleurMaMaison
         $piece = new Piece();
         $habitations = $piece->joinHabitationsGerant($_SESSION['id_u']);
         $tableauCapPiece=NULL;
+        $pieces=NULL;
 
         if (isset($_POST['go'])) {
             $i = 1;
@@ -42,26 +43,40 @@ class ControleurMaMaison
             $capteur = new Capteurs();
             $tableauCapPiece = $capteur->joinCapteurPiece($_SESSION['id_gerant']);
 
+            $piece = new Piece();
+            $pieces = $piece->afficherPiece($_SESSION['id_gerant']);
+
         }
+
+
 
         else{$i=0;}
 
-        if (isset($_POST['valider'])) {
+        if (isset($_POST['update'])) {
+
             $Update = [];
             $Update[0] = $_POST['nom_Capteur'];
             $Update[1] = $_POST['type_piece'];
-            $Update[2] = $_POST['on_off'];
+            if (isset($_POST['on_off'])) {
+                $Update[2] = 1;
+            } else {
+                $Update[2] = 0;
+            }
+            $Update[3]=$_POST['nom_Capteur2'];
+
+
+
             $capteur = new Capteurs();
+            $Update2=$capteur->chercher_id_piece($Update[1]);
+            $capteur->update_capteur($Update, $Update2[0]['id_piece']);
 
-            $Update[3] = $capteur->chercher_id_piece($Update[1][0]);
+
+
         }
-
-
 
             if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
                 $vue = new Vue('TableauDeBord');
-                $vue->generer(array('tableauCapPiece' => $tableauCapPiece, 'habitations'=>$habitations,'i'=>$i,'nom_rue'=> $nom_rue));
-
+                $vue->generer(array('tableauCapPiece' => $tableauCapPiece, 'habitations'=>$habitations,'i'=>$i,'nom_rue'=> $nom_rue,'pieces'=>$pieces));
 
             } else {
                 $vue = new Vue('404');
