@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 01 fév. 2018 à 19:04
+-- Généré le :  jeu. 01 fév. 2018 à 22:52
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -343,18 +343,19 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nom_u` varchar(100) NOT NULL,
   `mdp_u` varchar(100) NOT NULL,
   `telephone_u` int(10) DEFAULT NULL,
+  `photo_u` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_u`) USING BTREE,
   UNIQUE KEY `email_u` (`email_u`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`, `telephone_u`) VALUES
-(1, 'admin@domisep.fr', 'Admin', 'Domisep', '$2y$10$M4CPTBTKBkkTTQ9Qd/ZPK.UZIymTNgLB/kyd95m4Yjw1PjFORonGS', NULL),
-(2, 'user@gmail.com', 'Prénom_user', 'Nom_user', '$2y$10$7rD0CS8WcmmPtfbfXxFH8.oxh7.NAzcYeHMg/bG2MgMKf2LezhZ7e', NULL),
-(3, 'user2@gmail.com', 'Prénom_user2', 'Nom_user2', '$2y$10$4zn1SU5kO9NhauL.GxV9ueKlTRtPR55vQzb5DGHYajwO5IFhXTkjW', NULL);
+INSERT INTO `utilisateur` (`id_u`, `email_u`, `prenom_u`, `nom_u`, `mdp_u`, `telephone_u`, `photo_u`) VALUES
+(1, 'admin@domisep.fr', 'Admin', 'Domisep', '$2y$10$M4CPTBTKBkkTTQ9Qd/ZPK.UZIymTNgLB/kyd95m4Yjw1PjFORonGS', NULL, NULL),
+(2, 'user@gmail.com', 'Prénom_user', 'Nom_user', '$2y$10$7rD0CS8WcmmPtfbfXxFH8.oxh7.NAzcYeHMg/bG2MgMKf2LezhZ7e', NULL, NULL),
+(3, 'user2@gmail.com', 'Prénom_user2', 'Nom_user2', '$2y$10$4zn1SU5kO9NhauL.GxV9ueKlTRtPR55vQzb5DGHYajwO5IFhXTkjW', NULL, NULL);
 
 --
 -- Contraintes pour les tables déchargées
