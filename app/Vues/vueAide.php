@@ -20,6 +20,7 @@
 <br><p><?php echo $value["question"] ?></p><br>
 
     <?php if(!empty($value["reponse"])):?>
+
     <br><p><?php echo $value["reponse"] ?></p><br>
 
     <?php else:?>
@@ -74,7 +75,11 @@
 
     <?php foreach ($questions as $key=>$value):?>
 
-            <p><?php echo $value["question"] ?></p>
+        <p><?php echo $value["question"] ?></p>
+
+        <?php if(!empty($value["reponse"])):?>
+            <br><p><?php echo $value["reponse"] ?></p><br>
+        <?php endif; ?>
 
     <?php endforeach;?>
 
