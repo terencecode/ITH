@@ -20,7 +20,7 @@
       </li>
       <li class="header-link-dropdown-responsive"><a href="editer">Éditer mon habitation</a></li>
       <li class="header-link-dropdown-responsive"><a href="statistiques">Statistiques</a></li>
-      <li class="header-link-dropdown-responsive"><a href="tableaudebord">Tableau de bord</a></li>
+      <li class="header-link-dropdown-responsive"><a href="tableau-de-bord">Tableau de bord</a></li>
       <li class="right header-link"><a href="aide">Aide</a></li>
       <li class="right header-link"><a href="apropos">A Propos</a></li>
       <li class="right header-link"><a href="deconnexion">Deconnexion</a></li>
