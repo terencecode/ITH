@@ -61,5 +61,13 @@ class Capteurs extends Modele
         $resultatRequete = $this->executerRequete($sql);//, array('Update'=>$Update))->fetch();
         return $resultatRequete;
     }
+
+    public function recuperer_trams()
+    {
+        $r = new HttpRequest('http://projets-tomcat.isep.fr:8080/appService', HttpRequest::METH_GET);
+        $r->addHeaders(array("action" => "GETLOG", "team" => "0001"));
+        die(var_dump($r));
+    }
+
 }
 ?>
