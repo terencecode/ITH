@@ -26,7 +26,6 @@ class ControleurMaMaison
         $tableauCapPiece=NULL;
         $pieces=NULL;
 
-
         if (isset($_POST['go'])) {
             $i = 1;
 
