@@ -1,11 +1,6 @@
 <!-- Titre de la page -->
 <?php $this->titre = "Tableau De Bord"; ?>
 
-<?php
-
-
-?>
-
 <div class="row">
 
     <div class="col-xs-5 col-sm-4 col-md-7 col-xl-5">
