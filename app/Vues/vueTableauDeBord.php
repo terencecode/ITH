@@ -153,7 +153,6 @@
 <script>
     $(document).ready(function() {
         $(".check").change(function() {
-            //On allume : 
             if ($(this).prop('checked')) {
                 $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B3510001', function(data, status) {
                     $("#valeure").text("1");
