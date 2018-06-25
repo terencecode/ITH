@@ -65,18 +65,21 @@ class Capteurs extends Modele
     public function recuperer_trams()
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=0002");
+        curl_setopt($ch, CURLOPT_URL, "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=0003");
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($ch);
         curl_close($ch);
         $data_tab = str_split($data,33);
-        $trames[] = array();
 
+        $trames = [];
         for($i=0, $size=count($data_tab); $i<$size - 1; $i++) {
             list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($data_tab[$i],"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
-            $array_push = ($trames, array('t' => $t, 'o' => $o, 'r' => $r, 'c' => $c, 'n' => $n, 'v' => $v, 'a' => $a, 'x' => $x, 'year' => $year, 'month' => $month, 'day' => $day, 'hour' => $hour, 'min' => $min, 'sec' => $sec));
+            $trame = array('t' => $t, 'o' => $o, 'r' => $r, 'c' => $c, 'n' => $n, 'v' => $v, 'a' => $a, 'x' => $x, 'year' => $year, 'month' => $month, 'day' => $day, 'hour' => $hour, 'min' => $min, 'sec' => $sec);
+            $trames[$i] = $trame;
         }
+
+        return $trames;
     }
 
 }

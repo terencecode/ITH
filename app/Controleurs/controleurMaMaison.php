@@ -9,9 +9,12 @@ class ControleurMaMaison
 
     public function affichageStatistiques()
     {
+        $capteur = new Capteurs();
+        $trames = $capteur->recuperer_trams();
+
         if (!empty($_SESSION['email']) && !empty($_SESSION['passe'])) {
             $vue = new Vue('Statistiques');
-            $vue->generer();
+            $vue->generer(array('trames' => $trames));
         } else {
             $vue = new Vue('404');
             $vue->generer();
