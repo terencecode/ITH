@@ -79,17 +79,14 @@ class Capteurs extends Modele
             list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($data_tab[$i],"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
             $trame = array('t' => $t, 'o' => $o, 'r' => $r, 'c' => $c, 'n' => $n, 'v' => $v, 'a' => $a, 'x' => $x, 'year' => $year, 'month' => $month, 'day' => $day, 'hour' => $hour, 'min' => $min, 'sec' => $sec);
             //$trames[$i] = $trame;
-            if ($trame['c'] == 3) {
-              $temperature[] = $trame;
-            }
-            if ($trame['c'] == 4) {
-              $humidite[] = $trame;
+            if ($trame['c'] == 1) {
+              $distance[] = $trame;
             }
             if ($trame['c'] == 5) {
               $lumiere[] = $trame;
             }
         }
-        $trames = array('lumiere' => $lumiere, 'humidite' => $humidite, 'temperature' => $temperature);
+        $trames = array('lumiere' => $lumiere, 'distance' => $distance);
         return $trames;
     }
 

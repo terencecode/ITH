@@ -26,30 +26,7 @@
   </div>
 
   <div class="table">
-    <h2>Humidite</h2>
-    <table id="humidite">
-      <thead>
-        <td>Objet</td>
-        <td>Valeure</td>
-      </thead>
-
-      <tbody>
-        <?php foreach ($trames['humidite'] as $key => $humidite): ?>
-          <tr>
-            <td>
-              <?php echo $humidite['o'] ?>
-            </td>
-            <td>
-              <?php echo $humidite['v'] ?>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="table">
-    <h2>Temperature</h2>
+    <h2>Distance</h2>
     <table id="temperature">
       <thead>
         <td>Objet</td>
@@ -57,13 +34,13 @@
       </thead>
 
       <tbody>
-        <?php foreach ($trames['temperature'] as $key => $temperature): ?>
+        <?php foreach ($trames['distance'] as $key => $distance): ?>
           <tr>
             <td>
-              <?php echo $temperature['o'] ?>
+              <?php echo $distance['o'] ?>
             </td>
             <td>
-              <?php echo $temperature['v'] ?>
+              <?php echo $distance['v'] ?>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -76,7 +53,7 @@
 <style>
 .table {
   display: inline-block;
-  margin-left: 18%
+  margin-left: 25%
 }
 
 th, td {
