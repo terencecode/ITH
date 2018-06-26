@@ -147,11 +147,11 @@
     $(document).ready(function() {
         $(".check").change(function() {
             if ($(this).prop('checked')) {
-                $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B3510001', function(data, status) {
+                $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B35010001', function(data, status) {
                     console.log("allumé");
                 })
             } else {
-                $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B3510000', function(data, status) {
+                $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B35010000', function(data, status) {
                     console.log("éteint");
                 })
             }
