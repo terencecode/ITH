@@ -6,7 +6,6 @@
     <h2>Lumiere</h2>
     <table id="lumiere">
       <thead>
-        <td>Objet</td>
         <td>Valeure</td>
       </thead>
 
@@ -14,10 +13,7 @@
         <?php foreach ($trames['lumiere'] as $key => $lumiere): ?>
           <tr>
             <td>
-              <?php echo $lumiere['o'] ?>
-            </td>
-            <td>
-              <?php echo $lumiere['v'] / 10 ?>
+              <?php echo $lumiere['v'] / 100 ?>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -29,16 +25,12 @@
     <h2>Distance</h2>
     <table id="temperature">
       <thead>
-        <td>Objet</td>
         <td>Valeure</td>
       </thead>
 
       <tbody>
         <?php foreach ($trames['distance'] as $key => $distance): ?>
           <tr>
-            <td>
-              <?php echo $distance['o'] ?>
-            </td>
             <td>
               <?php echo $distance['v'] / 10 ?>
             </td>
@@ -53,7 +45,7 @@
 <style>
 .table {
   display: inline-block;
-  margin-left: 25%
+  margin-left: 29%
 }
 
 th, td {
