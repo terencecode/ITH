@@ -38,9 +38,7 @@
                         <td bgcolor="#98C9A3" style="width:100px; text-align:center;"><?php echo $value['type_Capteur'] ?></td>
                         <td bgcolor="#98C9A3" style="width:100px; text-align:center;"><?php echo $value['nom_Capteur'] ?></td>
                         <td bgcolor="#98C9A3" style="width:100px; text-align:center;"><?php echo $value['type_piece'] ?></td>
-                        <td bgcolor="#98C9A3" style="width:100px; text-align:center;">
-                            <span id="valeure">0</span>
-                        </td>
+                        <td bgcolor="#98C9A3" style="width:100px; text-align:center;"></td>
                         <td bgcolor="#98C9A3" style="width:100px; text-align:center;">
                             <label class="switch">
                                 <input type="checkbox" name="on_off" value="on" <?php if($value['power_state']==1): ?> checked <?php endif;?> class="check">
@@ -150,11 +148,11 @@
         $(".check").change(function() {
             if ($(this).prop('checked')) {
                 $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B3510001', function(data, status) {
-                    $("#valeure").text("1");
+                    console.log("allumé");
                 })
             } else {
                 $.get('https://cors-anywhere.herokuapp.com/http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=002B&TRAME=1002B3510000', function(data, status) {
-                    $("#valeure").text("0");
+                    console.log("éteint");
                 })
             }
         })

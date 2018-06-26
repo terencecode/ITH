@@ -17,7 +17,7 @@
               <?php echo $lumiere['o'] ?>
             </td>
             <td>
-              <?php echo $lumiere['v'] ?>
+              <?php echo $lumiere['v'] / 10 ?>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -40,7 +40,7 @@
               <?php echo $distance['o'] ?>
             </td>
             <td>
-              <?php echo $distance['v'] ?>
+              <?php echo $distance['v'] / 10 ?>
             </td>
           </tr>
         <?php endforeach; ?>
