@@ -6,7 +6,7 @@
     <h2>Lumiere</h2>
     <table id="lumiere">
       <thead>
-        <td>Valeure</td>
+        <td>Valeur</td>
       </thead>
 
       <tbody>
@@ -25,7 +25,7 @@
     <h2>Distance</h2>
     <table id="temperature">
       <thead>
-        <td>Valeure</td>
+        <td>Valeur</td>
       </thead>
 
       <tbody>
